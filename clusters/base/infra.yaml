@@ -2,7 +2,7 @@ kind: ApplicationSet
 apiVersion: argoproj.io/v1alpha1
 metadata:
   name: infra
-  namespace: gitops
+  namespace: argocd
 spec:
   generators:
     - git:
@@ -15,7 +15,7 @@ spec:
       name: "{{path[1]}}"
     spec:
       destination:
-        namespace: "gitops"
+        namespace: "argocd"
         server: https://kubernetes.default.svc
       project: "gitops"
       source:
