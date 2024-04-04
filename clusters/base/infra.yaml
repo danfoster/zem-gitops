@@ -13,6 +13,8 @@ spec:
   template:
     metadata:
       name: "{{path[1]}}"
+      labels:
+        cat: infra
     spec:
       destination:
         namespace: "argocd"
