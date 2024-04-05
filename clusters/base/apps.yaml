@@ -1,0 +1,28 @@
+kind: ApplicationSet
+apiVersion: argoproj.io/v1alpha1
+metadata:
+  name: infra
+  namespace: argocd
+spec:
+  generators:
+    - git:
+        directories:
+          - path: applications/*/overlays/cluster01
+        repoURL: https://github.com/danfoster/zem-gitops.git
+        revision: main
+  template:
+    metadata:
+      name: "{{path[1]}}"
+      labels:
+        cat: infra
+    spec:
+      destination:
+        server: https://kubernetes.default.svc
+      project: ""{{path[1]}}""
+      source:
+        path: "{{path[1]}}"
+        repoURL: https://github.com/danfoster/zem-gitops.git
+        targetRevision: main
+      syncPolicy:
+        automated: {}
+

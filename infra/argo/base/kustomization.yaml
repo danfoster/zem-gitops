@@ -1,4 +1,6 @@
 resources:
 - namespace.yaml
-- project.yaml
+- gitops.project.yaml
+- apps.project.yaml
+- infra.project.yaml
 - https://raw.githubusercontent.com/argoproj/argo-cd/v2.7.2/manifests/install.yaml
