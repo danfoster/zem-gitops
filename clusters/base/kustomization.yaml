@@ -1,3 +1,4 @@
 resources:
 - infra.yaml
 - apps.yaml
+- apps.namespace.yaml
