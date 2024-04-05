@@ -19,7 +19,7 @@ spec:
       destination:
         namespace: "argocd"
         server: https://kubernetes.default.svc
-      project: "gitops"
+      project: "infra"
       source:
         path: "{{path}}"
         repoURL: https://github.com/danfoster/zem-gitops.git
