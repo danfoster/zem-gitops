@@ -18,7 +18,7 @@ spec:
     spec:
       destination:
         server: https://kubernetes.default.svc
-      project: ""{{path[1]}}""
+      project: "apps"
       source:
         path: "{{path[1]}}"
         repoURL: https://github.com/danfoster/zem-gitops.git
