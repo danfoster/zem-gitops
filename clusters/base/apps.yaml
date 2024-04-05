@@ -17,6 +17,7 @@ spec:
         cat: infra
     spec:
       destination:
+        namespace: "argocd"
         server: https://kubernetes.default.svc
       project: "apps"
       source:
