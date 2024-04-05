@@ -5,7 +5,7 @@ metadata:
   namespace: argocd
 spec:
   destination:
-    namespace: gitops
+    namespace: argocd
     server: https://kubernetes.default.svc
   project: gitops
   source:
