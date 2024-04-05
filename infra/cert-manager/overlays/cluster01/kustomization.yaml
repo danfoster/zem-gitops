@@ -4,4 +4,4 @@ kind: Kustomization
 # Specify base and resources not in base here
 resources:
 - ../../base
-
+- cloudflare-api-key.secret.yaml
