@@ -21,7 +21,7 @@ spec:
         server: https://kubernetes.default.svc
       project: "apps"
       source:
-        path: "{{path[1]}}"
+        path: "{{path}}"
         repoURL: https://github.com/danfoster/zem-gitops.git
         targetRevision: main
       syncPolicy:
