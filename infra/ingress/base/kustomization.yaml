@@ -1,6 +1,4 @@
-helmGlobals:
-  chartHome: https://kubernetes.github.io/ingress-nginx 
 helmCharts:
 - releaseName: ingress-nginx
   name: ingress-nginx
-  valuesFile: values.yaml
+  repo: https://kubernetes.github.io/ingress-nginx 
