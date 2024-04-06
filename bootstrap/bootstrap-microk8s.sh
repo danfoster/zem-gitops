@@ -17,4 +17,4 @@ TMP=$(mktemp -d)
 
 echo $TMP
 ssh $NODENAME sudo microk8s config > $TMP/remote.config
-ssh $NODENAME sudo microk8s enable ingress metrics-server
+ssh $NODENAME sudo microk8s enable  metrics-server
