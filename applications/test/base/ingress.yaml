@@ -3,6 +3,7 @@ kind: Ingress
 metadata:
   name: test
 spec:
+  ingressClassName: nginx
   rules:
     - host: "test.c1.zem.org.uk"
       http:
