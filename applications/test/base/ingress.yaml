@@ -3,7 +3,7 @@ kind: Ingress
 metadata:
   name: test
   annotations:
-    cert-manager.io/issuer: "letsencrypt"
+    cert-manager.io/clusterissuer: "letsencrypt"
 spec:
   tls:
     - hosts:
