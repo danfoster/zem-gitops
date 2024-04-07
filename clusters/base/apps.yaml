@@ -24,6 +24,6 @@ spec:
         path: "{{path}}"
         repoURL: https://github.com/danfoster/zem-gitops.git
         targetRevision: main
-      syncPolicy:
-        automated: {}
+    automated:
+      prune: true
 

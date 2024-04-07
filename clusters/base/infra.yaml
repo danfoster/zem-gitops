@@ -25,7 +25,8 @@ spec:
         repoURL: https://github.com/danfoster/zem-gitops.git
         targetRevision: main
       syncPolicy:
-        automated: {}
+        automated:
+         prune: true
       ignoreDifferences:
         - group: "apiextensions.k8s.io"
           kind: CustomResourceDefinition
