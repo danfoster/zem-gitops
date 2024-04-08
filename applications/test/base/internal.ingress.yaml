@@ -5,8 +5,8 @@ metadata:
 spec:
   tls:
     - hosts:
-        - echo
-  ingressClassName: tailscale
+        - echo.internal.zem.org.uk
+  ingressClassName: internal-nginx
   rules:
     - http:
         paths:
