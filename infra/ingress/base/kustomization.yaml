@@ -10,4 +10,5 @@ helmCharts:
       service:
         internal:
           enabled: true
-          annotations: {}
+          annotations:
+            internal: true # This can be anything, just not empty
