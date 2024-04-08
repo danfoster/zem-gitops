@@ -18,7 +18,7 @@ spec:
       server: 'https://kubernetes.default.svc'
     - namespace: 'ingress'
       server: 'https://kubernetes.default.svc'
-    - namespace: 'ingress-iternal'
+    - namespace: 'ingress-internal'
       server: 'https://kubernetes.default.svc'
     - namespace: 'tailscale'
       server: 'https://kubernetes.default.svc'
