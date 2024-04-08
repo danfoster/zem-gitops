@@ -1,5 +1,0 @@
-controller:
-  service:
-    internal:
-      enabled: true
-      annotations: {}
