@@ -8,6 +8,7 @@ spec:
   tls:
     - hosts:
         - echo.internal.zem.org.uk
+      secretName: ingress-internal-test-tls
   ingressClassName: internal-nginx
   rules:
     - http:
