@@ -2,14 +2,17 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: argocd
+  annotations:
+    cert-manager.io/cluster-issuer: "letsencrypt"
 spec:
-  ingressClassName: tailscale
+  ingressClassName: internal-nginx
   tls:
   - hosts:
-      - argocd
+      - argocd.interal.zem.org.uk
     secretName: ingress-argocd-tls
   rules:
-    - http:
+    - host: "argocd.internal.zem.org.uk"
+      http:
         paths:
           - path: /
             pathType: Prefix
