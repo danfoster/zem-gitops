@@ -14,7 +14,7 @@ spec:
     metadata:
       name: "{{path[1]}}"
       labels:
-        cat: infra
+        cat: apps
     spec:
       destination:
         namespace: "apps"
