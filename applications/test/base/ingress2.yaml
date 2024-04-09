@@ -1,17 +1,17 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: test-internal
+  name: echo2
   annotations:
     cert-manager.io/cluster-issuer: "letsencrypt"
 spec:
   tls:
     - hosts:
-        - echo.internal.zem.org.uk
-      secretName: ingress-internal-test-tls
-  ingressClassName: internal-nginx
+        - echo.app.zem.org.uk
+      secretName: ingress-test-tls
+  ingressClassName: nginx
   rules:
-    - host: "echo.internal.zem.org.uk"
+    - host: "echo.app.zem.org.uk"
       http:
         paths:
           - path: /

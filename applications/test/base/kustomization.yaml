@@ -5,4 +5,5 @@ resources:
 - namespace.yaml
 - ingress.yaml
 - internal.ingress.yaml
+- ingress2.yaml
 - service.yaml
