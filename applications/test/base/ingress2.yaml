@@ -8,7 +8,7 @@ spec:
   tls:
     - hosts:
         - echo.app.zem.org.uk
-      secretName: ingress-test-tls
+      secretName: ingress-echo2-tls
   ingressClassName: nginx
   rules:
     - host: "echo.app.zem.org.uk"
