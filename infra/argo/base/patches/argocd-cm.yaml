@@ -11,6 +11,7 @@ data:
         issuer: https://accounts.google.com
         clientID: 414171075394-bn6ugphd1h7qra7qp15vs9qr9ogn8tpp.apps.googleusercontent.com
         clientSecret: $google-oauth:client_secret
+        redirectURI: https://argocd.internal.zem.org.uk/api/dex/callback
       type: oidc
       id: google
       name: Google
