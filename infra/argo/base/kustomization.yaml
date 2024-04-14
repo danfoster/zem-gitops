@@ -5,5 +5,6 @@ resources:
 
 
 patches:  
-  - path: patches/argo-cm.yaml
+  - path: patches/argocd-cm.yaml
+  - path: patches/argocd-rba-cm.yaml
   - path: patches/argocd-cmd-params-cm.yaml

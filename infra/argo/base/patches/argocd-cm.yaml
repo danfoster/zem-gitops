@@ -14,4 +14,4 @@ data:
       type: oidc
       id: google
       name: Google
-  policy.default: role:readonly
+
