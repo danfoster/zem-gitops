@@ -3,6 +3,7 @@ kind: ConfigMap
 metadata:
   name: argocd-cm
 data:
+  url: https://argocd.internal.zem.org.uk
   kustomize.buildOptions: --enable-helm
   dex.config: |
     connectors:
