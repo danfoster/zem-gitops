@@ -4,3 +4,12 @@ metadata:
   name: argocd-cm
 data:
   kustomize.buildOptions: --enable-helm
+  dex.config: |
+    connectors:
+    - config:
+        issuer: https://accounts.google.com
+        clientID: 414171075394-bn6ugphd1h7qra7qp15vs9qr9ogn8tpp.apps.googleusercontent.com
+        clientSecret: $google-oauth:client_secret
+      type: oidc
+      id: google
+      name: Google

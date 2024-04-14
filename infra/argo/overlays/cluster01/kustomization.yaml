@@ -5,3 +5,4 @@ kind: Kustomization
 resources:
 - ../../base
 - secret-github-creds.yaml
+- google-oauth.secret.yaml
