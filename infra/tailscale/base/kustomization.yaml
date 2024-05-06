@@ -5,3 +5,6 @@ helmCharts:
 - releaseName: tailscale-operator
   name: tailscale-operator
   repo: https://pkgs.tailscale.com/helmcharts
+  valuesInline:
+    apiServerProxyConfig:
+      mode: true
