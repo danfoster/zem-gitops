@@ -9,7 +9,7 @@ spec:
     - hosts:
         - c1.zem.org.uk
       secretName: ingress-k8s-api-tls
-  ingressClassName: nginx
+  ingressClassName: internal-nginx
   rules:
     - host: "c1.zem.org.uk"
       http:
