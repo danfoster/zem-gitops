@@ -4,5 +4,4 @@ namespace: tailscale
 
 # Specify base and resources not in base here
 resources:
-- ../../base/
 - kubernetes.service.yaml
