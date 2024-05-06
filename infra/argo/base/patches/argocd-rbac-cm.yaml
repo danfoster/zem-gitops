@@ -8,3 +8,4 @@ data:
       # Role definition : these users are admin
       g, dan@zem.org.uk, role:admin
     # default policy for people logging in --> no privileges, they are blind and can't do anything
+  scopes: '[email]'
