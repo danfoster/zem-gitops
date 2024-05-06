@@ -1,0 +1,3 @@
+resources:
+  - admin.role.yaml
+  - admin.rolebinding.yaml
