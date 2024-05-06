@@ -3,5 +3,4 @@ kind: Kustomization
 
 # Specify base and resources not in base here
 resources:
-- kubernetes.service.yaml
-- kubernetes.endpoints.yaml
+- kubernetes.ingress.yaml
