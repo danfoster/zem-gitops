@@ -4,7 +4,7 @@ resources:
 helmCharts:
 - releaseName: omada
   name: omada-controller
-  repo: https://k8s-at-home.com/charts/
+  repo: oci://tccr.io/truecharts/
   valuesInline:
     env:
       TZ: "GMT"
