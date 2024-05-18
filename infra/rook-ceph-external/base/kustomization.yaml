@@ -1,1 +1,3 @@
-resources: []
+resources:
+  - common-external.yaml
+  
