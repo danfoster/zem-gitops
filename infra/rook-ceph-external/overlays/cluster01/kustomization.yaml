@@ -5,3 +5,8 @@ namespace: rook-ceph-external
 # Specify base and resources not in base here
 resources:
 - ../../base/
+- pve.cephcluster.yaml
+- rook-ceph-mon-endpoints.configmap.yaml
+- rook-ceph-mon.secret.yaml
+- rook-csi-rbd-node.secret.yaml
+- rook-csi-rbd-provisioner.secret.yaml
