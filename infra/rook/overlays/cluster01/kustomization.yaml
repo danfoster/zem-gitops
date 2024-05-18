@@ -5,3 +5,4 @@ namespace: rook-ceph
 # Specify base and resources not in base here
 resources:
 - ../../base/
+- pve.cephcluster.yaml
