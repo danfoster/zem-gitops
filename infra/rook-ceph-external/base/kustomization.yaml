@@ -1,3 +1,4 @@
 resources:
   - common-external.yaml
   - ceph-rbd.storageclass.yaml
+  - ceph-cephfs.storageclass.yaml

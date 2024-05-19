@@ -10,3 +10,5 @@ resources:
 - rook-ceph-mon.secret.yaml
 - rook-csi-rbd-node.secret.yaml
 - rook-csi-rbd-provisioner.secret.yaml
+- rook-csi-cephfs-node.secret.yaml
+- rook-csi-cephfs-provisioner.secret.yaml
