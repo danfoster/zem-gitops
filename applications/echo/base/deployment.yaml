@@ -21,7 +21,7 @@ spec:
       volumes:
         - name: test
           persistentVolumeClaim:
-            claimName: test
+            claimName: echo
       containers:
         - image: "mendhak/http-https-echo:31"
           imagePullPolicy: IfNotPresent
