@@ -1,5 +1,6 @@
 namespace: plex
 
 resources:
+- plex.namespace.yaml
 - media.pv.yaml
 - plex.deployment.yaml
