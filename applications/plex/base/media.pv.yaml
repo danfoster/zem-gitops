@@ -21,6 +21,7 @@ spec:
       fsName: cephfs
       subvolumeName: media
       subvolumePath: /volumes/data/media/8fab24e4-e6c1-4789-9643-a9fc5df90b77
+      staticVolume: "true"
     volumeHandle: media-plex
   # reclaim policy is to retain, as it is a pre-provisioned volume and would require a PV delete
   # to remove the same from the kubernetes system
