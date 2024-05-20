@@ -25,6 +25,7 @@ spec:
   # reclaim policy is to retain, as it is a pre-provisioned volume and would require a PV delete
   # to remove the same from the kubernetes system
   persistentVolumeReclaimPolicy: Retain
+  storageClassName: rook-cephfs
   volumeMode: Filesystem
 ---
 apiVersion: v1
