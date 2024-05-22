@@ -30,3 +30,5 @@ helmCharts:
         integrations:
           traefik:
             enabled: false
+    podOptions:
+      hostUsers: false
