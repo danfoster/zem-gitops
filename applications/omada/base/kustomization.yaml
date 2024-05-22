@@ -1,34 +1,5 @@
 resources:
 - namespace.yaml
-
-helmCharts:
-- releaseName: omada
-  name: omada-controller
-  repo: oci://tccr.io/truecharts/
-  valuesInline:
-    env:
-      TZ: "GMT"
-    securityContext:
-      container:
-        readOnlyRootFilesystem: false
-    ingress:
-      comm:
-        enabled: true
-        primary: true
-        hosts:
-          - host: omada.internal.zem.org.uk
-            paths:
-              - path: /
-                pathType: Prefix
-        annotations:
-          cert-manager.io/cluster-issuer: "letsencrypt"
-        tls:
-          - hosts:
-            - omada.internal.zem.org.uk
-            secretName: ingress-omada-tls
-        ingressClassName: internal-nginx
-        integrations:
-          traefik:
-            enabled: false
-    podOptions:
-      hostUsers: false
+- pvc.yaml
+- deployment.yaml
+- service.yaml
