@@ -12,3 +12,12 @@ helmCharts:
       comm:
         enabled: true
         primary: true
+        hosts:
+          - omada.internal.zem.org.uk
+        annotations:
+          cert-manager.io/cluster-issuer: "letsencrypt"
+        tls:
+          - hosts:
+            - omada.internal.zem.org.uk
+            secretName: ingress-omada-tls
+        ingressClassName: internal-nginx
