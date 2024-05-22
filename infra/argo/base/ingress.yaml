@@ -12,7 +12,7 @@ spec:
     secretName: ingress-argocd-tls
   rules:
     - host: "argocd.internal.zem.org.uk"
-      http:
+      https:
         paths:
           - path: /
             pathType: Prefix
