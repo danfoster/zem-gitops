@@ -11,3 +11,4 @@ helmCharts:
     ingress:
       comm:
         enabled: true
+        primary: true
