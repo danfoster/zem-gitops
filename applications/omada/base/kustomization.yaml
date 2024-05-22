@@ -8,6 +8,9 @@ helmCharts:
   valuesInline:
     env:
       TZ: "GMT"
+    securityContext:
+      container:
+        readOnlyRootFilesystem: false
     ingress:
       comm:
         enabled: true
