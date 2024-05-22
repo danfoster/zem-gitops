@@ -13,7 +13,7 @@ helmCharts:
         enabled: true
         primary: true
         hosts:
-          - omada.internal.zem.org.uk
+          - host: omada.internal.zem.org.uk
         annotations:
           cert-manager.io/cluster-issuer: "letsencrypt"
         tls:
