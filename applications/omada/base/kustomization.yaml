@@ -16,7 +16,7 @@ helmCharts:
           - host: omada.internal.zem.org.uk
             paths:
               - path: /
-                pathType: prefix
+                pathType: Prefix
         annotations:
           cert-manager.io/cluster-issuer: "letsencrypt"
         tls:
