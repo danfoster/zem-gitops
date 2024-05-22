@@ -4,6 +4,7 @@ metadata:
   name: argocd
   annotations:
     cert-manager.io/cluster-issuer: "letsencrypt"
+    nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
 spec:
   ingressClassName: internal-nginx
   tls:
@@ -12,7 +13,7 @@ spec:
     secretName: ingress-argocd-tls
   rules:
     - host: "argocd.internal.zem.org.uk"
-      https:
+      http:
         paths:
           - path: /
             pathType: Prefix
