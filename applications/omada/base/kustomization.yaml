@@ -24,3 +24,6 @@ helmCharts:
             - omada.internal.zem.org.uk
             secretName: ingress-omada-tls
         ingressClassName: internal-nginx
+        integrations:
+          traefik:
+            enabled: false
