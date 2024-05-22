@@ -8,7 +8,6 @@ helmCharts:
   valuesInline:
     env:
       TZ: "GMT"
-    service:
-      ingress:
-        comm:
-          enabled: true
+    ingress:
+      comm:
+        enabled: true
