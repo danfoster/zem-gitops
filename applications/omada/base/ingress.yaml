@@ -9,7 +9,7 @@ spec:
     - hosts:
         - omada.internal.zem.org.uk
       secretName: ingress-omada-tls
-  ingressClassName: nginx-internal
+  ingressClassName: internal-nginx
   rules:
     - host: "omada.internal.zem.org.uk"
       http:
