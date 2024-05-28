@@ -1,0 +1,36 @@
+kind: ApplicationSet
+apiVersion: argoproj.io/v1alpha1
+metadata:
+  name: infra
+  namespace: argocd
+spec:
+  generators:
+    - git:
+        directories:
+          - path: infra/*/overlays/cluster02
+        repoURL: https://github.com/danfoster/zem-gitops.git
+        revision: main
+  template:
+    metadata:
+      name: "{{path[1]}}"
+      labels:
+        cat: infra
+    spec:
+      destination:
+        namespace: "argocd"
+        server: https://kubernetes.default.svc
+      project: "infra"
+      source:
+        path: "{{path}}"
+        repoURL: https://github.com/danfoster/zem-gitops.git
+        targetRevision: main
+      syncPolicy:
+        automated:
+         prune: true
+      ignoreDifferences:
+        - group: "apiextensions.k8s.io"
+          kind: CustomResourceDefinition
+          name: bgppeers.metallb.io
+          jsonPointers:
+          - /spec/conversion/webhook/clientConfig/caBundle
+
