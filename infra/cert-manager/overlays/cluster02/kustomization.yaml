@@ -4,9 +4,4 @@ kind: Kustomization
 # Specify base and resources not in base here
 resources:
 - ../../base
-- secret-github-creds.yaml
-- google-oauth.secret.yaml
-- ingress.yaml
-
-patches:  
-  - path: patches/argocd-cm.yaml
+- cloudflare-api-key.secret.yaml

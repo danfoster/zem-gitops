@@ -4,6 +4,5 @@ resources:
 
 
 patches:  
-  - path: patches/argocd-cm.yaml
   - path: patches/argocd-rbac-cm.yaml
   - path: patches/argocd-cmd-params-cm.yaml
