@@ -60,3 +60,8 @@ spec:
             secretKeyRef:
               name: cloudflare-api-token
               key: api-key
+        - name: EXTERNAL_DNS_TXT_OWNER_ID
+          valueFrom:
+            configMapKeyRef:
+              name: externaldns-config
+              key: owner_id

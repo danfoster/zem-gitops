@@ -30,12 +30,12 @@ IPv6_SUPPORT: true
 IPv6_CLUSTER_CIDR: fd02::/64
 IPv6_SERVICE_CIDR: fd99::/64
 extraSANs:
-- c01.zem.org.uk
+- c02.zem.org.uk
 
 EOF
 
     sudo snap install microk8s --classic --channel=1.28/stable
-    sudo microk8s enable  metrics-server
+    sudo microk8s enable  metrics-server dns
 
     echo "Config:"
     sudo microk8s config

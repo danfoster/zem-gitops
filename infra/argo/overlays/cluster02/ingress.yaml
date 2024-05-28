@@ -8,10 +8,10 @@ spec:
   ingressClassName: internal-nginx
   tls:
   - hosts:
-      - argocd.internal.zem.org.uk
+      - argocd.c2.internal.zem.org.uk
     secretName: ingress-argocd-tls
   rules:
-    - host: "argocd.internal.zem.org.uk"
+    - host: "argocd.c2.internal.zem.org.uk"
       http:
         paths:
           - path: /

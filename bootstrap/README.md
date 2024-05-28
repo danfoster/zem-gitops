@@ -10,6 +10,12 @@ Install sealedsecrets:
 k apply -k infra/sealedsecrets/overlays/cluster01
 ```
 
+Install MetalLB:
+
+```
+k apply -k infra/metallb/overlays/cluster01
+```
+
 
 Install argocd, by running this. You might have to run it twice if you get an error:
 
