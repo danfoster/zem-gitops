@@ -32,6 +32,8 @@ spec:
       server: 'https://kubernetes.default.svc'
     - namespace: 'rook-ceph'
       server: 'https://kubernetes.default.svc'
+    - namespace: 'seaweedfs'
+      server: 'https://kubernetes.default.svc'
   clusterResourceWhitelist:
     - group: '*'
       kind: '*'

@@ -1,0 +1,7 @@
+resources:
+- namespace.yaml
+
+helmCharts:
+- releaseName: seaweedfs
+  name: seaweedfs-csi-driver 
+  repo: https://seaweedfs.github.io/seaweedfs-csi-driver/helm
