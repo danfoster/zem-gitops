@@ -9,4 +9,4 @@ fi
 cd seaweedfs-csi-driver
 git pull --rebase
 
-helm template seaweedfs ./deploy/helm/seaweedfs-csi-driver -f ../values.yaml > ../../seaweedfs.yaml
+helm template seaweedfs ./deploy/helm/seaweedfs-csi-driver -f ../values.yaml -n seaweedfs > ../../seaweedfs.yaml

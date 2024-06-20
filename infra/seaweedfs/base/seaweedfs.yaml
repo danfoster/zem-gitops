@@ -114,7 +114,7 @@ metadata:
 subjects:
   - kind: ServiceAccount
     name: seaweedfs-controller-sa
-    namespace: rook-ceph-external
+    namespace: seaweedfs
 roleRef:
   kind: ClusterRole
   name: seaweedfs-provisioner-role
@@ -128,7 +128,7 @@ metadata:
 subjects:
   - kind: ServiceAccount
     name: seaweedfs-controller-sa
-    namespace: rook-ceph-external
+    namespace: seaweedfs
 roleRef:
   kind: ClusterRole
   name: seaweedfs-attacher-role
@@ -142,7 +142,7 @@ metadata:
 subjects:
   - kind: ServiceAccount
     name: seaweedfs-controller-sa
-    namespace: rook-ceph-external
+    namespace: seaweedfs
 roleRef:
   kind: ClusterRole
   name: seaweedfs-driver-registrar-controller-role
@@ -156,7 +156,7 @@ metadata:
 subjects:
   - kind: ServiceAccount
     name: seaweedfs-node-sa
-    namespace: rook-ceph-external
+    namespace: seaweedfs
 roleRef:
   kind: ClusterRole
   name: seaweedfs-driver-registrar-node-role
@@ -167,7 +167,7 @@ kind: Role
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
   name: seaweedfs-leader-election-controller-role
-  namespace: rook-ceph-external
+  namespace: seaweedfs
 rules:
   - apiGroups: ["coordination.k8s.io"]
     resources: ["leases"]
@@ -178,10 +178,10 @@ kind: RoleBinding
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
   name: seaweedfs-leader-election-controller-binding
-  namespace: rook-ceph-external
+  namespace: seaweedfs
 subjects:
   - kind: ServiceAccount
-    namespace: rook-ceph-external
+    namespace: seaweedfs
     name: seaweedfs-controller-sa
 roleRef:
   kind: Role
@@ -419,7 +419,7 @@ spec:
           args:
             - --csi-address=$(ADDRESS)
             - --leader-election
-            - --leader-election-namespace=rook-ceph-external
+            - --leader-election-namespace=seaweedfs
             - --http-endpoint=:9809
             #- --v=9
           env:
@@ -448,7 +448,7 @@ spec:
           args:
             - --csi-address=$(ADDRESS)
             - --leader-election
-            - --leader-election-namespace=rook-ceph-external
+            - --leader-election-namespace=seaweedfs
             - --http-endpoint=:9810
             #- --v=5
           env:
@@ -476,7 +476,7 @@ spec:
           args:
             - --csi-address=$(ADDRESS)
             - --leader-election
-            - --leader-election-namespace=rook-ceph-external
+            - --leader-election-namespace=seaweedfs
             - --http-endpoint=:9811
           env:
             - name: ADDRESS
