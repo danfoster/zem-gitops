@@ -3,5 +3,5 @@ kind: Kustomization
 
 # Specify base and resources not in base here
 resources:
-# - ../../base/
-- foo.yaml
+- ../../base/
+# - foo.yaml
