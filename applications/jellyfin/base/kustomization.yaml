@@ -1,4 +1,4 @@
-namespace: echo
+namespace: jellyfin
 
 resources:
 - deployment.yaml
