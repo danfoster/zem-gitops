@@ -7,7 +7,7 @@ metadata:
 #    nginx.ingress.kubernetes.io/backend-protocol: "HTTPS" # < communicate in https with the backend (service/pod). With a "#" in front of http will be used.
     cert-manager.io/cluster-issuer: "letsencrypt" # < use letsencrypt-prod application in kubernetes to generate ssl certificate
 #    nginx.ingress.kubernetes.io/app-root:  # < the root directory here if it's different from the root directory (like /web).
-    external-dns.alpha.kubernetes.io/target: "109.16.157.32"
+    external-dns.alpha.kubernetes.io/target: "209.16.157.32"
 spec:
   rules:
   - host: jellyfin.zem.org.uk
