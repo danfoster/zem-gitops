@@ -17,7 +17,6 @@ metadata:
   name: jellyfin-data
   namespace: jellyfin
 spec:
-  storageClassName: ""
   accessModes:
     - ReadWriteMany
   volumeMode: Filesystem
