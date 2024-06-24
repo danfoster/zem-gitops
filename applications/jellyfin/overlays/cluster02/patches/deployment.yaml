@@ -4,8 +4,6 @@ metadata:
   name: jellyfin
 spec:
   template:
-    metadata:
-        app: jellyfin
     spec:
       volumes:
       - name: media
