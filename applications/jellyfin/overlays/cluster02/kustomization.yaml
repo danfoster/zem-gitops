@@ -4,3 +4,7 @@ kind: Kustomization
 # Specify base and resources not in base here
 resources:
 - ../../base/
+- media.pv.yaml
+
+patches:
+  - path: patches/deployments.yaml

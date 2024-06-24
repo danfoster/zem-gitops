@@ -25,9 +25,6 @@ spec:
       - name: jellyfin-config
         persistentVolumeClaim:
           claimName: jellyfin-config
-      - name: jellyfin-data
-        persistentVolumeClaim:
-          claimName: jellyfin-data
       # The settings below have been marked out and can be used when removing the "#"
       # - name: device-vcsm # Only needed if you want to use your Raspberry Pi MMAL video decoding (Enabled as OpenMax H264 decode in gui settings).
       #   hostPath:
@@ -76,8 +73,6 @@ spec:
         volumeMounts:
         - mountPath: /config
           name: jellyfin-config
-        - mountPath: /data
-          name: jellyfin-data
         # Below are the path to mount devices for hardware acceleration
         # The settings below have been marked out and can be used when removing the "#"
         # - mountPath: /dev/vcsm

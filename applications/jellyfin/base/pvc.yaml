@@ -10,16 +10,3 @@ spec:
   resources:
     requests:
       storage: 1Gi              # < How much data can the pvc claim from pv
----
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: jellyfin-data
-  namespace: jellyfin
-spec:
-  accessModes:
-    - ReadWriteMany
-  volumeMode: Filesystem
-  resources:
-    requests:
-      storage: 1T
