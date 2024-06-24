@@ -7,4 +7,4 @@ resources:
 - media.pv.yaml
 
 patches:
-  - path: patches/deployments.yaml
+  - path: patches/deployment.yaml
