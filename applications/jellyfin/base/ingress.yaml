@@ -5,7 +5,7 @@ metadata:
   namespace: jellyfin     # < namespace where place the ingress enty
   annotations:
 #    nginx.ingress.kubernetes.io/backend-protocol: "HTTPS" # < communicate in https with the backend (service/pod). With a "#" in front of http will be used.
-    cert-manager.io/cluster-issuer: "letsencrypt-prod" # < use letsencrypt-prod application in kubernetes to generate ssl certificate
+    cert-manager.io/cluster-issuer: "letsencrypt" # < use letsencrypt-prod application in kubernetes to generate ssl certificate
 #    nginx.ingress.kubernetes.io/app-root:  # < the root directory here if it's different from the root directory (like /web).
 spec:
   rules:
