@@ -19,6 +19,9 @@ metadata:
   annotations:
     storageclass.kubernetes.io/is-default-class: "true"
 provisioner: seaweedfs-csi-driver
+parameters:
+  collection: default
+  replications: "001"
 allowVolumeExpansion: true
 ---
 # Source: seaweedfs-csi-driver/templates/rbac.yaml
