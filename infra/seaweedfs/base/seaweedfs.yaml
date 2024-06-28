@@ -20,7 +20,7 @@ metadata:
     storageclass.kubernetes.io/is-default-class: "true"
 provisioner: seaweedfs-csi-driver
 parameters:
-  collection: default
+  collection: ""
   replications: "001"
 allowVolumeExpansion: true
 ---
