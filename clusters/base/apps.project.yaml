@@ -14,6 +14,8 @@ spec:
       server: 'https://kubernetes.default.svc'
     - namespace: 'jellyfin'
       server: 'https://kubernetes.default.svc'
+    - namespace: 'torrent'
+      server: 'https://kubernetes.default.svc'
   clusterResourceWhitelist:
     - group: '*'
       kind: '*'

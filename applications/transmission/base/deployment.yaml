@@ -1,0 +1,70 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+    name: transmission
+    labels:
+        app: transmission
+spec:
+    replicas: 1
+    selector:
+        matchLabels:
+            app: transmission
+    template:
+        metadata:
+            name: transmission
+            labels:
+                app: transmission
+        spec:
+            containers:
+            - name: transmission
+              image: ghcr.io/linuxserver/transmission
+              resources:
+                requests:
+                  cpu: 100m
+                  memory: 100Mi
+                limits:
+                  cpu: 1
+                  memory: 1024Mi
+              ports:
+              - containerPort: 9091
+                protocol: TCP
+              - containerPort: 51413
+                protocol: TCP
+              - containerPort: 51413
+                protocol: UDP
+
+              volumeMounts:
+              - mountPath: /media
+                name: media
+
+              env:
+              - name: PUID
+                value: "1000"
+              - name: PGID
+                value: "1000"
+              - name: TZ
+                value: "Europe/London"
+              - name: USER
+                value: "zem"
+              - name: PASS
+                valueFrom:
+                    secretKeyRef:
+                        name: transmission
+                        key: transmission-password
+
+            volumes:
+            - name: downloads-volume
+              hostPath:
+                path: /opt/transmission/downloads
+                type: DirectoryOrCreate
+            - name: config-volume
+              hostPath:
+                path: /opt/transmission/config
+                type: DirectoryOrCreate
+            - name: watch-volume
+              hostPath:
+                path: /opt/transmission/watch
+                type: DirectoryOrCreate
+
+---
+
