@@ -36,6 +36,8 @@ spec:
               volumeMounts:
               - mountPath: /media
                 name: media
+              - mountPath: /config
+                name: transmission-config
 
               env:
               - name: PUID
@@ -54,17 +56,7 @@ spec:
 
             volumes:
             - name: downloads-volume
-              hostPath:
-                path: /opt/transmission/downloads
-                type: DirectoryOrCreate
-            - name: config-volume
-              hostPath:
-                path: /opt/transmission/config
-                type: DirectoryOrCreate
-            - name: watch-volume
-              hostPath:
-                path: /opt/transmission/watch
-                type: DirectoryOrCreate
-
----
-
+              persistentVolumeClaim:
+                claimName: media
+            - name: config
+              persistentVolumeClaim:
