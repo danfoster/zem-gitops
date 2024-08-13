@@ -55,8 +55,9 @@ spec:
                         key: transmission-password
 
             volumes:
-            - name: downloads-volume
+            - name: media
               persistentVolumeClaim:
                 claimName: media
             - name: config
               persistentVolumeClaim:
+                claimName: transmission-config
