@@ -49,10 +49,7 @@ spec:
               - name: USER
                 value: "zem"
               - name: PASS
-                valueFrom:
-                    secretKeyRef:
-                        name: transmission
-                        key: transmission-password
+                value: "changeme"
 
             volumes:
             - name: media
