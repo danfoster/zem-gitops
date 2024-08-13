@@ -37,7 +37,7 @@ spec:
               - mountPath: /media
                 name: media
               - mountPath: /config
-                name: transmission-config
+                name: config
 
               env:
               - name: PUID
