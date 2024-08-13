@@ -11,7 +11,7 @@ spec:
     driver: seaweedfs-csi-driver
     volumeHandle: media
     volumeAttributes:
-      collection: ""
+      collection: default
       replication: "001"
       path: /media
     readOnly: false
