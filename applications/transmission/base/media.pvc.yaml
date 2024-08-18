@@ -3,7 +3,7 @@ kind: PersistentVolumeClaim
 metadata:
   name: media
 spec:
-  storageClassName: ""
+  storageClassName: nfs-csi
   volumeName: media
   accessModes:
   - ReadWriteMany
