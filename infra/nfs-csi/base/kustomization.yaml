@@ -1,0 +1,8 @@
+
+helmCharts:
+- releaseName: csi-driver-nfs
+  name: csi-driver-nfs
+  namespace:
+  repo: https://raw.githubusercontent.com/kubernetes-csi/csi-driver-nfs/master/charts
+  valuesInline:
+    kubeletDir: /var/snap/microk8s/common/var/lib/kubelet

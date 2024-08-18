@@ -1,8 +1,0 @@
-seaweedfsFiler: "10.43.0.251:8888"
-isDefaultStorageClass: true
-node:
-  volumes:
-    registration_dir: /var/snap/microk8s/common/var/lib/kubelet/plugins_registry
-    plugins_dir: /var/snap/microk8s/common/var/lib/kubelet/plugins
-    pods_mount_dir: /var/snap/microk8s/common/var/lib/kubelet/pods
-
