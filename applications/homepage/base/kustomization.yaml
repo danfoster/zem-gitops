@@ -1,0 +1,22 @@
+resources:
+  - namespace.yaml
+
+helmCharts:
+- releaseName: homepage
+  name: homepage
+  repo: https://jameswynn.github.io/helm-charts
+  valuesInline:
+    ingress:
+      main:
+        enabled: true
+        ingressClassName: internal-nginx
+        annotations:
+          cert-manager.io/cluster-issuer: "letsencrypt"
+        hosts:
+          - host: internal.zem.org.uk
+            paths:
+              - path: /
+                pathType: Prefix
+        tls:
+          - hosts:
+              - internal.zem.org.uk
