@@ -20,3 +20,4 @@ helmCharts:
         tls:
           - hosts:
               - internal.zem.org.uk
+            secretName: homepage-tls
