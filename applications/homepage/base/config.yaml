@@ -1,0 +1,36 @@
+apiVersion: v1
+metadata:
+  name: homepage
+data:
+  bookmarks.yaml: |
+    - Developer:
+      - Github:
+        - abbr: GH
+          href: https://github.com/
+  docker.yaml: ""
+  kubernetes.yaml: |
+    mode: enable
+  services.yaml: |
+    - My First Group:
+      - My First Service:
+          description: Stuff
+          href: http://localhost/
+    - My Second Group:
+      - My Second Service:
+          description: Homepage is the best
+          href: http://localhost/
+    - My Third Group:
+      - My Third Service:
+          description: "Homepage is \U0001F60E"
+          href: http://localhost/
+  settings.yaml: ""
+  widgets.yaml: |
+    - resources:
+        backend: resources
+        cpu: true
+        expanded: true
+        memory: true
+    - search:
+        provider: duckduckgo
+        target: _blank
+kind: ConfigMap

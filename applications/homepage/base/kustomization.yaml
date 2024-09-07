@@ -1,11 +1,14 @@
 resources:
   - namespace.yaml
+  - configm.yaml
 
 helmCharts:
 - releaseName: homepage
   name: homepage
   repo: https://jameswynn.github.io/helm-charts
   valuesInline:
+    config:
+      useExistingConfigMap: homepage
     ingress:
       main:
         enabled: true
