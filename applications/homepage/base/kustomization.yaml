@@ -1,6 +1,6 @@
 resources:
   - namespace.yaml
-  - configm.yaml
+  - config.yaml
 
 helmCharts:
 - releaseName: homepage
