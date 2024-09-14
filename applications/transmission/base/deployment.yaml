@@ -47,9 +47,13 @@ spec:
               - name: TZ
                 value: "Europe/London"
               - name: USER
-                value: "zem"
+                secretKeyRef:
+                  name: transmisson-user
+                  key: username
               - name: PASS
-                value: "changeme"
+                secretKeyRef:
+                  name: transmisson-user
+                  key: password
 
             volumes:
             - name: media

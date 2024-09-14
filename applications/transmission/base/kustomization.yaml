@@ -8,3 +8,4 @@ resources:
 - config.pvc.yaml
 - media.pvc.yaml
 - media.pv.yaml
+- user.secret.yaml
