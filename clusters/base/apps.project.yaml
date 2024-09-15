@@ -17,6 +17,8 @@ spec:
     - namespace: 'torrent'
       server: 'https://kubernetes.default.svc'
     - namespace: 'homepage'
+      server: 'https://kubernetes.default.svc'    
+    - namespace: 'radarr'
       server: 'https://kubernetes.default.svc'
   clusterResourceWhitelist:
     - group: '*'
