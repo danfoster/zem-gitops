@@ -23,8 +23,8 @@ spec:
                   cpu: 100m
                   memory: 100Mi
                 limits:
-                  cpu: 1
-                  memory: 1024Mi
+                  cpu: '1'
+                  memory: 1Gi
               ports:
               - containerPort: 9091
                 protocol: TCP
@@ -47,13 +47,15 @@ spec:
               - name: TZ
                 value: "Europe/London"
               - name: USER
-                secretKeyRef:
-                  name: transmisson-user
-                  key: username
+                valueFrom:
+                  secretKeyRef:
+                    name: transmisson-user
+                    key: username
               - name: PASS
-                secretKeyRef:
-                  name: transmisson-user
-                  key: password
+                valueFrom:
+                  secretKeyRef:
+                    name: transmisson-user
+                    key: password
 
             volumes:
             - name: media
