@@ -34,8 +34,8 @@ spec:
                 protocol: UDP
 
               volumeMounts:
-              - mountPath: /media
-                name: media
+              - mountPath: /downloads
+                name: downloads
               - mountPath: /config
                 name: config
 
@@ -58,9 +58,9 @@ spec:
                     key: password
 
             volumes:
-            - name: media
+            - name: downloads
               persistentVolumeClaim:
-                claimName: media
+                claimName: downloads
             - name: config
               persistentVolumeClaim:
                 claimName: transmission-config
