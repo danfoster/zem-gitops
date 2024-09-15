@@ -1,24 +1,24 @@
 kind: StatefulSet
 apiVersion: apps/v1
 metadata:
-    name: radarr
+    name: transmission
     labels:
-        app: radarr
+        app: transmission
 spec:
     replicas: 1
-    serviceName: radarr
+    serviceName: transmission
     selector:
         matchLabels:
-            app: radarr
+            app: transmission
     template:
         metadata:
-            name: radarr
+            name: transmission
             labels:
-                app: radarr
+                app: transmission
         spec:
             containers:
-            - name: radarr
-              image: ghcr.io/linuxserver/radarr:5.9.1
+            - name: transmission
+              image: ghcr.io/linuxserver/transmission:4.0.5
               resources:
                 requests:
                   cpu: 100m
@@ -27,12 +27,16 @@ spec:
                   cpu: '1'
                   memory: 1Gi
               ports:
-              - containerPort: 7878
+              - containerPort: 9091
                 protocol: TCP
+              - containerPort: 51413
+                protocol: TCP
+              - containerPort: 51413
+                protocol: UDP
 
               volumeMounts:
-              - mountPath: /media
-                name: media
+              - mountPath: /downloads
+                name: downloads
               - mountPath: /config
                 name: config
 
@@ -43,11 +47,21 @@ spec:
                 value: "1000"
               - name: TZ
                 value: "Europe/London"
+              - name: USER
+                valueFrom:
+                  secretKeyRef:
+                    name: transmission-user
+                    key: username
+              - name: PASS
+                valueFrom:
+                  secretKeyRef:
+                    name: transmission-user
+                    key: password
 
             volumes:
-            - name: media
+            - name: downloads
               persistentVolumeClaim:
-                claimName: media
+                claimName: downloads
             - name: config
               persistentVolumeClaim:
-                claimName: radarr-config
+                claimName: transmission-config
