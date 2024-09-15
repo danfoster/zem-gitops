@@ -49,12 +49,12 @@ spec:
               - name: USER
                 valueFrom:
                   secretKeyRef:
-                    name: transmisson-user
+                    name: transmission-user
                     key: username
               - name: PASS
                 valueFrom:
                   secretKeyRef:
-                    name: transmisson-user
+                    name: transmission-user
                     key: password
 
             volumes:
