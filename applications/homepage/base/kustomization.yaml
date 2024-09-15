@@ -24,3 +24,6 @@ helmCharts:
           - hosts:
               - internal.zem.org.uk
             secretName: homepage-tls
+    controller:
+      annotations:
+        reloader.stakater.com/auto: "true"

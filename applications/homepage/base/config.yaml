@@ -16,6 +16,9 @@ data:
       - Transmission:
           description: Torrent
           href: https://transmission.internal.zem.org.uk
+      - Radarr:
+          description: Movies
+          href: https://radarr.internal.zem.org.uk
   settings.yaml: ""
   widgets.yaml: |
     - resources:
