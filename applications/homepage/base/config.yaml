@@ -3,11 +3,7 @@ kind: ConfigMap
 metadata:
   name: homepage
 data:
-  bookmarks.yaml: |
-    - Developer:
-      - Github:
-        - abbr: GH
-          href: https://github.com/
+  bookmarks.yaml: ""
   docker.yaml: ""
   kubernetes.yaml: |
     mode: cluster
@@ -24,6 +20,11 @@ data:
       - Radarr:
           description: Movies
           href: https://radarr.internal.zem.org.uk
+          widget:
+            type: radarr
+            url: http://radarr.internal.zem.org.uk
+            key: {{ HOMEPAGE_VAR_RADARR_API_KEY }}
+            enableQueue: true 
   settings.yaml: |
     headerStyle: boxed
     background:
@@ -38,6 +39,6 @@ data:
         expanded: true
         memory: true
     - search:
-        provider: duckduckgo
+        provider: google
         target: _blank
 
