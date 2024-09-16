@@ -24,7 +24,8 @@ data:
       - Radarr:
           description: Movies
           href: https://radarr.internal.zem.org.uk
-  settings.yaml: ""
+  settings.yaml: |
+    headerStyle: boxed
   widgets.yaml: |
     - resources:
         backend: resources
