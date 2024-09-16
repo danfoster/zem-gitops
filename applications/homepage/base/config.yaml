@@ -28,8 +28,9 @@ data:
     headerStyle: boxed
     background:
       image: https://static.zem.org.uk/images/bg1.jpg
-      blur: sm 
-      opacity: 50 
+      blur: xl
+      brightness: 23
+      opacity: 25
   widgets.yaml: |
     - resources:
         backend: resources
