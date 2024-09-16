@@ -26,6 +26,7 @@ data:
           href: https://radarr.internal.zem.org.uk
   settings.yaml: |
     headerStyle: boxed
+    background: https://static.zem.org.uk/images/bg1.jpg
   widgets.yaml: |
     - resources:
         backend: resources
