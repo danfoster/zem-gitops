@@ -31,3 +31,5 @@ helmCharts:
     envFrom:
       - secretRef:
           name: homepage-env-secrets
+    env:
+      LOG_LEVEL: debug
