@@ -16,6 +16,11 @@ data:
       - Transmission:
           description: Torrent
           href: https://transmission.internal.zem.org.uk
+          widget:
+            type: transmission
+            url: https://transmission.internal.zem.org.uk
+            username: zem
+            password: {{ HOMEPAGE_VAR_TRANSMISSION_PASSWORD }}
       - Radarr:
           description: Movies
           href: https://radarr.internal.zem.org.uk
