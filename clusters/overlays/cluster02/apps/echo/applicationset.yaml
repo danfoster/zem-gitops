@@ -1,8 +1,8 @@
 kind: ApplicationSet
 apiVersion: argoproj.io/v1alpha1
 metadata:
-  name: apps
-  namespace: argocd
+  name: echo-prod
+  namespace: apps
 spec:
   generators:
     - git:

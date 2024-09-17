@@ -1,12 +1,12 @@
 apiVersion: argoproj.io/v1alpha1
 kind: AppProject
 metadata:
-  name: echo
-  namespace: echo
+  name: echo-prod
+  namespace: apps
 spec:
   description: Echo
   destinations:
-    - namespace: 'echo'
+    - namespace: 'echo-prod'
       server: 'https://kubernetes.default.svc'
   clusterResourceWhitelist:
     - group: '*'
