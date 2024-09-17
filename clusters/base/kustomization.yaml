@@ -1,5 +1,3 @@
 resources:
-- apps.namespace.yaml
 - gitops.project.yaml
-- apps.project.yaml
 - infra.project.yaml

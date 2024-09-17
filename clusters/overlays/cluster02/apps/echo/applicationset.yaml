@@ -1,25 +1,25 @@
 kind: ApplicationSet
 apiVersion: argoproj.io/v1alpha1
 metadata:
-  name: apps-cluster02
+  name: apps
   namespace: argocd
 spec:
   generators:
     - git:
         directories:
-          - path: clusters/overlays/cluster02/apps/*
+          - path: applications/echo/components/*/overlays/prod
         repoURL: https://github.com/danfoster/zem-gitops.git
         revision: main
   template:
     metadata:
-      name: "{{path.basename}}"
+      name: "{{path[4]}}-{{path.basename}}"
       labels:
-        cat: apps
+        app: echo
     spec:
       destination:
-        namespace: "apps"
+        namespace: "echo"
         server: https://kubernetes.default.svc
-      project: "apps"
+      project: "echo"
       source:
         path: "{{path}}"
         repoURL: https://github.com/danfoster/zem-gitops.git

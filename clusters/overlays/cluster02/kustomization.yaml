@@ -5,3 +5,6 @@ resources:
 - ../../base
 - infra.yaml
 - apps.yaml
+- apps.project.yaml
+- apps.namespaces.yaml
+- apps2.yaml
