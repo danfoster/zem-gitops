@@ -12,14 +12,14 @@ spec:
         revision: main
   template:
     metadata:
-      name: "{{path[2]}}-{{path[4]}}-{{path.basename}}"
+      name: "{{path[1]}}-{{path[3]}}-{{path.basename}}"
       labels:
         app: echo
     spec:
       destination:
-        namespace: "{{path[2]}}-{{path.basename}}"
+        namespace: "{{path[1]}}-{{path.basename}}"
         server: https://kubernetes.default.svc
-      project: "{{path[2]}}-{{path.basename}}"
+      project: "{{path[1]}}-{{path.basename}}"
       source:
         path: "{{path}}"
         repoURL: https://github.com/danfoster/zem-gitops.git
