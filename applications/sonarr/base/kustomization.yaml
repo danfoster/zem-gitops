@@ -1,0 +1,10 @@
+namespace: torrent
+
+resources:
+- deployment.yaml
+- namespace.yaml
+- ingress.yaml
+- service.yaml
+- config.pvc.yaml
+- media.pvc.yaml
+- media.pv.yaml

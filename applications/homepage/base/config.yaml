@@ -24,7 +24,6 @@ data:
             type: radarr
             url: https://radarr.internal.zem.org.uk
             key: {{HOMEPAGE_VAR_RADARR_API_KEY}}
-            enableQueue: true 
   settings.yaml: |
     headerStyle: boxed
     background:
