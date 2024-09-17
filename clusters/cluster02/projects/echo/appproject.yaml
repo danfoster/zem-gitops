@@ -2,7 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: AppProject
 metadata:
   name: echo-prod
-  namespace: apps
+  namespace: gitops
 spec:
   description: Echo
   destinations:
