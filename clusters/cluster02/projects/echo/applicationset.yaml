@@ -2,7 +2,7 @@ kind: ApplicationSet
 apiVersion: argoproj.io/v1alpha1
 metadata:
   name: echo-prod
-  namespace: apps
+  namespace: argocd
 spec:
   generators:
     - git:
@@ -12,12 +12,12 @@ spec:
         revision: main
   template:
     metadata:
-      name: "{{path[4]}}-{{path.basename}}"
+      name: "{{path[2]}}-{{path[4]}}-{{path.basename}}"
       labels:
         app: echo
     spec:
       destination:
-        namespace: "echo"
+        namespace: "{{path[2]}}-{{path.basename}}"
         server: https://kubernetes.default.svc
       project: "echo"
       source:
