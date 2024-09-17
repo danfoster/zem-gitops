@@ -7,7 +7,7 @@ spec:
   generators:
     - git:
         directories:
-          - path: projects/echo/components/*/overlays/prod
+          - path: projects/echo/components/*/envs/prod
         repoURL: https://github.com/danfoster/zem-gitops.git
         revision: main
   template:
