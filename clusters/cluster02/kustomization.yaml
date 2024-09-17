@@ -7,4 +7,4 @@ resources:
 - apps.yaml
 - apps.project.yaml
 - apps.namespaces.yaml
-- apps2.yaml
+- projects.yaml
