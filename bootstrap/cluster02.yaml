@@ -9,7 +9,7 @@ spec:
     server: https://kubernetes.default.svc
   project: gitops
   source:
-    path: clusters/overlays/cluster02
+    path: clusters/cluster02
     repoURL: https://github.com/danfoster/zem-gitops.git
     targetRevision: main
   syncPolicy:

@@ -1,13 +1,13 @@
 kind: ApplicationSet
 apiVersion: argoproj.io/v1alpha1
 metadata:
-  name: apps-cluster02
+  name: projects-cluster02
   namespace: argocd
 spec:
   generators:
     - git:
         directories:
-          - path: clusters/overlays/cluster02/apps/*
+          - path: clusters/cluster02/apps/*
         repoURL: https://github.com/danfoster/zem-gitops.git
         revision: main
   template:
