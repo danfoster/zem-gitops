@@ -7,14 +7,14 @@ spec:
   generators:
     - git:
         directories:
-          - path: clusters/cluster02/apps/*
+          - path: clusters/cluster02/projects/*
         repoURL: https://github.com/danfoster/zem-gitops.git
         revision: main
   template:
     metadata:
       name: "{{path.basename}}"
       labels:
-        cat: apps
+        cat: projects
     spec:
       destination:
         namespace: "apps"
