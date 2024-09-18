@@ -1,0 +1,4 @@
+namespace: plex
+
+resources:
+- plex.deployment.yaml
