@@ -2,7 +2,6 @@ namespace: static
 
 resources:
 - deployment.yaml
-- namespace.yaml
 - ingress.yaml
 - service.yaml
 - pvc.yaml
