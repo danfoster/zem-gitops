@@ -5,7 +5,7 @@ metadata:
     labels:
         app: transmission
 spec:
-    replicas: 1
+    replicas: 0
     serviceName: transmission
     selector:
         matchLabels:
