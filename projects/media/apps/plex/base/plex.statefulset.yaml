@@ -48,7 +48,7 @@ spec:
               
 
               volumeMounts:
-              - mountPath: /media
+              - mountPath: /data
                 name: media
               - mountPath: /config
                 name: config
