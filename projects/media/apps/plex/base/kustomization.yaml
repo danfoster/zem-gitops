@@ -1,6 +1,6 @@
 
 resources:
-- plex.deployment.yaml
+- plex.statefulset.yaml
 - config.pvc.yaml
 - ingress.yaml
 - service.yaml
