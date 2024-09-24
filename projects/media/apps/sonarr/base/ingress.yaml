@@ -5,6 +5,7 @@ metadata:
   annotations:
     cert-manager.io/cluster-issuer: "letsencrypt" # < use letsencrypt-prod application in kubernetes to generate ssl certificate
 spec:
+  ingressClassName: internal-nginx
   rules:
   - host: sonarr.internal.zem.org.uk
     http:
