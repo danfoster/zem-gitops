@@ -24,6 +24,13 @@ data:
             type: radarr
             url: https://radarr.internal.zem.org.uk
             key: {{HOMEPAGE_VAR_RADARR_API_KEY}}
+      - Sonarr:
+          description: TV
+          href: https://sonarr.internal.zem.org.uk
+          widget:
+            type: sonarr
+            url: https://sonarr.internal.zem.org.uk
+            key: {{HOMEPAGE_VAR_SONARR_API_KEY}}
   settings.yaml: |
     headerStyle: boxed
     background:
