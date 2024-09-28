@@ -37,7 +37,7 @@ data:
           href: https://10.43.0.250
           widget:
             type: pfsense
-            url: https://10.43.0.0.250
+            url: https://10.43.0.250
             headers: 
               X-API-Key: {{HOMEPAGE_VAR_ROUTER02_API}}
             wan: vtnet0
