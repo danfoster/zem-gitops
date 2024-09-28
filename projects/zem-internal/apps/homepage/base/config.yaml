@@ -31,6 +31,19 @@ data:
             type: sonarr
             url: https://sonarr.internal.zem.org.uk
             key: {{HOMEPAGE_VAR_SONARR_API_KEY}}
+    - Networking:
+      - Router 02:
+          description: Summerhall router
+          href: https://10.43.0.250
+          widget:
+            type: pfsense
+            url: https://10.43.0.0.250
+            headers: 
+              X-API-Key: {{HOMEPAGE_VAR_ROUTER02_API}}
+            wan: vtnet0
+            version: 2 # optional, defaults to 1 for api v1
+            fields: ["load", "memory", "wanStatus"] # optional
+
   settings.yaml: |
     headerStyle: boxed
     background:
