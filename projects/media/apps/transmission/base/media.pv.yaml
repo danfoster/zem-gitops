@@ -17,7 +17,7 @@ spec:
     driver: nfs.csi.k8s.io
     # volumeHandle format: {nfs-server-address}#{sub-dir-name}#{share-name}
     # make sure this value is unique for every share in the cluster
-    volumeHandle: 10.43.0.251/media/torrent/downloads##
+    volumeHandle: nfs.c2.internal.zem.org.uk/media/torrent/downloads##
     volumeAttributes:
-      server: 10.43.0.251
+      server: nfs.c2.internal.zem.org.uk
       share: /media/torrent/downloads
