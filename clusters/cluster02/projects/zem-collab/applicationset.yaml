@@ -1,20 +1,20 @@
 kind: ApplicationSet
 apiVersion: argoproj.io/v1alpha1
 metadata:
-  name: zem-internal-prod
+  name: zem-collab-prod
   namespace: argocd
 spec:
   generators:
     - git:
         directories:
-          - path: projects/zem-internal/apps/*/envs/prod
+          - path: projects/zem-collab/apps/*/envs/prod
         repoURL: https://github.com/danfoster/zem-gitops.git
         revision: main
   template:
     metadata:
       name: "{{path[1]}}-{{path[3]}}-{{path.basename}}"
       labels:
-        app: zem-internal
+        app: zem-collab
     spec:
       destination:
         namespace: "{{path[1]}}-{{path.basename}}"

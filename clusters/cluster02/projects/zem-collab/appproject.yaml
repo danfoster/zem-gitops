@@ -1,12 +1,12 @@
 apiVersion: argoproj.io/v1alpha1
 kind: AppProject
 metadata:
-  name: zem-internal-prod
+  name: zem-collab-prod
   namespace: argocd
 spec:
-  description: zem-internal
+  description: zem-collab
   destinations:
-    - namespace: 'zem-internal-prod'
+    - namespace: 'zem-collab-prod'
       server: 'https://kubernetes.default.svc'
   clusterResourceWhitelist:
     - group: '*'
