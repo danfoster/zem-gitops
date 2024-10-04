@@ -36,6 +36,8 @@ spec:
       server: 'https://kubernetes.default.svc'
     - namespace: 'reloader'
       server: 'https://kubernetes.default.svc'
+    - namespace: 'postgres-operator'
+      server: 'https://kubernetes.default.svc'
   clusterResourceWhitelist:
     - group: '*'
       kind: '*'
