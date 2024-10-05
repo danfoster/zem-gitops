@@ -9,7 +9,6 @@ env:
       secretKeyRef:
         name: redis
         key: redis-password
-  DB_USERNAME:
   DB_HOSTNAME: 
     valueFrom:
       secretKeyRef:
