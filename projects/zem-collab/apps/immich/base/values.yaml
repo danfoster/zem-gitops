@@ -37,7 +37,8 @@ server:
         external-dns.alpha.kubernetes.io/target: "209.16.157.32"
       hosts:
         - host: photos.zem.org.uk
-          paths: /
+          paths:
+            - path: "/"
       tls:
         - hosts:
             - photos.zem.org.uk
