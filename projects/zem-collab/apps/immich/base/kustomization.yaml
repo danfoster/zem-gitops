@@ -15,16 +15,18 @@ helmCharts:
       REDIS_HOSTNAME: redis-master
       DB_HOSTNAME: 
         valueFrom:
-          secretRef:
+          secretKeyRef:
             name: cluster1-pguser-immich-user 
             key: pgbouncer-host
       DB_USERNAME:
         valueFrom:
-          secretRef:
+          secretKeyRef:
             name: cluster1-pguser-immich-user 
             key: user
-      DB_PASSWORd:
+      DB_PASSWORD:
         valueFrom:
-          secretRef:
+          secretKeyRef:
             name: cluster1-pguser-immich-user 
             key: password
+      DB_DATABASE_NAME: immich
+
