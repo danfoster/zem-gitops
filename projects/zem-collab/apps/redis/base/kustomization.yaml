@@ -3,3 +3,6 @@ helmCharts:
 - releaseName: redis
   name: redis
   repo: https://charts.bitnami.com/bitnami
+  valuesInline:
+    replica:
+      replicaCount: 0
