@@ -9,3 +9,8 @@ postgresql:
 
 redis:
   enabled: true
+
+machine-learning:
+  persistence:
+    cache:
+      type: pvc
