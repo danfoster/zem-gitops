@@ -9,20 +9,11 @@ env:
       secretKeyRef:
         name: redis
         key: redis-password
-  DB_HOSTNAME: 
+  DB_URL: 
     valueFrom:
       secretKeyRef:
         name: cluster1-pguser-immich-user 
-        key: pgbouncer-host
-  DB_USERNAME:
-    valueFrom:
-      secretKeyRef:
-        name: cluster1-pguser-immich-user 
-        key: user
-  DB_PASSWORD:
-    valueFrom:
-      secretKeyRef:
-        name: cluster1-pguser-immich-user 
-        key: password
+        key: pgbouncer-uri
+
   
   DB_DATABASE_NAME: immich
