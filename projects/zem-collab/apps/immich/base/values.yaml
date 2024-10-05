@@ -4,6 +4,12 @@ immich:
       existingClaim: photos
 env:
   REDIS_HOSTNAME: redis-master
+  REDIS_PASSWORD: 
+    valueFrom:
+      secretKeyRef:
+        name: redis
+        key: redis-password
+  DB_USERNAME:
   DB_HOSTNAME: 
     valueFrom:
       secretKeyRef:
@@ -19,4 +25,5 @@ env:
       secretKeyRef:
         name: cluster1-pguser-immich-user 
         key: password
+  
   DB_DATABASE_NAME: immich
