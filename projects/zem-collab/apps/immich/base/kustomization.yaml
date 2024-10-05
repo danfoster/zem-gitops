@@ -6,27 +6,6 @@ helmCharts:
 - releaseName: immich
   name: immich
   repo: https://immich-app.github.io/immich-charts
-  valuesInline:
-    immich:
-      persistence:
-        library:
-          existingClaim: photos
-    env:
-      REDIS_HOSTNAME: redis-master
-      DB_HOSTNAME: 
-        valueFrom:
-          secretKeyRef:
-            name: cluster1-pguser-immich-user 
-            key: pgbouncer-host
-      DB_USERNAME:
-        valueFrom:
-          secretKeyRef:
-            name: cluster1-pguser-immich-user 
-            key: user
-      DB_PASSWORD:
-        valueFrom:
-          secretKeyRef:
-            name: cluster1-pguser-immich-user 
-            key: password
-      DB_DATABASE_NAME: immich
+  valuesFile: values.yaml
+
 
