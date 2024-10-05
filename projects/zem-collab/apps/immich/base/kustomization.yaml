@@ -1,0 +1,13 @@
+resources:
+  - photos.pv.yaml
+  - photos.pvc.yaml
+
+helmCharts:
+- releaseName: immich
+  name: immich
+  repo: https://immich-app.github.io/immich-charts
+  valuesInline:
+    immich:
+      persistence:
+        library:
+          existingClaim: photos

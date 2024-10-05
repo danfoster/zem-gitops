@@ -28,7 +28,7 @@ spec:
 
 #  openshift: true
 
- users:
+  users:
    - name: immich_user
      databases:
        - immich
