@@ -1,4 +1,0 @@
-resources:
-- pg.yaml
-- operator.yaml
-- rbac.yaml

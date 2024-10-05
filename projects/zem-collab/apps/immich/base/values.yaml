@@ -2,18 +2,10 @@ immich:
   persistence:
     library:
       existingClaim: photos
-env:
-  REDIS_HOSTNAME: redis-master
-  REDIS_PASSWORD: 
-    valueFrom:
-      secretKeyRef:
-        name: redis
-        key: redis-password
-  DB_URL: 
-    valueFrom:
-      secretKeyRef:
-        name: cluster1-pguser-immich-user 
-        key: pgbouncer-uri
 
   
-  DB_DATABASE_NAME: immich
+postgresql:
+  enabled: true
+
+redis:
+  enabled: true
