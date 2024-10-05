@@ -6,8 +6,15 @@ metadata:
 #  - percona.com/delete-pvc
 #  - percona.com/delete-ssl
 spec:
-  crVersion: 2.4.1
+  crVersion: 2.5.0
 #  secrets:
+#    customRootCATLSSecret:
+#      name: cluster1-ca-cert
+#      items:
+#        - key: "tls.crt"
+#          path: "root.crt"
+#        - key: "tls.key"
+#          path: "root.key"
 #    customTLSSecret:
 #      name: cluster1-cert
 #    customReplicationTLSSecret:
@@ -105,7 +112,7 @@ spec:
 #          test-label: value
 
 
-  image: percona/percona-postgresql-operator:2.4.1-ppg16.3-postgres
+  image: perconalab/percona-postgresql-operator:main-ppg16-postgres
   imagePullPolicy: Always
   postgresVersion: 16
 #  port: 5432
@@ -219,7 +226,7 @@ spec:
   proxy:
     pgBouncer:
       replicas: 1
-      image: percona/percona-postgresql-operator:2.4.1-ppg16.3-pgbouncer1.22.1
+      image: perconalab/percona-postgresql-operator:main-ppg16-pgbouncer
 #      exposeSuperusers: true
 #      resources:
 #        limits:
@@ -297,10 +304,11 @@ spec:
 #          pool_mode: transaction
 
   backups:
+#    trackLatestRestorableTime: true
     pgbackrest:
 #      metadata:
 #        labels:
-      image: percona/percona-postgresql-operator:2.4.1-ppg16.3-pgbackrest2.51-1
+      image: perconalab/percona-postgresql-operator:main-ppg16-pgbackrest
 #
 #      containers:
 #        pgbackrest:
@@ -443,10 +451,11 @@ spec:
 
   pmm:
     enabled: false
-    image: percona/pmm-client:2.42.0
+    image: perconalab/pmm-client:dev-latest
 #    imagePullPolicy: IfNotPresent
     secret: cluster1-pmm-secret
     serverHost: monitoring-service
+#    querySource: pgstatmonitor
 #  patroni:
 #    # Some values of the Liveness/Readiness probes of the patroni container are calulated using syncPeriodSeconds by the following formulas:
 #    # - timeoutSeconds:   syncPeriodSeconds / 2;
@@ -463,7 +472,7 @@ spec:
 #          work_mem: 2MB
 
 #  extensions:
-#    image: percona/percona-postgresql-operator:2.4.1
+#    image: perconalab/percona-postgresql-operator:main
 #    imagePullPolicy: Always
 #    storage:
 #      type: s3
