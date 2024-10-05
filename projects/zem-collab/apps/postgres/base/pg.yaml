@@ -29,7 +29,7 @@ spec:
 #  openshift: true
 
   users:
-   - name: immich_user
+   - name: immich-user
      databases:
        - immich
      password:
