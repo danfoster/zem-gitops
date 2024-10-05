@@ -11,3 +11,20 @@ helmCharts:
       persistence:
         library:
           existingClaim: photos
+    env:
+      REDIS_HOSTNAME: redis-master
+      DB_HOSTNAME: 
+        valueFrom:
+          secretRef:
+            name: cluster1-pguser-immich-user 
+            key: pgbouncer-host
+      DB_USERNAME:
+        valueFrom:
+          secretRef:
+            name: cluster1-pguser-immich-user 
+            key: user
+      DB_PASSWORd:
+        valueFrom:
+          secretRef:
+            name: cluster1-pguser-immich-user 
+            key: password
