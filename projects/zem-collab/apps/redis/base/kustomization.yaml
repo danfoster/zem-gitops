@@ -1,0 +1,5 @@
+
+helmCharts:
+- releaseName: redis
+  name: redis
+  repo: https://charts.bitnami.com/bitnami

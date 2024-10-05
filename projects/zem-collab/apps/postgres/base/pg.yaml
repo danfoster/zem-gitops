@@ -28,14 +28,12 @@ spec:
 
 #  openshift: true
 
-#  users:
-#    - name: rhino
-#      databases:
-#        - zoo
-#      options: "SUPERUSER"
-#      password:
-#        type: ASCII
-#      secretName: "rhino-credentials"
+ users:
+   - name: immich_user
+     databases:
+       - immich
+     password:
+       type: ASCII
 
 #  databaseInitSQL:
 #    key: init.sql
