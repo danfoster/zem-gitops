@@ -6,3 +6,5 @@ helmCharts:
   valuesInline:
     replica:
       replicaCount: 0
+      pdb:
+        create: false
