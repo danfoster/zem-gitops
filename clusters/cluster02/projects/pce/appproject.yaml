@@ -1,0 +1,15 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: pce-prod
+  namespace: argocd
+spec:
+  description: pce
+  destinations:
+    - namespace: 'pce-prod'
+      server: 'https://kubernetes.default.svc'
+  clusterResourceWhitelist:
+    - group: '*'
+      kind: '*'
+  sourceRepos:
+    - 'https://github.com/danfoster/zem-gitops'
