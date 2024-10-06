@@ -13,4 +13,5 @@ spec:
       secretName: ingress-www-pce-tls
   ingressClassName: nginx
   rules:
-    - host: "www.pce.org.uk
+    - host: "www.pce.org.uk"
+
