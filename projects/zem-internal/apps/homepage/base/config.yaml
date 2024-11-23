@@ -43,6 +43,9 @@ data:
             wan: vtnet0
             version: 2 # optional, defaults to 1 for api v1
             fields: ["load", "memory", "wanStatus"] # optional
+    - Home Automation
+      - Home Assistant
+          href: https://10.42.4.100:8123
 
   settings.yaml: |
     headerStyle: boxed
