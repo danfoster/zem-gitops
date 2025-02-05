@@ -3,9 +3,9 @@ services:
     image: 'jc21/nginx-proxy-manager:latest'
     restart: unless-stopped
     ports:
-      - '80:80'
-      - '81:81'
-      - '443:443'
+      - '${EXTERNAL_IP}:80:80'
+      - '${INTERNAL_IP}:81:81'
+      - '${EXTERNAL_IP}:443:443'
     volumes:
       - data:/data
       - letsencrypt:/etc/letsencrypt
@@ -17,5 +17,3 @@ volumes:
 networks:
   web-external:
     driver: bridge
-    driver_opts:
-      com.docker.network.bridge.host_binding_ipv4: "${EXTERNAL_IP}"
