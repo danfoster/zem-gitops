@@ -1,0 +1,6 @@
+services:
+  power:
+    image: danfoster/zaphod-power:v0.1.0
+    restart: unless-stopped
+    environment:
+     - MQTT_HOST
