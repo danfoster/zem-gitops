@@ -1,0 +1,30 @@
+kind: ApplicationSet
+apiVersion: argoproj.io/v1alpha1
+metadata:
+  name: zem-internal-prod
+  namespace: argocd
+spec:
+  generators:
+    - git:
+        directories:
+          - path: projects/zem-internal/apps/*/envs/prod
+        repoURL: https://github.com/danfoster/zem-gitops.git
+        revision: main
+  template:
+    metadata:
+      name: "{{path[1]}}-{{path[3]}}-{{path.basename}}"
+      labels:
+        app: zem-internal
+    spec:
+      destination:
+        namespace: "{{path[1]}}-{{path.basename}}"
+        server: https://kubernetes.default.svc
+      project: "{{path[1]}}-{{path.basename}}"
+      source:
+        path: "{{path}}"
+        repoURL: https://github.com/danfoster/zem-gitops.git
+        targetRevision: main
+      syncPolicy:
+        automated:
+          prune: true
+

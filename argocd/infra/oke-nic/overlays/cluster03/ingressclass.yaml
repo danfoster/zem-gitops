@@ -1,0 +1,15 @@
+apiVersion: networking.k8s.io/v1
+kind: IngressClass
+metadata:
+  name: oci-public
+  annotations:
+    ingressclass.kubernetes.io/is-default-class: "true"
+    oci-native-ingress.oraclecloud.com/network-security-group-ids: ocid1.networksecuritygroup.oc1.uk-london-1.aaaaaaaa52nj3dwto2k5emjfje4rp5n7dzgmc7d5oqs5wbu5p5idjsgxvmiq
+spec:
+  controller: oci.oraclecloud.com/native-ingress-controller
+  parameters:
+    scope: Namespace
+    namespace: native-ingress-controller-system
+    apiGroup: ingress.oraclecloud.com
+    kind: ingressclassparameters
+    name: oci-public

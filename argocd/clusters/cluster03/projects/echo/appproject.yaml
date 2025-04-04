@@ -1,0 +1,15 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: echo-prod
+  namespace: argocd
+spec:
+  description: Echo
+  destinations:
+    - namespace: 'echo-prod'
+      server: 'https://kubernetes.default.svc'
+  clusterResourceWhitelist:
+    - group: '*'
+      kind: '*'
+  sourceRepos:
+    - 'https://github.com/danfoster/zem-gitops'

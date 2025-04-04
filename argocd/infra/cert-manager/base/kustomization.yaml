@@ -1,3 +1,5 @@
 resources:
-- https://github.com/cert-manager/cert-manager/releases/download/v1.14.4/cert-manager.yaml
-- cloudflare.issuer.yaml
+  - https://github.com/cert-manager/cert-manager/releases/download/v1.17.0/cert-manager.yaml
+  - cloudflare.issuer.yaml
+patches:
+  - path: patches/namespace.yaml

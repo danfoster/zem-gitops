@@ -1,0 +1,4 @@
+authType: instance
+compartment_id: "ocid1.compartment.oc1..aaaaaaaagyawjldswlrq2f2dnsqz2kqlzsvj6mirpcue7oqwzlyuwx7pqjha"
+subnet_id: "ocid1.subnet.oc1.uk-london-1.aaaaaaaaesx6t7upbnxgiqw5hrhhc3jq37wuh4nnzse632b65cdwe6ijn7xq"
+cluster_id: "ocid1.cluster.oc1.uk-london-1.aaaaaaaapfdii3djo66fq2td5ut3ojtpx53fww3aqekn36bctcivgqlfdqqa"

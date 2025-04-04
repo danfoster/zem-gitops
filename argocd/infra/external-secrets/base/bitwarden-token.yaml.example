@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: bw-auth-token
+  namespace: external-secrets
+stringData:
+  token: <TOKEN_HERE>

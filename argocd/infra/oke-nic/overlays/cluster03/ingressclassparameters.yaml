@@ -1,0 +1,12 @@
+apiVersion: "ingress.oraclecloud.com/v1beta1"
+kind: IngressClassParameters
+metadata:
+  name: oci-public
+  namespace: acme-namespace
+spec:
+  compartmentId: "ocid1.compartment.oc1..aaaaaaaagyawjldswlrq2f2dnsqz2kqlzsvj6mirpcue7oqwzlyuwx7pqjha"
+  subnetId: "ocid1.subnet.oc1.uk-london-1.aaaaaaaaesx6t7upbnxgiqw5hrhhc3jq37wuh4nnzse632b65cdwe6ijn7xq"
+  loadBalancerName: "oci-public"
+  isPrivate: false
+  maxBandwidthMbps: 100
+  minBandwidthMbps: 10
