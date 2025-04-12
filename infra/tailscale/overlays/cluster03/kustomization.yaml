@@ -4,5 +4,6 @@ namespace: tailscale
 
 # Specify base and resources not in base here
 resources:
-- ../../base/
-- operator-oauth.secret.yaml
+  - ../../base/
+  - operator-oauth.secret.yaml
+  - helm-expanded.yaml
