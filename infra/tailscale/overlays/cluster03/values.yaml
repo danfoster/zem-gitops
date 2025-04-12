@@ -3,5 +3,4 @@ operatorConfig:
   defaultTags:
     - "tag:cluster03-operator"
 proxyConfig:
-  defaultTags:
-    - "tag:cluster03"
+  defaultTags: "tag:cluster03"
