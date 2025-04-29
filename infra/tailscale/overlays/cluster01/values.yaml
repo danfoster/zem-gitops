@@ -1,0 +1,6 @@
+operatorConfig:
+  hostname: "cluster01"
+  defaultTags:
+    - "tag:cluster01-operator"
+proxyConfig:
+  defaultTags: "tag:cluster01"
