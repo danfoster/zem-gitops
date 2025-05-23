@@ -6,7 +6,7 @@ spec:
   ingressClassName: tailscale
   tls:
     - hosts:
-        - argocd
+        - argocd-cluster03
   defaultBackend:
     service:
       name: argocd-server
