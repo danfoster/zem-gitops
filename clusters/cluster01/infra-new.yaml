@@ -1,0 +1,14 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: infra
+  namespace: argocd
+spec:
+  project: gitops
+  source:
+    chart: infra
+    repoURL: https://github.com/danfoster/zem-gitops.git/
+    targetRevision: main
+    path: helm/infra
+  destination:
+    server: "https://kubernetes.default.svc"

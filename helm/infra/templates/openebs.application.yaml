@@ -1,0 +1,16 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: openebs
+  namespace: argocd
+spec:
+  project: infra
+  source:
+    chart: openebs-internal
+    repoURL: https://openebs.github.io/charts
+    targetRevision: 3.9.0
+    helm:
+      releaseName: openebs
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: openebs
