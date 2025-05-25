@@ -1,13 +1,13 @@
 kind: ApplicationSet
 apiVersion: argoproj.io/v1alpha1
 metadata:
-  name: echo-prod
+  name: networking-prod
   namespace: argocd
 spec:
   generators:
     - git:
         directories:
-          - path: projects/echo/apps/*/envs/prod
+          - path: projects/networking/apps/*/envs/prod
         repoURL: https://github.com/danfoster/zem-gitops.git
         revision: main
   template:
@@ -27,4 +27,3 @@ spec:
       syncPolicy:
         automated:
           prune: true
-
