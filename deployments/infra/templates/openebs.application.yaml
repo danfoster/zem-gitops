@@ -9,7 +9,8 @@ spec:
     automated:
       prune: true
       selfHeal: true
-    createNamespace: true
+    syncOptions:
+      - CreateNamespace=true
   source:
     chart: openebs
     repoURL: https://openebs.github.io/charts
