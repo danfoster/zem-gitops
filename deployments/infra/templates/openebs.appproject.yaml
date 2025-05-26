@@ -1,0 +1,15 @@
+opapiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: openebs
+  namespace: argocd
+spec:
+  description: OpenEBS
+  destinations:
+    - namespace: "openebs"
+      server: "https://kubernetes.default.svc"
+  clusterResourceWhitelist:
+    - group: "*"
+      kind: "*"
+  sourceRepos:
+    - "https://openebs.github.io/charts"
