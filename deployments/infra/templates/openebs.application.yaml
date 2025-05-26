@@ -10,7 +10,7 @@ spec:
       prune: true
       selfHeal: true
   source:
-    chart: openebs-internal
+    chart: openebs
     repoURL: https://openebs.github.io/charts
     targetRevision: 3.9.0
     helm:
