@@ -9,6 +9,7 @@ spec:
     automated:
       prune: true
       selfHeal: true
+    createNamespace: true
   source:
     chart: openebs
     repoURL: https://openebs.github.io/charts
