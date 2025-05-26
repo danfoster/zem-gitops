@@ -9,6 +9,7 @@ spec:
     chart: infra
     repoURL: https://github.com/danfoster/zem-gitops.git/
     targetRevision: main
-    path: helm/infra
+    path: deployments/infra
   destination:
     server: "https://kubernetes.default.svc"
+    namespace: infra

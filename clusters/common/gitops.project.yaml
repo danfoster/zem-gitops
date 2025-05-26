@@ -6,12 +6,10 @@ metadata:
 spec:
   description: GitOps Project
   destinations:
-    - namespace: 'argocd'
-      server: 'https://kubernetes.default.svc'
-    - namespace: 'projects'
-      server: 'https://kubernetes.default.svc'
+    - namespace: "argocd"
+      server: "https://kubernetes.default.svc"
   clusterResourceWhitelist:
-    - group: '*'
-      kind: '*'
+    - group: "*"
+      kind: "*"
   sourceRepos:
-    - 'https://github.com/danfoster/zem-gitops'
+    - "https://github.com/danfoster/zem-gitops"
