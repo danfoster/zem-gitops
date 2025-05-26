@@ -4,7 +4,11 @@ metadata:
   name: openebs
   namespace: argocd
 spec:
-  project: infra
+  project: openebs
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
   source:
     chart: openebs-internal
     repoURL: https://openebs.github.io/charts
