@@ -13,11 +13,16 @@ spec:
     syncOptions:
       - CreateNamespace=true
   source:
-    chart: openebs
-    repoURL: https://openebs.github.io/charts
-    targetRevision: 3.9.0
+    repoURL: https://github.com/danfoster/zem-gitops
+    targetRevision: main
+    path: apps/infra/zem-openebs
     helm:
       releaseName: openebs
+      valuesObject:
+        storageclasses:
+          zfs:
+            enabled: {{ .Values.features.openebs.storageclasses.zfs.enabled | quote }}
+            poolname: {{ .Values.features.openebs.storageclasses.zfs.poolname | quote }}
   destination:
     server: "https://kubernetes.default.svc"
     namespace: openebs

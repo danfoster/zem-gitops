@@ -1,3 +1,7 @@
 features:
   openebs:
     enabled: false
+    storageclasses:
+      zfs:
+        enabled: false
+        poolname: "zfspv-pool"
