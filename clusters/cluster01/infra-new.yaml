@@ -14,6 +14,9 @@ spec:
         features:
           openebs:
             enabled: true
+            storageclasses:
+              zfs:
+                enabled: true
   destination:
     server: "https://kubernetes.default.svc"
     namespace: argocd
