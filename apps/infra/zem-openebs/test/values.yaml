@@ -1,0 +1,5 @@
+storageclasses:
+  zfs:
+    enabled: true
+    poolname: test-pool
+    default: true

@@ -23,6 +23,7 @@ spec:
           zfs:
             enabled: {{ .Values.features.openebs.storageclasses.zfs.enabled | quote }}
             poolname: {{ .Values.features.openebs.storageclasses.zfs.poolname | quote }}
+            default: {{ .Values.features.openebs.storageclasses.zfs.default | quote }}
   destination:
     server: "https://kubernetes.default.svc"
     namespace: openebs

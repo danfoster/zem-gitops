@@ -1,4 +1,5 @@
 storageclasses:
   zfs:
-    enabled: true
+    enabled: false
     poolname: "zfspv-pool"
+    default: false
