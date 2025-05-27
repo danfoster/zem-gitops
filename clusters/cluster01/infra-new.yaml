@@ -17,6 +17,8 @@ spec:
             storageclasses:
               zfs:
                 enabled: true
+                poolname: "root/openebs"
+                default: true
   destination:
     server: "https://kubernetes.default.svc"
     namespace: argocd
