@@ -1,7 +1,8 @@
+{{ if .Values.features.openebs.enabled }}
 apiVersion: argoproj.io/v1alpha1
 kind: AppProject
 metadata:
-  name: openebs
+  name: infra-openebs
   namespace: argocd
 spec:
   description: OpenEBS
@@ -13,3 +14,4 @@ spec:
       kind: "*"
   sourceRepos:
     - "https://openebs.github.io/charts"
+{{ end }}

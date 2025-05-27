@@ -9,6 +9,11 @@ spec:
     repoURL: https://github.com/danfoster/zem-gitops
     targetRevision: main
     path: deployments/infra
+    helm:
+      valuesObject:
+        features:
+          openebs:
+            enabled: true
   destination:
     server: "https://kubernetes.default.svc"
     namespace: argocd

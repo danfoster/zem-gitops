@@ -1,0 +1,4 @@
+storageclasses:
+  zfs:
+    enabled: true
+    poolname: "zfspv-pool"

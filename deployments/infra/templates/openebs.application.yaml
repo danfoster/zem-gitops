@@ -1,10 +1,11 @@
+{{ if .Values.features.openebs.enabled }}
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: openebs
   namespace: argocd
 spec:
-  project: openebs
+  project: infra-openebs
   syncPolicy:
     automated:
       prune: true
@@ -20,3 +21,4 @@ spec:
   destination:
     server: "https://kubernetes.default.svc"
     namespace: openebs
+{{ end }}
