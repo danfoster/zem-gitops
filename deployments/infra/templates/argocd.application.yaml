@@ -1,0 +1,25 @@
+{{ if .Values.features.argocd.enabled }}
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: argocd
+  namespace: argocd
+spec:
+  project: infra-argocd
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+  source:
+    repoURL: https://github.com/danfoster/zem-gitops
+    targetRevision: main
+    path: apps/infra/zem-argocd
+    helm:
+      valuesObject:
+      {{- toYaml .Values.features.argocd | nindent 8 }}
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: argocd
+{{ end }}

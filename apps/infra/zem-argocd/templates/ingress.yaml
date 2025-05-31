@@ -6,7 +6,7 @@ spec:
   ingressClassName: tailscale
   tls:
     - hosts:
-        - argocd-cluster01
+        - {{ (splitList "." .Values.globals.domain ) | first | quote }}
   defaultBackend:
     service:
       name: argocd-server
