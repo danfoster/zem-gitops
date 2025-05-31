@@ -1,0 +1,9 @@
+tailscale-operator:
+  apiServerProxyConfig:
+    mode: "true"
+  operatorConfig:
+    hostname: "cluster01"
+
+oauth:
+  clientId: "kkb7j1384C11CNTRL"
+  clientSecretKey: tailscale-cluster01-client-secret

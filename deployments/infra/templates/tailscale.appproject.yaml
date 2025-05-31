@@ -2,10 +2,10 @@
 apiVersion: argoproj.io/v1alpha1
 kind: AppProject
 metadata:
-  name: infra-argocd
-  namespace: argocd
+  name: infra-tailscale
+  namespace: tailscale
 spec:
-  description: ArgCD
+  description: Tailscale
   destinations:
     - namespace: "argocd"
       server: "https://kubernetes.default.svc"

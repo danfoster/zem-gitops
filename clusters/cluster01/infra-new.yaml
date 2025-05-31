@@ -12,6 +12,12 @@ spec:
     helm:
       valuesObject:
         features:
+          argocd:
+            enabled: true
+            globals:
+              domain: argocd-cluster01.shark-puffin.ts.net
+          externalsecrets:
+            enabled: true
           openebs:
             enabled: true
             storageclasses:
@@ -19,6 +25,18 @@ spec:
                 enabled: true
                 poolname: "zroot/openebs"
                 default: true
+          tailscale:
+            enabled: true
+            tailscale-operator:
+              operatorConfig:
+                hostname: "cluster01"
+                defaultTags:
+                  - "tag:cluster01-operator"
+              proxyConfig:
+                defaultTags: "tag:cluster01"
+            oauth:
+              clientId: "kkb7j1384C11CNTRL"
+              clientSecretKey: "tailscale-cluster01-client-secret"
   destination:
     server: "https://kubernetes.default.svc"
     namespace: argocd

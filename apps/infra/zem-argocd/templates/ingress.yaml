@@ -9,6 +9,6 @@ spec:
         - {{ (splitList "." .Values.globals.domain ) | first | quote }}
   defaultBackend:
     service:
-      name: argocd-server
+      name: {{ .Release.Name }}-server
       port:
         number: 80

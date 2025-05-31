@@ -5,3 +5,6 @@ bitwarden:
     - namespaceSelector:
         matchLabels:
           infra: "true"
+external-secrets:
+  bitwarden-sdk-server:
+    enabled: true

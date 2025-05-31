@@ -1,0 +1,9 @@
+{{ if .Values.features.tailscale.enabled }}
+apiVersion: v1
+kind: Namespace
+metadata:
+  labels:
+    kubernetes.io/metadata.name: tailscale
+    infra: "true"
+  name: tailscale
+{{ end }}

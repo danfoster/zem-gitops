@@ -1,0 +1,9 @@
+{{ if .Values.features.argocd.enabled }}
+apiVersion: v1
+kind: Namespace
+metadata:
+  labels:
+    kubernetes.io/metadata.name: argocd
+    infra: "true"
+  name: argocd
+{{ end }}
