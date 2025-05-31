@@ -5,3 +5,5 @@ features:
       zfs:
         enabled: false
         poolname: "zfspv-pool"
+  external-secrets:
+    enabled: true
