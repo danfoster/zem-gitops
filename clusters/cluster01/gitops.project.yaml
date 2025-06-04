@@ -1,0 +1,15 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: gitops
+  namespace: argocd
+spec:
+  description: GitOps Project
+  destinations:
+    - namespace: "argocd"
+      server: "https://kubernetes.default.svc"
+  clusterResourceWhitelist:
+    - group: "*"
+      kind: "*"
+  sourceRepos:
+    - "https://github.com/danfoster/zem-gitops"

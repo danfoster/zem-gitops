@@ -4,10 +4,10 @@ argo-cd:
       create: false
     params:
       server.insecure: true
-  rbac:
-    policy.default: role:readonly
-    policy.csv: |
-      g, dan@zem.org.uk, role:admin
-    scopes: '[email]'
+    rbac:
+      policy.default: role:readonly
+      policy.csv: |
+        g, dan@zem.org.uk, role:admin
+      scopes: "[email]"
 globals:
   domain: argocd-cluster01.shark-puffin.ts.net
