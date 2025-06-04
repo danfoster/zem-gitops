@@ -2,7 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: projects
-  namespace: projects
+  namespace: argocd
 spec:
   project: gitops
   source:
