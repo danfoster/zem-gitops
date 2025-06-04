@@ -1,8 +1,0 @@
-resources:
-- namespace.yaml
-- https://raw.githubusercontent.com/argoproj/argo-cd/master/manifests/install.yaml
-
-
-patches:  
-  - path: patches/argocd-rbac-cm.yaml
-  - path: patches/argocd-cmd-params-cm.yaml

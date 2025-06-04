@@ -1,6 +1,0 @@
-resources:
-  - namespace.yaml
-  - helm-expanded.yaml
-  - tls.yaml
-  - cert.yaml
-  - infra.secretstore.yaml

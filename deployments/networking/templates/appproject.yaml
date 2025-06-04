@@ -1,0 +1,15 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: networking-{{ .Values.env }}
+  namespace: argocd
+spec:
+  description: Networking ({{ .Values.env }}) Project
+  destinations:
+    - namespace: "networking-{{ .Values.env }}"
+      server: "https://kubernetes.default.svc"
+  clusterResourceWhitelist:
+    - group: "*"
+      kind: "*"
+  sourceRepos:
+    - "https://github.com/danfoster/zem-gitops"
