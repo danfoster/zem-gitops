@@ -5,9 +5,8 @@ features:
       zfs:
         enabled: false
         poolname: "zfspv-pool"
-  externalsecrets:
+  ingressnginx:
     enabled: true
-  argocd:
-    enabled: true
-  tailscale:
-    enabled: true
+    controller:
+      ingressClassResource:
+        default: true

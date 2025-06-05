@@ -1,0 +1,17 @@
+{{ if .Values.features.ingressnginx.enabled }}
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: infra-ingress-nginx
+  namespace: argocd
+spec:
+  description: Ingress NGINX
+  destinations:
+    - namespace: "ingress-nginx"
+      server: "https://kubernetes.default.svc"
+  clusterResourceWhitelist:
+    - group: "*"
+      kind: "*"
+  sourceRepos:
+    - "https://kubernetes.github.io/ingress-nginx"
+{{ end }}
