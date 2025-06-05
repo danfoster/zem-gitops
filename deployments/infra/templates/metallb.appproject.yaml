@@ -1,4 +1,4 @@
-{{ if .Values.features.openebs.enabled }}
+{{ if .Values.features.metallb.enabled }}
 apiVersion: argoproj.io/v1alpha1
 kind: AppProject
 metadata:
