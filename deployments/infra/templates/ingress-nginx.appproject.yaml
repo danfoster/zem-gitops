@@ -4,6 +4,8 @@ kind: AppProject
 metadata:
   name: infra-ingress-nginx
   namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: "-1"
 spec:
   description: Ingress NGINX
   destinations:
