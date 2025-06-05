@@ -10,3 +10,5 @@ features:
     controller:
       ingressClassResource:
         default: true
+  metallb:
+    enabled: false

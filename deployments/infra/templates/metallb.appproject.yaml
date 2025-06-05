@@ -1,0 +1,18 @@
+{{ if .Values.features.openebs.enabled }}
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: infra-metallb
+  namespace: argocd
+spec:
+  description: MetalLB
+  destinations:
+    - namespace: "metallb"
+      server: "https://kubernetes.default.svc"
+  clusterResourceWhitelist:
+    - group: "*"
+      kind: "*"
+  sourceRepos:
+    - "https://metallb.github.io/metallb"
+    - "https://github.com/danfoster/zem-gitops"
+{{ end }}
