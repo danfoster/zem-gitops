@@ -13,11 +13,11 @@ spec:
     syncOptions:
       - CreateNamespace=true
   source:
-    repoURL:  https://metallb.github.io/metallb
-    chart: metallb
-    targetRevision: 0.15.2
+    repoURL: https://github.com/danfoster/zem-gitops
+    targetRevision: main
+    path: apps/infra/zem-metallb-configs
     helm:
-      releaseName: metallb
+      releaseName: metallb-configs
       valuesObject:
         {{- toYaml .Values.features.metallb | nindent 8 }}
   destination:
