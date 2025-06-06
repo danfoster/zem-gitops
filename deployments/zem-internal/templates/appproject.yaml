@@ -3,6 +3,8 @@ kind: AppProject
 metadata:
   name: zem-internal-{{ .Values.env }}
   namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: "-1"
 spec:
   description: Zem Internal ({{ .Values.env }}) Project
   destinations:
