@@ -1,4 +1,20 @@
-ingress:
-  ingressClassName: tailscale
-  host: omada
-  annotations: {}
+homepage:
+  config:
+    useExistingConfigMap: homepage
+  ingress:
+    main:
+      enabled: true
+      ingressClassName: tailscale
+      hosts:
+        - host: home
+          paths:
+            - path: /
+              pathType: Prefix
+  controller:
+    annotations:
+      reloader.stakater.com/auto: "true"
+  envFrom:
+    - secretRef:
+        name: homepage-env-secrets
+  env:
+    LOG_LEVEL: debug
