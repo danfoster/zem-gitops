@@ -6,10 +6,12 @@ homepage:
       enabled: true
       ingressClassName: tailscale
       hosts:
-        - host: home
-          paths:
+        - paths:
             - path: /
               pathType: Prefix
+      tls:
+        - hosts:
+            - homepage
   controller:
     annotations:
       reloader.stakater.com/auto: "true"
