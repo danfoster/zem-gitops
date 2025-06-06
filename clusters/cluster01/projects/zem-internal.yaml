@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: zem-internal-prod
+  namespace: argocd
+spec:
+  project: gitops
+  source:
+    repoURL: https://github.com/danfoster/zem-gitops
+    targetRevision: main
+    path: deployments/zem-internal
+    helm:
+      valuesObject:
+        env: prod
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: argocd
+  syncPolicy:
+    automated:
+      prune: true
