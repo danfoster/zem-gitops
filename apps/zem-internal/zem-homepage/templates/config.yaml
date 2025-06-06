@@ -16,21 +16,21 @@ data:
             type: transmission
             url: https://transmission.internal.zem.org.uk
             username: zem
-            password: {{HOMEPAGE_VAR_TRANSMISSION_PASSWORD}}
+            password: {{ `{{HOMEPAGE_VAR_TRANSMISSION_PASSWORD}}` }}
       - Radarr:
           description: Movies
           href: https://radarr.internal.zem.org.uk
           widget:
             type: radarr
             url: https://radarr.internal.zem.org.uk
-            key: {{HOMEPAGE_VAR_RADARR_API_KEY}}
+            key: {{ `{{HOMEPAGE_VAR_RADARR_API_KEY}}` }}
       - Sonarr:
           description: TV
           href: https://sonarr.internal.zem.org.uk
           widget:
             type: sonarr
             url: https://sonarr.internal.zem.org.uk
-            key: {{HOMEPAGE_VAR_SONARR_API_KEY}}
+            key: {{ `{{HOMEPAGE_VAR_SONARR_API_KEY}}` }}
     - Networking:
       - Router 02:
           description: Summerhall router
@@ -38,8 +38,8 @@ data:
           widget:
             type: pfsense
             url: https://10.43.0.250
-            headers: 
-              X-API-Key: {{HOMEPAGE_VAR_ROUTER02_API}}
+            headers:
+              X-API-Key: {{ `{{HOMEPAGE_VAR_ROUTER02_API}}` }}
             wan: vtnet0
             version: 2 # optional, defaults to 1 for api v1
             fields: ["load", "memory", "wanStatus"] # optional
