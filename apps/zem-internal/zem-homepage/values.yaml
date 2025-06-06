@@ -1,13 +1,6 @@
 homepage:
   config:
     useExistingConfigMap: homepage
-  ingress:
-    main:
-      enabled: true
-      ingressClassName: tailscale
-      tls:
-        - hosts:
-            - homepage
   controller:
     annotations:
       reloader.stakater.com/auto: "true"
