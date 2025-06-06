@@ -15,7 +15,7 @@ spec:
         omada:
           ingress:
             annotations:
-              metallb.io/loadBalancerIPs: 10.42.2.201
+              metallb.io/loadBalancerIPs: 10.42.2.202
   destination:
     server: "https://kubernetes.default.svc"
     namespace: argocd

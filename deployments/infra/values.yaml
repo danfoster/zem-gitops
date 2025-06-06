@@ -12,5 +12,3 @@ features:
         default: true
   metallb:
     enabled: false
-    addresses:
-      - 10.42.2.202
