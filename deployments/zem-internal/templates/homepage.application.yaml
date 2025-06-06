@@ -1,0 +1,22 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: homepage-{{ .Values.env }}
+  namespace: argocd
+spec:
+  project: zem-internal-{{ .Values.env }}
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+  source:
+    repoURL: https://github.com/danfoster/zem-gitops
+    targetRevision: main
+    path: apps/zem-internal/zem-homepage
+    helm:
+      releaseName: homepage
+      valuesObject:
+      {{- toYaml .Values.homepage | nindent 8 }}
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: zem-internal-{{ .Values.env }}

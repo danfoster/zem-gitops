@@ -1,0 +1,4 @@
+ingress:
+  ingressClassName: tailscale
+  host: omada
+  annotations: {}
