@@ -1,8 +1,7 @@
 apiVersion: metallb.io/v1beta1
 kind: IPAddressPool
 metadata:
-  name: first-pool
-  namespace: metallb-system
+  name: zem-main
 spec:
   addresses:
     {{- toYaml .Values.addresses | nindent 4 }}
