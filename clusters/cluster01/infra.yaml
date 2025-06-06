@@ -21,6 +21,8 @@ spec:
                 default: true
           metallb:
             enabled: true
+            addresses:
+              - 10.42.2.201-10.42.2.220
 
   destination:
     server: "https://kubernetes.default.svc"
