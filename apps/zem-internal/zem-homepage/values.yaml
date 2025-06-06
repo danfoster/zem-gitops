@@ -5,10 +5,6 @@ homepage:
     main:
       enabled: true
       ingressClassName: tailscale
-      hosts:
-        - paths:
-            - path: /
-              pathType: Prefix
       tls:
         - hosts:
             - homepage
