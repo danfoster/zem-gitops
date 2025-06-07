@@ -48,6 +48,15 @@ data:
     - Home Automation:
       - Home Assistant:
           href: https://10.42.2.200:8123
+    - Cluster 01
+      - ArgoCD:
+          href: https://argocd-cluster01.shark-puffin.ts.net
+          widget:
+            type: argocd
+            url: https://argocd-cluster01.shark-puffin.ts.net
+            username: readonly
+            password: {{ `{{HOMEPAGE_VAR_ARGOCD_CLUSTER01_API_KEY}}` }}
+
 
   settings.yaml: |
     headerStyle: boxed

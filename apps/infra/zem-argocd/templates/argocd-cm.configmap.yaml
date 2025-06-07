@@ -111,3 +111,4 @@ data:
       - ClusterBackgroundScanReport
       - UpdateRequest
   url: https://{{ .Values.globals.domain }}
+  accounts.readonly: apiKey
