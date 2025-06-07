@@ -25,7 +25,7 @@ spec:
               - 10.42.2.201-10.42.2.220
           externaldns:
             enabled: true
-            externaldns:
+            external-dns:
               txtOwnerId: "zem-c1"
 
   destination:

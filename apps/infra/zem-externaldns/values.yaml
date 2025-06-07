@@ -1,4 +1,4 @@
-externaldns:
+external-dns:
   provider:
     name: cloudflare
   env:
