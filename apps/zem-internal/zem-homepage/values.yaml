@@ -9,3 +9,4 @@ homepage:
         name: homepage-env-secrets
   env:
     LOG_LEVEL: debug
+    HOMEPAGE_ALLOWED_HOSTS: "100.64.0.0/10"
