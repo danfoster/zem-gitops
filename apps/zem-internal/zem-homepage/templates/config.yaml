@@ -53,7 +53,7 @@ data:
           href: https://argocd-cluster01.shark-puffin.ts.net
           widget:
             type: argocd
-            url: https://argocd-cluster01.shark-puffin.ts.net
+            url: http://argocd-server.argocd
             username: readonly
             password: {{ `{{HOMEPAGE_VAR_ARGOCD_CLUSTER01_API_KEY}}` }}
 
