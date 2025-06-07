@@ -1,9 +1,0 @@
-apiVersion: v1
-kind: Service
-metadata:
-  annotations:
-    tailscale.com/tailnet-fqdn: argocd-cluster01.shark-puffin.ts.net
-  name: argocd-cluster01   # service name
-spec:
-  externalName: unused   # any value - will be overwritten by operator
-  type: ExternalName

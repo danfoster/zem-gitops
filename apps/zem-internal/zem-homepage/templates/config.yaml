@@ -54,8 +54,7 @@ data:
           widget:
             type: argocd
             url: http://argocd-server.argocd
-            username: readonly
-            password: {{ `{{HOMEPAGE_VAR_ARGOCD_CLUSTER01_API_KEY}}` }}
+            key: {{ `{{HOMEPAGE_VAR_ARGOCD_CLUSTER01_API_KEY}}` }}
 
 
   settings.yaml: |
