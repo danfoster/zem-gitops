@@ -9,4 +9,4 @@ homepage:
         name: homepage-env-secrets
   env:
     LOG_LEVEL: debug
-    HOMEPAGE_ALLOWED_HOSTS: "homepage.shark-puffin.ts.net"
+    HOMEPAGE_ALLOWED_HOSTS: "home.shark-puffin.ts.net"

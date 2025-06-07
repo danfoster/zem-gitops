@@ -11,4 +11,4 @@ spec:
   ingressClassName: tailscale
   tls:
     - hosts:
-        - homepage
+        - home
