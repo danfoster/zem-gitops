@@ -1,0 +1,26 @@
+{{ if .Values.features.externaldns.enabled }}
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: externaldns
+  namespace: argocd
+spec:
+  project: infra-externaldns
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+  source:
+    repoURL: https://github.com/danfoster/zem-gitops
+    targetRevision: main
+    path: apps/infra/zem-externaldns
+    helm:
+      releaseName: externaldns
+      valuesObject:
+      {{- toYaml .Values.features.externaldns | nindent 8 }}
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: externaldns
+{{ end }}
