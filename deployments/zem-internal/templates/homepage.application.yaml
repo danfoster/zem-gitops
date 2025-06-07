@@ -20,3 +20,7 @@ spec:
   destination:
     server: "https://kubernetes.default.svc"
     namespace: zem-internal-{{ .Values.env }}
+  ignoreDifferences:
+    - kind: Service
+      jsonPointers:
+        - /spec/externalName
