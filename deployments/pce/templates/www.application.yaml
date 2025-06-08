@@ -19,4 +19,4 @@ spec:
       {{- toYaml .Values.www | nindent 8 }}
   destination:
     server: "https://kubernetes.default.svc"
-    namespace: pce-www-{{ .Values.env }}
+    namespace: pce-{{ .Values.env }}
