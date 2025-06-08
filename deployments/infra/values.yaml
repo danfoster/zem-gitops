@@ -16,3 +16,5 @@ features:
     enabled: true
   externaldns:
     enabled: false
+  certmanager:
+    enabled: true
