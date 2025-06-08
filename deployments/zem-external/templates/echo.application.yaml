@@ -16,7 +16,7 @@ spec:
     helm:
       releaseName: echo-{{ .Values.env }}
       valuesObject:
-      {{- toYaml .Values.homepage | nindent 8 }}
+      {{- toYaml .Values.echo | nindent 8 }}
   destination:
     server: "https://kubernetes.default.svc"
     namespace: zem-external-{{ .Values.env }}
