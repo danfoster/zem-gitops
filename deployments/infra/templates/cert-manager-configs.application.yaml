@@ -2,7 +2,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: cert-manager
+  name: cert-manager-configs
   namespace: argocd
 spec:
   project: infra-cert-manager
@@ -22,5 +22,5 @@ spec:
       {{- toYaml .Values.features.certmanager | nindent 8 }}
   destination:
     server: "https://kubernetes.default.svc"
-    namespace: externaldns
+    namespace: cert-manager
 {{ end }}
