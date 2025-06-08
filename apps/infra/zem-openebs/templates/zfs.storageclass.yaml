@@ -12,4 +12,5 @@ parameters:
   fstype: "zfs"
   poolname: "{{ .Values.storageclasses.zfs.poolname }}"
 provisioner: zfs.csi.openebs.io
+allowVolumeExpansion: true
 {{ end }}
