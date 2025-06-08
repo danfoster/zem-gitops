@@ -1,12 +1,16 @@
 kind: Service
 apiVersion: v1
 metadata:
-    name: plex
+  name: plex
+  {{- if .Values.service.annotations }}
+  annotations:
+    {{- toYaml .Values.service.annotations | nindent 4 }}
+  {{- end }}
 spec:
-    type: LoadBalancer
-    selector:
-        app: plex
-    ports:
-    - protocol: TCP
-      name: web-interface
-      port: 32400
+  type: LoadBalancer
+  selector:
+    app: plex
+  ports:
+  - protocol: TCP
+    name: web-interface
+    port: 32400
