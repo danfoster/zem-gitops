@@ -4,7 +4,7 @@ metadata:
   name: pce-www-{{ .Values.env }}
   namespace: argocd
 spec:
-  project: pce-www-{{ .Values.env }}
+  project: pce-{{ .Values.env }}
   syncPolicy:
     automated:
       prune: true
