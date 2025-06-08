@@ -1,0 +1,22 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: pce-www-{{ .Values.env }}
+  namespace: argocd
+spec:
+  project: pce-www-{{ .Values.env }}
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+  source:
+    repoURL: https://github.com/danfoster/zem-gitops
+    targetRevision: main
+    path: apps/pce/pce-www
+    helm:
+      releaseName: pce-www
+      valuesObject:
+      {{- toYaml .Values.www | nindent 8 }}
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: pce-www-{{ .Values.env }}

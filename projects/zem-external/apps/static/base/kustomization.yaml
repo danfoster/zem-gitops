@@ -1,7 +1,0 @@
-namespace: static
-
-resources:
-- deployment.yaml
-- ingress.yaml
-- service.yaml
-- pvc.yaml

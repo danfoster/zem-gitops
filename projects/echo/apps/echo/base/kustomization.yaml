@@ -1,6 +1,0 @@
-resources:
-  - deployment.yaml
-  - ingress.yaml
-  - default.ingress.yaml
-  - service.yaml
-  - pvc.yaml
