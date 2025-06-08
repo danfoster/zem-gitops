@@ -1,7 +1,0 @@
-apiVersion: v1
-data:
-  owner_id: zem-c2-externaldns
-kind: ConfigMap
-metadata:
-  namespace: externaldns
-  name: externaldns-config

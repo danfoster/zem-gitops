@@ -1,0 +1,25 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: zem-external-prod
+  namespace: argocd
+spec:
+  project: gitops
+  source:
+    repoURL: https://github.com/danfoster/zem-gitops
+    targetRevision: main
+    path: deployments/zem-external
+    helm:
+      valuesObject:
+        env: prod
+        echo:
+          ingress:
+            annotations:
+              external-dns.alpha.kubernetes.io/target: "209.16.157.32"
+          hostname: "echo.zem.org.uk"
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: argocd
+  syncPolicy:
+    automated:
+      prune: true
