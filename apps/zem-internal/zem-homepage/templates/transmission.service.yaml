@@ -3,6 +3,7 @@ kind: Service
 metadata:
   annotations:
     tailscale.com/tailnet-fqdn: transmission.shark-puffin.ts.net
+    tailscale.com/proxy-group: "zem-internal-egress"
   name: transmission   # service name
 spec:
   externalName: unused   # any value - will be overwritten by operator
