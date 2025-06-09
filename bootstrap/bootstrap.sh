@@ -69,3 +69,10 @@ helm upgrade --install zem-tailscale \
   apps/infra/zem-tailscale \
   --set-string oauth.clientIdKey="tailscale-${CLUSTER}-client-id" \
   --set-string oauth.clientSecretKey="tailscale-${CLUSTER}-client-secret"
+
+  ## Install ArgoCD
+  helm upgrade --install argocd \
+  --create-namespace \
+  -n argocd \
+  apps/infra/zem-argocd \
+  --set-string globals.domain="argocd-$CLUSTER.shark-puffin.ts.net"
