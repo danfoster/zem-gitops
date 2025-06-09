@@ -8,3 +8,7 @@ metadata:
 spec:
   externalName: unused   # any value - will be overwritten by operator
   type: ExternalName
+  ports:
+  - port: 443
+    protocol: TCP
+    name: https
