@@ -15,10 +15,10 @@ data:
     - Media:
       - Transmission:
           description: Torrent
-          href: https://transmission.internal.zem.org.uk
+          href: https://transmission.shark-puffin.ts.net
           widget:
             type: transmission
-            url: https://transmission.internal.zem.org.uk
+            url: https://transmission.shark-puffin.ts.net
             username: zem
             password: {{ `{{HOMEPAGE_VAR_TRANSMISSION_PASSWORD}}` }}
       - Radarr:
