@@ -53,9 +53,8 @@ data:
           href: https://argocd-cluster01.shark-puffin.ts.net
           widget:
             type: argocd
-            url: https://argocd-cluster01.shark-puffin.ts.net
+            url: https://argocd-server.argocd
             key: {{ `{{HOMEPAGE_VAR_ARGOCD_CLUSTER01_API_KEY}}` }}
-
 
   settings.yaml: |
     headerStyle: boxed
@@ -68,4 +67,3 @@ data:
     - search:
         provider: google
         target: _blank
-
