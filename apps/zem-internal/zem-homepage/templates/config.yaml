@@ -18,7 +18,7 @@ data:
           href: https://transmission.shark-puffin.ts.net
           widget:
             type: transmission
-            url: https://transmission.shark-puffin.ts.net
+            url: http://transmission.media-prod:9091
             username: zem
             password: {{ `{{HOMEPAGE_VAR_TRANSMISSION_PASSWORD}}` }}
       - Radarr:
