@@ -13,6 +13,13 @@ data:
     mode: cluster
   services.yaml: |
     - Media:
+      - Plex:
+          description: Plex Media Server
+          href: https://plex.zem.org.uk
+          widget:
+            type: plex
+            url: http://plex.media:32400
+            key: {{ `{{HOMEPAGE_VAR_PLEX_API_KEY}}` }}
       - Transmission:
           description: Torrent
           href: https://transmission.shark-puffin.ts.net
