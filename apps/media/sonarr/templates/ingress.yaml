@@ -8,7 +8,7 @@ spec:
     service:
       name: sonarr
       port:
-        number: web-interface
+        number: 8989
   tls:
-  - hosts:
-    - sonarr
+    - hosts:
+        - sonarr
