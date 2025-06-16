@@ -18,7 +18,7 @@ data:
           href: https://plex.zem.org.uk
           widget:
             type: plex
-            url: http://plex.media:32400
+            url: http://plex.media-prod:32400
             key: {{ `{{HOMEPAGE_VAR_PLEX_API_KEY}}` }}
       - Transmission:
           description: Torrent
