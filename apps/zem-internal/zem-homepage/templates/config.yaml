@@ -37,10 +37,10 @@ data:
             key: {{ `{{HOMEPAGE_VAR_RADARR_API_KEY}}` }}
       - Sonarr:
           description: TV
-          href: https://sonarr.internal.zem.org.uk
+          href: https://sonarr.shark-puffin.ts.net
           widget:
             type: sonarr
-            url: https://sonarr.internal.zem.org.uk
+            url: http://sonarr.media-prod:9091
             key: {{ `{{HOMEPAGE_VAR_SONARR_API_KEY}}` }}
     - Networking:
       - Omada:
@@ -50,7 +50,7 @@ data:
             type: omada
             url: https://10.42.2.202:8043/
             username: zem
-            passowrd: noused
+            password: noused
             site: zem
     - Home Automation:
       - Home Assistant:
