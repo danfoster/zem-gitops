@@ -40,7 +40,7 @@ data:
           href: https://sonarr.shark-puffin.ts.net
           widget:
             type: sonarr
-            url: http://sonarr.media-prod:9091
+            url: http://sonarr.media-prod
             key: {{ `{{HOMEPAGE_VAR_SONARR_API_KEY}}` }}
     - Networking:
       - Omada:
