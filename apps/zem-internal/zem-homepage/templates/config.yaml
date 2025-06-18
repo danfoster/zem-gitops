@@ -37,7 +37,7 @@ data:
             key: {{ `{{HOMEPAGE_VAR_RADARR_API_KEY}}` }}
       - Sonarr:
           description: TV
-          href: https://sonarr.shark-puffin.ts.net
+          href: https://sonarr.shark-puffin.ts.net/sonarr
           widget:
             type: sonarr
             url: http://sonarr.media-prod:8989
