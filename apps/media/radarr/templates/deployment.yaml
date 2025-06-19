@@ -46,8 +46,9 @@ spec:
 
       volumes:
         - name: media
-          persistentVolumeClaim:
-            claimName: media
+          hostPath:
+            path: /data/media
+            type: Directory
         - name: config
           persistentVolumeClaim:
             claimName: radarr-config
