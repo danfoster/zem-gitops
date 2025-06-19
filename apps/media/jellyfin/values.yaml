@@ -10,7 +10,8 @@ jellyfin:
     hosts:
       - host: jellyfin.zem.org.uk
         paths:
-          - /
+          - path: /
+            pathType: Prefix  # pathType no longer has a default value in v1; "Exact", "Prefix", or "ImplementationSpecific" must be specified
     tls:
       - secretName: jellyfin-tls
         hosts:
