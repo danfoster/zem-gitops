@@ -1,5 +1,5 @@
 apiVersion: v2
-name: transmisson
+name: sonarr
 description: A Helm chart for Kubernetes
 
 type: application

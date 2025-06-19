@@ -10,9 +10,9 @@ spec:
       prune: true
       selfHeal: true
   source:
-    repoURL: https://github.com/danfoster/zem-gitops
-    targetRevision: main
-    path: apps/media/jellyfin
+    repoURL: https://github.com/jellyfin/jellyfin-helm
+    path: charts/jellyfin
+    targetRevision: 1b01cff
     helm:
       releaseName: jellyfin
       valuesObject:
