@@ -23,5 +23,5 @@ jellyfin:
   persistence:
     media:
       enabled: true
-      type: emptyDir
+      type: hostPath
       hostPath: /data/media
