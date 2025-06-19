@@ -1,0 +1,24 @@
+jellyfin:
+  ingress:
+    enabled: true
+    className: nginx
+    annotations:
+      kubernetes.io/ingress.class: nginx
+      cert-manager.io/cluster-issuer: "letsencrypt"
+      nginx.ingress.kubernetes.io/proxy-body-size: 100m
+      external-dns.alpha.kubernetes.io/target: "217.155.103.67"
+    hosts:
+      - host: jellyfin.zem.org.uk
+        paths:
+          - /
+    tls:
+      - secretName: jellyfin-tls
+        hosts:
+          - jellyfin.zem.org.uk
+  service:
+    annotations:
+      metallb.io/allow-shared-ip: "media"
+  persistence:
+    media:
+      type: "hostPath"
+      hostPath: /data/media

@@ -1,0 +1,13 @@
+apiVersion: v2
+name: jellyfin
+description: A Helm chart for Omada Controller on Kubernetes
+
+type: application
+
+version:  2.3.0
+appVersion:  10.10.7
+
+dependencies:
+  - name: jellyfin
+    version:  10.10.7
+    repository: https://jellyfin.github.io/jellyfin-helm
