@@ -9,5 +9,5 @@ appVersion:  10.10.7
 
 dependencies:
   - name: jellyfin
-    version:  10.10.7
+    version:  2.3.0
     repository: https://jellyfin.github.io/jellyfin-helm
