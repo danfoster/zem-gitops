@@ -56,7 +56,7 @@ data:
       - Home Assistant:
           href: https://10.42.2.200:8123
     - Infrastructure:
-      - Grafana
+      - Grafana:
           href: https://zemlab.grafana.net/a/cloud-home-app
           widget:
             type: grafana
