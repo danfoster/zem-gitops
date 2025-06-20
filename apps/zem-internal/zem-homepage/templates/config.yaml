@@ -58,10 +58,6 @@ data:
     - Infrastructure:
       - Grafana:
           href: https://zemlab.grafana.net/a/cloud-home-app
-          widget:
-            type: grafana
-            url: https://zemlab.grafana.net/
-            password: {{ `{{HOMEPAGE_VAR_GRAFANA_API_KEY}}` }}
       - Cluster 01 ArgoCD:
           href: https://argocd-cluster01.shark-puffin.ts.net
           widget:
