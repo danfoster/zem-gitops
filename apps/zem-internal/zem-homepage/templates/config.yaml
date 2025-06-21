@@ -54,10 +54,16 @@ data:
             site: zem
     - Home Automation:
       - Home Assistant:
-          href: https://10.42.2.200:8123
+          href: http://10.42.2.200:8123/lovelace/0
+          widget:
+            type: homeassistant
+            url: http://10.42.2.200:8123/
+            key: {{ `{{HOMEPAGE_VAR_HA_API_TOKEN}}` }}
     - Infrastructure:
       - Grafana:
           href: https://zemlab.grafana.net/a/cloud-home-app
+      - Tailscale Admin
+          href: https://login.tailscale.com/admin/machines
       - Cluster 01 ArgoCD:
           href: https://argocd-cluster01.shark-puffin.ts.net
           widget:
