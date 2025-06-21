@@ -62,7 +62,7 @@ data:
     - Infrastructure:
       - Grafana:
           href: https://zemlab.grafana.net/a/cloud-home-app
-      - Tailscale Admin
+      - Tailscale Admin:
           href: https://login.tailscale.com/admin/machines
       - Cluster 01 ArgoCD:
           href: https://argocd-cluster01.shark-puffin.ts.net
