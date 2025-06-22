@@ -5,7 +5,7 @@ metadata:
   name: alloy
   namespace: argocd
 spec:
-  project: infra-metrics
+  project: infra-monitoring
   syncPolicy:
     automated:
       prune: true
@@ -29,5 +29,5 @@ spec:
               }
   destination:
     server: "https://kubernetes.default.svc"
-    namespace: metrics
+    namespace: monitoring
 {{ end }}
