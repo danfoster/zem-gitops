@@ -1,0 +1,10 @@
+{{ if .Values.features.externaldns.enabled }}
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: monitoring
+  labels:
+    infra: "true"
+  annotations:
+    argocd.argoproj.io/sync-wave: "-1"
+{{ end }}
