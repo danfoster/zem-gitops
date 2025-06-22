@@ -1,0 +1,14 @@
+apiVersion: v1
+data:
+  config.alloy: |-
+    // Write your Alloy config here:
+    logging {
+        level = "info"
+        format = "logfmt"
+    }
+    livedebugging {
+      enabled = true
+    }
+kind: ConfigMap
+metadata:
+  name: alloy

@@ -1,0 +1,13 @@
+alloy:
+  configMap:
+    create: false
+    name: alloy-config
+    key: config.alloy
+  ingress:
+    enabled: true
+    ingressClassName: tailscale
+    faroPort: 12345
+    hosts: []
+    tls:
+      - hosts:
+          - changeme

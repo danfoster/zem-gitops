@@ -1,4 +1,4 @@
-{{ if .Values.features.reloader.enabled }}
+{{ if .Values.features.alloy.enabled }}
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
@@ -13,31 +13,16 @@ spec:
     syncOptions:
       - CreateNamespace=true
   source:
-    repoURL: https://grafana.github.io/helm-charts
-    chart: alloy
-    targetRevision: 1.1.1
+    repoURL: https://github.com/danfoster/zem-gitops
+    targetRevision: main
+    path: apps/infra/zem-alloy
     helm:
       releaseName: alloy
       valuesObject:
         ingress:
-          enabled: true
-          ingressClassName: tailscale
-          faroPort: 12345
-          hosts: []
           tls:
             - hosts:
-                - alloy
-        alloy:
-          configmap:
-            content: |-
-              // Write your Alloy config here:
-              logging {
-                level = "info"
-                format = "logfmt"
-              }
-              livedebugging {
-                enabled = true
-              }
+                - {{ .Values.features.alloy.hostname | quote }}
   destination:
     server: "https://kubernetes.default.svc"
     namespace: monitoring

@@ -18,3 +18,6 @@ features:
     enabled: false
   certmanager:
     enabled: true
+  alloy:
+    enabled: false
+    hostname: alloy-cluster01.shark-puffin.ts.net
