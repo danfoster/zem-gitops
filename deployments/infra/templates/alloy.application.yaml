@@ -35,6 +35,9 @@ spec:
                 level = "info"
                 format = "logfmt"
               }
+              livedebbing {
+                enabled = true
+              }
   destination:
     server: "https://kubernetes.default.svc"
     namespace: monitoring
