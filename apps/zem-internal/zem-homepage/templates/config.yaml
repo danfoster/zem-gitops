@@ -70,6 +70,8 @@ data:
             type: argocd
             url: http://argocd-server.argocd
             key: {{ `{{HOMEPAGE_VAR_ARGOCD_CLUSTER01_API_KEY}}` }}
+      - Bitwarden Secrets Manager:
+          href: https://vault.bitwarden.com/#/sm/601c33f4-f861-4d10-bca3-b0a9008c7752
 
   settings.yaml: |
     headerStyle: boxed

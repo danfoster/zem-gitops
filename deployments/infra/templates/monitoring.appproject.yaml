@@ -1,0 +1,19 @@
+{{ if .Values.features.reloader.enabled }}
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: infra-monitoring
+  namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: "-1"
+spec:
+  description: Monitoring
+  destinations:
+    - namespace: "monitoring"
+      server: "https://kubernetes.default.svc"
+  clusterResourceWhitelist:
+    - group: "*"
+      kind: "*"
+  sourceRepos:
+    - https://grafana.github.io/helm-charts
+{{ end }}
