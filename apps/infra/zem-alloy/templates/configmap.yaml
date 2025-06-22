@@ -9,8 +9,13 @@ data:
     livedebugging {
       enabled = true
     }
+
     discovery.kubernetes "pods" {
       role = "pod"
+    }
+    prometheus.scrape "pods" {
+      targets    = discovery.kubernetes.pods.targets
+      forward_to = [prometheus.remote_write.default.receiver]
     }
 
     remote.kubernetes.secret "credentials" {
@@ -19,7 +24,7 @@ data:
     }
 
 
-    prometheus.remote_write "grafanacloud" {
+    prometheus.remote_write "default" {
       endpoint {
         url = convert.nonsensitive(remote.kubernetes.secret.credentials.data["url"])
 
