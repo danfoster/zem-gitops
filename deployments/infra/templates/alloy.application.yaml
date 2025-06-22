@@ -19,10 +19,11 @@ spec:
     helm:
       releaseName: alloy
       valuesObject:
-        ingress:
-          tls:
-            - hosts:
-                - {{ .Values.features.alloy.hostname | quote }}
+        alloy:
+          ingress:
+            tls:
+              - hosts:
+                  - {{ .Values.features.alloy.hostname | quote }}
   destination:
     server: "https://kubernetes.default.svc"
     namespace: monitoring

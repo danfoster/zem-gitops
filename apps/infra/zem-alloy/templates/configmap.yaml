@@ -9,6 +9,7 @@ data:
     livedebugging {
       enabled = true
     }
+    // Most test
 kind: ConfigMap
 metadata:
-  name: alloy
+  name: alloy-config
