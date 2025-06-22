@@ -1,8 +1,9 @@
 alloy:
-  configMap:
-    create: false
-    name: alloy-config
-    key: config.alloy
+  alloy:
+    configMap:
+      create: false
+      name: alloy-config
+      key: config.alloy
   ingress:
     enabled: true
     ingressClassName: tailscale
