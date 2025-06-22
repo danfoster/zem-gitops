@@ -25,7 +25,7 @@ data:
 
         basic_auth {
           username = convert.nonsensitive(remote.kubernetes.secret.credentials.data["username"])
-          password = emote.kubernetes.secret.credentials.data["password"]
+          password = remote.kubernetes.secret.credentials.data["password"]
         }
       }
     }
