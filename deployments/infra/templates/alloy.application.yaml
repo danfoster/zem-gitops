@@ -19,6 +19,14 @@ spec:
     helm:
       releaseName: alloy
       valuesObject:
+        ingress:
+          enabled: true
+          ingressClassName: tailscale
+          hosts:
+            - alloy
+          tls:
+            - hosts:
+                - alloy
         alloy:
           configmap:
             content: |-
