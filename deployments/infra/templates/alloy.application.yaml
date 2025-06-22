@@ -22,6 +22,7 @@ spec:
         ingress:
           enabled: true
           ingressClassName: tailscale
+          faroPort: 12345
           hosts: []
           tls:
             - hosts:
