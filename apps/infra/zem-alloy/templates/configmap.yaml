@@ -9,7 +9,9 @@ data:
     livedebugging {
       enabled = true
     }
-    // Most test
+    discovery.kubernetes "pods" {
+        role = "pod"
+    }
 kind: ConfigMap
 metadata:
   name: alloy-config
