@@ -15,5 +15,5 @@ spec:
     - group: "*"
       kind: "*"
   sourceRepos:
-    - https://grafana.github.io/helm-charts
+    - https://github.com/danfoster/zem-gitops
 {{ end }}
