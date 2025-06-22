@@ -35,7 +35,7 @@ spec:
                 level = "info"
                 format = "logfmt"
               }
-              livedebbing {
+              livedebugging {
                 enabled = true
               }
   destination:
