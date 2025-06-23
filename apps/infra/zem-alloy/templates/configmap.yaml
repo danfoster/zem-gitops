@@ -41,6 +41,15 @@ data:
       forward_to = [prometheus.remote_write.default.receiver]
     }
 
+    discovery.kubernetes "kube_state_metrics_service" {
+      role = "service"
+      namespaces {
+        names = ["monitoring"]
+      }
+      selectors {
+        label = "app.kubernetes.io/name=kube-state-metrics"
+      }
+    }
 
 
 
