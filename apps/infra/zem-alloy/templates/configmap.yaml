@@ -60,7 +60,7 @@ data:
 
     // Final Global filtering
     prometheus.relabel "global_filter" {
-      forward_to = [forward_to = [prometheus.remote_write.default.receiver]]
+      forward_to = [prometheus.remote_write.default.receiver]
 
       rule {
         action        = "drop"
