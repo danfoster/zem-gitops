@@ -38,7 +38,7 @@ data:
       }
 
       bearer_token_file = "/var/run/secrets/kubernetes.io/serviceaccount/token"
-      forward_to = [prometheus.remote_write.default.receiver]
+      forward_to = [prometheus.relabel.global_filter.receiver]
     }
 
     // Kube-state-metrics integration
@@ -54,10 +54,20 @@ data:
     }
     prometheus.scrape "kube_state_metrics" {
       targets = discovery.kubernetes.kube_state_metrics_service.targets
-      forward_to = [prometheus.remote_write.default.receiver]
+      forward_to = [prometheus.relabel.global_filter.receiver]
     }
 
 
+    // Final Global filtering
+    prometheus.relabel "global_filter" {
+      forward_to = [forward_to = [prometheus.remote_write.default.receiver]]
+
+      rule {
+        action        = "drop"
+        source_labels = ["__name__"]
+        regex         = "(node_systemd_unit_state)"
+      }
+    }
 
     // Grafana Cloud remote write configuration
     remote.kubernetes.secret "credentials" {
