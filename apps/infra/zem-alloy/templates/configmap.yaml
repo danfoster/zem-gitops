@@ -41,8 +41,21 @@ data:
       forward_to = [prometheus.remote_write.default.receiver]
     }
 
-
-
+    // Kube-state-metrics integration
+    discovery.kubernetes "kube_state_metrics_service" {
+      role = "service"
+      namespaces {
+        names = ["monitoring"] // Or whatever namespace KSM is deployed in
+      }
+      selectors {
+        role = "service"
+        label = "app.kubernetes.io/name=kube-state-metrics"
+      }
+    }
+    prometheus.scrape "kube_state_metrics" {
+      targets = discovery.kubernetes.kube_state_metrics_service.targets
+      forward_to = [prometheus.remote_write.default.receiver]
+    }
 
 
 
@@ -59,17 +72,6 @@ data:
           username = convert.nonsensitive(remote.kubernetes.secret.credentials.data["username"])
           password = remote.kubernetes.secret.credentials.data["password"]
         }
-      }
-    }
-
-    discovery.kubernetes "kube_state_metrics_service" {
-      role = "service"
-      namespaces {
-        own_namespace = true
-      }
-      selectors {
-        role = "service"
-        label = "app.kubernetes.io/name=kube-state-metrics"
       }
     }
 kind: ConfigMap
