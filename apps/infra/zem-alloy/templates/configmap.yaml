@@ -41,19 +41,7 @@ data:
       forward_to = [prometheus.remote_write.default.receiver]
     }
 
-    discovery.kubernetes "kube_state_metrics_service" {
-      role = "service"
-      namespaces {
-        names = ["monitoring"] // Or whatever namespace KSM is deployed in
-      }
-      selectors {
-        label = "app.kubernetes.io/name=kube-state-metrics"
-      }
-    }
-    prometheus.scrape "kube_state_metrics" {
-      targets = discovery.kubernetes.kube_state_metrics_service.targets
-      forward_to = [prometheus.remote_write.default.receiver]
-    }
+
 
 
 
