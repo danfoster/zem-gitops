@@ -68,6 +68,7 @@ data:
         own_namespace = true
       }
       selectors {
+        role = "service"
         label = "app.kubernetes.io/name=kube-state-metrics"
       }
     }
