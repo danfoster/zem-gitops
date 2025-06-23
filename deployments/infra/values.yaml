@@ -21,3 +21,5 @@ features:
   alloy:
     enabled: false
     hostname: alloy-cluster01.shark-puffin.ts.net
+  kube_state_metrics:
+    enabled: true
