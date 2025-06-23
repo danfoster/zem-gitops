@@ -22,57 +22,32 @@ data:
       role = "node"
     }
 
-    prometheus.relabel "kubelet_target_relabel" {
-      input = discovery.kubernetes.nodes.targets // Input is the list of discovered nodes
-
-      rule { // Rule to set __address__ to node IP and Kubelet port
-        source_labels = ["__meta_kubernetes_node_address_InternalIP", "__meta_kubernetes_node_address_ExternalIP", "__meta_kubernetes_node_address_Hostname"]
-        regex = "(.+)"
-        target_label = "__address__"
-        replacement = "$$1:10250" // Kubelet usually listens on 10250 for metrics
-        action = "replace"
-      }
-      rule { // Rule to set __metrics_path__ to /metrics/cadvisor
-        target_label = "__metrics_path__"
-        replacement = "/metrics/cadvisor"
-        action = "replace"
-      }
-
-    }
-
-    // Scrape Kubelet (cAdvisor) metrics from the re-labeled targets
-    prometheus.scrape "kubelet_cadvisor" {
-      targets = prometheus.relabel.kubelet_target_relabel.output // Use the output of the target relabeling component
-
-      // Add TLS configuration here if your Kubelet endpoint requires HTTPS
-      // For example, to ignore TLS verification for testing (use with caution in production):
-      // tls_config {
-      //   insecure_skip_verify = true
-      // }
-
-      // Forward scraped Kubelet/cAdvisor metrics to another relabel component for metric filtering
-      forward_to = [prometheus.relabel.kubelet_metric_relabel.receiver]
-    }
 
     remote.kubernetes.secret "credentials" {
       namespace = {{ .Release.Namespace | quote }}
       name = "grafana-cloud-secret"
     }
 
-    prometheus.relabel "kubelet_metric_relabel" {
-      input = prometheus.scrape.kubelet_cadvisor.out // Input is the scraped metrics from kubelet_cadvisor
 
-      // Example: Drop specific metrics from Kubelet (e.g., verbose internal Kubelet metrics)
-      // This rule operates on the actual metric names (e.g., "kubelet_node_name")
-      rule {
-        source_labels = ["__name__"]
-        regex = "kubelet_.*|cgo_.*|go_.*" // Example: drop kubelet, go, and cgo metrics if not needed
-        action = "drop"
+
+    // Scrape Kubelet (cAdvisor) metrics from the re-labeled targets
+    prometheus.scrape "kubelet_cadvisor" {
+      targets = prometheus.relabel.kubelet_target_relabel.output // Use the output of the target relabeling component
+
+      scheme       = "https"
+      metrics_path = "/metrics/cadivisor"
+
+      tls_config {
+        ca_file              = "/var/run/secrets/kubernetes.io/serviceaccount/ca.crt"
+        insecure_skip_verify = false
       }
-      // Add other metric relabeling rules here (e.g., to rename labels or add new ones to container_ metrics)
 
+      bearer_token_file = "/var/run/secrets/kubernetes.io/serviceaccount/token"
       forward_to = [prometheus.remote_write.default.receiver]
     }
+
+
+
 
     prometheus.remote_write "default" {
       endpoint {
