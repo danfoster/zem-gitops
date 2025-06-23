@@ -18,6 +18,14 @@ data:
       forward_to = [prometheus.remote_write.default.receiver]
     }
 
+    discovery.kubernetes "nodes" {
+      role = "node"
+    }
+    prometheus.scrape "nodes" {
+      targets    = discovery.kubernetes.nodes.targets
+      forward_to = [prometheus.remote_write.default.receiver]
+    }
+
     remote.kubernetes.secret "credentials" {
       namespace = {{ .Release.Namespace | quote }}
       name = "grafana-cloud-secret"
