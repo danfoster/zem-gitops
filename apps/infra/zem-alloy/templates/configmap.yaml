@@ -32,7 +32,7 @@ data:
 
     // Scrape Kubelet (cAdvisor) metrics from the re-labeled targets
     prometheus.scrape "kubelet_cadvisor" {
-      targets = prometheus.relabel.kubelet_target_relabel.output // Use the output of the target relabeling component
+      targets = discovery.kubernetes.nodes.targets
 
       scheme       = "https"
       metrics_path = "/metrics/cadivisor"
