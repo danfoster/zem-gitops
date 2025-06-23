@@ -26,29 +26,21 @@ data:
     prometheus.scrape "kubelet_cadvisor" { // Changed name for clarity
       targets = discovery.kubernetes.nodes.targets
 
-      relabel_configs {
-        // Keep only the Kubernetes node targets
-        rule {
+      relabel_configs = [
+        {
           source_labels = ["__meta_kubernetes_node_address_InternalIP", "__meta_kubernetes_node_address_ExternalIP", "__meta_kubernetes_node_address_Hostname"]
           regex = "(.+)"
           target_label = "__address__"
           replacement = "$$1:10250" // Kubelet usually listens on 10250 for metrics
           action = "replace"
-        }
-        // Set the metrics path to cAdvisor endpoint
-        rule {
+        },
+        {
           target_label = "__metrics_path__"
           replacement = "/metrics/cadvisor"
           action = "replace"
         }
-        // Add relabeling to properly identify node and pod labels if needed
-        // You might also want to add TLS configuration if your Kubelet requires it
-        // (e.g., if it uses self-signed certs or client certificates).
-        // For example, if you need to skip TLS verification:
-        // tls_config {
-        //   insecure_skip_verify = true
-        // }
-      }
+        // Add other relabeling rules here, each as a separate map/object in the list
+      ]
 
       forward_to = [prometheus.remote_write.default.receiver]
     }
