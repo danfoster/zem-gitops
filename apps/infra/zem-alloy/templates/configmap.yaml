@@ -1,7 +1,8 @@
 apiVersion: v1
 data:
   config.alloy: |-
-    // Write your Alloy config here:
+
+    // Core Alloy configuration
     logging {
       level = "info"
       format = "logfmt"
@@ -10,6 +11,8 @@ data:
       enabled = true
     }
 
+
+    // Metrics provided by pods
     discovery.kubernetes "pods" {
       role = "pod"
     }
@@ -18,19 +21,11 @@ data:
       forward_to = [prometheus.remote_write.default.receiver]
     }
 
+
+    // Metrics provided by nodes / cAdvisor
     discovery.kubernetes "nodes" {
       role = "node"
     }
-
-
-    remote.kubernetes.secret "credentials" {
-      namespace = {{ .Release.Namespace | quote }}
-      name = "grafana-cloud-secret"
-    }
-
-
-
-    // Scrape Kubelet (cAdvisor) metrics from the re-labeled targets
     prometheus.scrape "kubelet_cadvisor" {
       targets = discovery.kubernetes.nodes.targets
 
@@ -46,9 +41,28 @@ data:
       forward_to = [prometheus.remote_write.default.receiver]
     }
 
+    // Kube-state-metrics integration
+    discovery.kubernetes "kube_state_metrics_service" {
+      role = "service"
+      namespaces {
+        names = ["monitoring"] // Or whatever namespace KSM is deployed in
+      }
+      selectors {
+        label = "app.kubernetes.io/name=kube-state-metrics"
+      }
+    }
+    prometheus.scrape "kube_state_metrics" {
+      targets = discovery.kubernetes.kube_state_metrics_service.targets
+      forward_to = [prometheus.remote_write.default.receiver]
+    }
 
 
 
+    // Grafana Cloud remote write configuration
+    remote.kubernetes.secret "credentials" {
+      namespace = {{ .Release.Namespace | quote }}
+      name = "grafana-cloud-secret"
+    }
     prometheus.remote_write "default" {
       endpoint {
         url = convert.nonsensitive(remote.kubernetes.secret.credentials.data["url"])
