@@ -41,15 +41,7 @@ data:
       forward_to = [prometheus.remote_write.default.receiver]
     }
 
-    discovery.kubernetes "kube_state_metrics_service" {
-      role = "service"
-      namespaces {
-        names = ["monitoring"]
-      }
-      selectors {
-        label = "app.kubernetes.io/name=kube-state-metrics"
-      }
-    }
+
 
 
 
@@ -67,6 +59,16 @@ data:
           username = convert.nonsensitive(remote.kubernetes.secret.credentials.data["username"])
           password = remote.kubernetes.secret.credentials.data["password"]
         }
+      }
+    }
+
+    discovery.kubernetes "kube_state_metrics_service" {
+      role = "service"
+      namespaces {
+        own_namespace = true
+      }
+      selectors {
+        label = "app.kubernetes.io/name=kube-state-metrics"
       }
     }
 kind: ConfigMap
