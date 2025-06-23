@@ -18,7 +18,7 @@ data:
     }
     prometheus.scrape "pods" {
       targets    = discovery.kubernetes.pods.targets
-      forward_to = [prometheus.remote_write.default.receiver]
+      forward_to = [prometheus.relabel.global_filter.receiver]
     }
 
 
