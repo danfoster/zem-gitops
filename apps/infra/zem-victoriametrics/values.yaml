@@ -1,0 +1,4 @@
+vmagent:
+  enabled: true
+vmsingle:
+  enabled: false

@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -x
 set -e
 
 render_and_apply() {
@@ -23,11 +23,6 @@ BW_AUTH_TOKEN="$2"
 
 cd $(dirname $0)/..
 
-# render_and_apply external-secrets externalsecrets
-# render_and_apply argocd argocd
-# render_and_apply tailscale tailscale
-
-# kubectl apply -f bootstrap/${CLUSTER}.yaml
 
 ## Install cert-manager
 helm repo add jetstack https://charts.jetstack.io
@@ -63,16 +58,23 @@ helm upgrade --install \
   --set-string operatorConfig.hostname=$CLUSTER \
   --set operatorConfig.defaultTags={"tag:$CLUSTER-operator"} \
   --set proxyConfig.defaultTags="tag:$CLUSTER"
+helm dependency build apps/infra/zem-tailscale
 helm upgrade --install zem-tailscale \
   --create-namespace \
   -n tailscale \
   apps/infra/zem-tailscale \
   --set-string oauth.clientIdKey="tailscale-${CLUSTER}-client-id" \
   --set-string oauth.clientSecretKey="tailscale-${CLUSTER}-client-secret"
+kubectl patch namespace tailscale -p '{"metadata":{"labels":{"infra":"true"}}}' --type=merge
 
-  ## Install ArgoCD
-  helm upgrade --install argocd \
+## Install ArgoCD
+helm repo add argocd https://argoproj.github.io/argo-helm
+helm dependency build apps/infra/zem-argocd
+helm upgrade --install argocd \
   --create-namespace \
   -n argocd \
   apps/infra/zem-argocd \
   --set-string globals.domain="argocd-$CLUSTER.shark-puffin.ts.net"
+kubectl patch namespace argocd -p '{"metadata":{"labels":{"infra":"true"}}}' --type=merge
+
+kubectl apply -f bootstrap/${CLUSTER}.yaml
