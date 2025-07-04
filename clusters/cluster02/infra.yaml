@@ -20,7 +20,9 @@ spec:
                 poolname: "zroot/openebs"
                 default: true
           metallb:
-            enabled: false
+            enabled: true
+            addresses:
+              - "209.16.157.32"
           externaldns:
             enabled: true
             external-dns:
