@@ -22,7 +22,7 @@ spec:
           metallb:
             enabled: true
             addresses:
-              - "209.16.157.32"
+              - "209.16.157.32/32"
           externaldns:
             enabled: true
             external-dns:
