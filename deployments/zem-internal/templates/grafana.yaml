@@ -1,0 +1,21 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: grafana-{{ .Values.env }}
+  namespace: argocd
+spec:
+  project: zem-internal-{{ .Values.env }}
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+  source:
+    repoURL: https://grafana.github.io/helm-charts
+    chart: grafana
+    targetRevision: 0.22.0
+    helm:
+      releaseName: grafana
+      valuesObject: {}
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: zem-internal-{{ .Values.env }}

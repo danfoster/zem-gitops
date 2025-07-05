@@ -13,4 +13,5 @@ parameters:
   poolname: "{{ .Values.storageclasses.zfs.poolname }}"
 provisioner: zfs.csi.openebs.io
 allowVolumeExpansion: true
+reclaimPolicy: Retain
 {{ end }}
