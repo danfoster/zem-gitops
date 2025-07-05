@@ -20,8 +20,8 @@ spec:
           enabled: true
           ingressClassName: tailscale
           tls:
-            hosts:
-              - grafana
+            - hosts:
+                - grafana
           hosts:
             - grafana
 
