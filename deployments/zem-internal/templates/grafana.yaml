@@ -16,15 +16,14 @@ spec:
     helm:
       releaseName: grafana
       valuesObject:
-        global:
-          ingress:
-            enabled: true
-            ingressClassName: tailscale
-            tls:
-              hosts:
-                - grafana
+        ingress:
+          enabled: true
+          ingressClassName: tailscale
+          tls:
             hosts:
               - grafana
+          hosts:
+            - grafana
 
   destination:
     server: "https://kubernetes.default.svc"
