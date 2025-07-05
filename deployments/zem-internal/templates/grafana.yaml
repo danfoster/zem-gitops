@@ -15,7 +15,17 @@ spec:
     targetRevision: 9.2.9
     helm:
       releaseName: grafana
-      valuesObject: {}
+      valuesObject:
+        global:
+          ingress:
+            enabled: true
+            ingressClassName: tailscale
+            tls:
+              hosts:
+                - grafana
+            hosts:
+              - grafana
+
   destination:
     server: "https://kubernetes.default.svc"
     namespace: zem-internal-{{ .Values.env }}
