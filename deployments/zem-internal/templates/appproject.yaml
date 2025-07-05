@@ -16,3 +16,4 @@ spec:
   sourceRepos:
     - "https://github.com/danfoster/zem-gitops"
     - "https://victoriametrics.github.io/helm-charts/"
+    - "https://grafana.github.io/helm-charts"
