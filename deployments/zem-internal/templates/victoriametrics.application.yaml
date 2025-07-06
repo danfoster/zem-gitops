@@ -14,7 +14,7 @@ spec:
     chart: victoria-metrics-single
     targetRevision: 0.22.0
     helm:
-      releaseName: metalvictoria-metrics-single
+      releaseName: victoria-metrics-single
       valuesObject:
         server:
           ingress:
@@ -27,7 +27,7 @@ spec:
               - name: vm
                 path:
                   - /
-                port: http
+                port: 8428
           scrape:
             enabled: true
             configMap: ""
