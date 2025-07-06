@@ -24,7 +24,10 @@ spec:
               - hosts:
                   - vm
             hosts:
-              - vm
+              - name: vm
+                path:
+                  - /
+                port: http
           scrape:
             enabled: true
             configMap: ""
