@@ -1,4 +1,6 @@
 vmagent:
+  remoteWrite:
+    - "https://vm.shark-puffin.ts.net/api/v1/write"
   config:
     global:
       scrape_interval: 60s
