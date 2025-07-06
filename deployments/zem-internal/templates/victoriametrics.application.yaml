@@ -17,6 +17,8 @@ spec:
       releaseName: victoria-metrics-single
       valuesObject:
         server:
+          service:
+            clusterIP: ""
           ingress:
             enabled: true
             ingressClassName: tailscale
