@@ -25,3 +25,5 @@ features:
     enabled: true
   node_exporter:
     enabled: true
+  vmagent:
+    enabled: false

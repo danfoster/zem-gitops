@@ -27,7 +27,7 @@ spec:
             enabled: true
             external-dns:
               txtOwnerId: "zem-c1"
-          victoria-metrics:
+          vmagent:
             enabled: true
 
   destination:

@@ -1,8 +1,8 @@
-{{ if .Values.features.alloy.enabled }}
+{{ if .Values.features.vmagent.enabled }}
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: victoriametrics
+  name: vmagent
   namespace: argocd
 spec:
   project: infra-monitoring
@@ -15,13 +15,9 @@ spec:
   source:
     repoURL: https://github.com/danfoster/zem-gitops
     targetRevision: main
-    path: apps/infra/zem-victoriametrics
+    path: apps/infra/zem-vmagent
     helm:
-      releaseName: victoriametrics
-      valuesObject:
-        victoriametrics:
-          vmagent:
-            enabled: true
+      releaseName: vmagent
   destination:
     server: "https://kubernetes.default.svc"
     namespace: monitoring
