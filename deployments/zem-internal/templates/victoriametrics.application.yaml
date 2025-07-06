@@ -17,6 +17,14 @@ spec:
       releaseName: metalvictoria-metrics-single
       valuesObject:
         server:
+          ingress:
+            enabled: true
+            ingressClassName: tailscale
+            tls:
+              - hosts:
+                  - vm
+            hosts:
+              - vm
           scrape:
             enabled: true
             configMap: ""
