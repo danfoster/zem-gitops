@@ -22,7 +22,7 @@ spec:
             configMap: ""
             config:
               global:
-                scrape_interval: 15s
+                scrape_interval: 60s
               scrape_configs:
                 - job_name: victoriametrics
                   static_configs:
@@ -97,6 +97,78 @@ spec:
                       regex: '^/system\.slice/(.+)\.service$'
                       target_label: systemd_service_name
                       replacement: "${1}"
+
+                - job_name: "kubernetes-service-endpoints"
+                  kubernetes_sd_configs:
+                    - role: endpoints
+                  relabel_configs:
+                    # 1. Filter targets based on a specific annotation.
+                    # This annotation on the Service tells Prometheus to scrape it.
+                    # Example: service.beta.kubernetes.io/prometheus-scrape: "true"
+                    # Or a more common one: prometheus.io/scrape: "true"
+                    - source_labels:
+                        [
+                          __meta_kubernetes_service_annotation_prometheus_io_scrape,
+                        ]
+                      action: keep
+                      regex: "true"
+
+                    # 2. Get the metrics path from an annotation (default to /metrics)
+                    # Example: prometheus.io/path: "/my-metrics-path"
+                    - source_labels:
+                        [
+                          __meta_kubernetes_service_annotation_prometheus_io_path,
+                        ]
+                      action: replace
+                      target_label: __metrics_path__
+                      regex: (.+)
+
+                    # 3. Get the port from an annotation (default to the first available port)
+                    # Example: prometheus.io/port: "8080"
+                    - source_labels:
+                        [
+                          __meta_kubernetes_service_annotation_prometheus_io_port,
+                        ]
+                      action: replace
+                      target_label: __address__
+                      regex: (.+)
+                      replacement: "$$1:$$2" # This regex needs to be handled carefully in combination with target address below
+
+                    # 4. Construct the target address using the service IP and detected port
+                    # This combines the service IP with the port identified in the previous step.
+                    - source_labels:
+                        [
+                          __address__,
+                          __meta_kubernetes_service_annotation_prometheus_io_port,
+                        ]
+                      action: replace
+                      regex: "([^:]+)(?::\\d+)?;(\\d+)" # Extracts IP and the annotated port
+                      target_label: __address__
+                      replacement: "$$1:$$2" # Correctly sets address to service-ip:annotated-port
+
+                    # If no port annotation, use the first exposed port of the endpoint
+                    - source_labels: [__address__]
+                      regex: "(.+)" # Just ensuring the address is captured
+                      target_label: __address__
+                      replacement: "$$1" # If no port was specified via annotation, this keeps the original endpoint address (ip:port)
+
+                    # 5. Add standard Kubernetes labels for better identification
+                    - action: labelmap
+                      regex: __meta_kubernetes_service_label_(.+)
+                    - action: labelmap
+                      regex: __meta_kubernetes_pod_label_(.+)
+                    - source_labels: [__meta_kubernetes_namespace]
+                      action: replace
+                      target_label: kubernetes_namespace
+                    - source_labels: [__meta_kubernetes_service_name]
+                      action: replace
+                      target_label: kubernetes_service_name
+                    - source_labels: [__meta_kubernetes_pod_name]
+                      action: replace
+                      target_label: kubernetes_pod_name
+                    - source_labels: [__meta_kubernetes_container_name]
+                      action: replace
+                      target_label: kubernetes_container_name
   destination:
     server: "https://kubernetes.default.svc"
     namespace: zem-internal-{{ .Values.env }}
