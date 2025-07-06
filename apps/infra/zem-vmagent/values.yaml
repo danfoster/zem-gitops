@@ -1,6 +1,6 @@
-vmagent:
+victoria-metrics-agent:
   remoteWrite:
-    - "https://vm.shark-puffin.ts.net/api/v1/write"
+    - url: "https://vm.shark-puffin.ts.net/api/v1/write"
   config:
     global:
       scrape_interval: 60s
