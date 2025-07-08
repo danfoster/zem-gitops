@@ -27,3 +27,5 @@ features:
     enabled: true
   vmagent:
     enabled: false
+  zfs_exporter:
+    enabled: false

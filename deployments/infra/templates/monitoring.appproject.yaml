@@ -16,4 +16,5 @@ spec:
       kind: "*"
   sourceRepos:
     - https://github.com/danfoster/zem-gitops
+    - https://charts.enix.io
 {{ end }}

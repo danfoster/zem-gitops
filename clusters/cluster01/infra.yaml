@@ -29,6 +29,8 @@ spec:
               txtOwnerId: "zem-c1"
           vmagent:
             enabled: true
+          zfs_exporter:
+            enabled: true
 
   destination:
     server: "https://kubernetes.default.svc"
