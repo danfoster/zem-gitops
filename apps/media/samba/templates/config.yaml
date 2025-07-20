@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: samba
+data:
+  UID_dan: "1001"
+  SAMBA_VOLUME_CONFIG_timemachine: |
+    [timemachine]
+    path = /shares/timemachine/%U
+    valid users = dan
+    read only = no
+    guest ok = no
+    browsable = yes
+    fruit:time machine = yes
+    fruit:time machine max size = 500G

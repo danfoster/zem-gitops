@@ -1,0 +1,62 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: samba
+  labels:
+    app: samba
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: samba
+  template:
+    metadata:
+      name: samba
+      labels:
+        app: samba
+    spec:
+      containers:
+        - name: samba
+          image: ghcr.io/servercontainers/samba:a3.22.1-s4.21.4-r4
+          resources:
+            requests:
+              cpu: 100m
+              memory: 100Mi
+            limits:
+              cpu: "1"
+              memory: 512Mi
+          ports:
+            - containerPort: 139
+              protocol: TCP
+            - containerPort: 445
+              protocol: TCP
+            - containerPort: 137
+              protocol: UDP
+
+          volumeMounts:
+            - mountPath: /shares/media
+              name: media
+            - mountPath: /shares/timemachine
+              name: timemachine
+            - mountPath: /shares/home/dan
+              name: home_dan
+
+          envFrom:
+            - secretRef:
+                name: samba
+            - configMapRef:
+                name: samba
+
+      volumes:
+        - name: media
+          hostPath:
+            path: /data/media
+            type: Directory
+        - name: timemachine
+          hostPath:
+            path: /data/timemachine
+            type: Directory
+        - name: home_dan
+          hostPath:
+            path: /home/dan
+            type: Directory
