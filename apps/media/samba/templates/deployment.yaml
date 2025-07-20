@@ -39,7 +39,7 @@ spec:
             - mountPath: /shares/timemachine
               name: timemachine
             - mountPath: /shares/home/dan
-              name: home_dan
+              name: home-dan
 
           envFrom:
             - secretRef:
@@ -56,7 +56,7 @@ spec:
           hostPath:
             path: /data/timemachine
             type: Directory
-        - name: home_dan
+        - name: home-dan
           hostPath:
             path: /home/dan
             type: Directory
