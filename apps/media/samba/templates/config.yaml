@@ -14,4 +14,4 @@ data:
     guest ok = no
     browsable = yes
     fruit:time machine = yes
-    fruit:time machine max size = 500G
+    fruit:time machine max size = 2000G
