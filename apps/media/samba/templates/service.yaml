@@ -2,21 +2,18 @@ kind: Service
 apiVersion: v1
 metadata:
   name: samba
-  {{- if .Values.service.annotations }}
-  annotations:
-    {{- toYaml .Values.service.annotations | nindent 4 }}
-  {{- end }}
 spec:
   type: LoadBalancer
+  loadBalancerClass: tailscale
   selector:
     app: samba
   ports:
-  - protocol: TCP
-    name: samba1
-    port: 445
-  - protocol: TCP
-    name: samba2
-    port: 139
-  - protocol: UDP
-    name: samba3
-    port: 137
+    - protocol: TCP
+      name: samba1
+      port: 445
+    - protocol: TCP
+      name: samba2
+      port: 139
+    - protocol: UDP
+      name: samba3
+      port: 137
