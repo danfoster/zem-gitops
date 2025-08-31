@@ -1,0 +1,10 @@
+{{ if .Values.features.certmanager.enabled }}
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: k8up
+  labels:
+    infra: "true"
+  annotations:
+    argocd.argoproj.io/sync-wave: "-1"
+{{ end }}
