@@ -20,7 +20,7 @@ spec:
           - from: /foo
             to: https://google.com
         ingress:
-          hostname: go.portycommunityenergy.org.uk
+          hostname: go.portycommunityenergy.org
   destination:
     server: "https://kubernetes.default.svc"
     namespace: pce-{{ .Values.env }}
