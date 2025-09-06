@@ -10,7 +10,7 @@ spec:
       prune: true
       selfHeal: true
   source:
-    repoURL: https://github.com/zemlabs/golinks
+    repoURL: https://github.com/zemlab/golinks
     targetRevision: main
     path: helm
     helm:
