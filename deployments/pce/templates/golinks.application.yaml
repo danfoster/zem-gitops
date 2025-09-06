@@ -1,0 +1,26 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: pce-golinks-{{ .Values.env }}
+  namespace: argocd
+spec:
+  project: pce-{{ .Values.env }}
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+  source:
+    repoURL: https://github.com/zemlabs/golinks
+    targetRevision: main
+    path: helm
+    helm:
+      releaseName: pce-golinks
+      valuesObject:
+        redirects:
+          - from: /foo
+            to: https://google.com
+        ingress:
+          hostname: go.portycommunityenergy.org.uk
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: pce-{{ .Values.env }}
