@@ -8,7 +8,7 @@ spec:
   source:
     repoURL: https://github.com/danfoster/zem-gitops
     targetRevision: main
-    path: clusters/cluster01/projects
+    path: clusters/cluster03/projects
   destination:
     server: "https://kubernetes.default.svc"
     namespace: argocd
