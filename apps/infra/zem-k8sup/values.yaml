@@ -1,0 +1,20 @@
+storageclasses:
+  zfs:
+    enabled: false
+    poolname: "zfspv-pool"
+    default: false
+openebs:
+  engines:
+    local:
+      lvm:
+        enabled: false
+    replicated:
+      mayastor:
+        enabled: false
+  loki:
+    enabled: false
+  alloy:
+    enabled: false
+  zfs-localpv:
+    zfsNode:
+      kubeletDir: /var/lib/k0s/kubelet
