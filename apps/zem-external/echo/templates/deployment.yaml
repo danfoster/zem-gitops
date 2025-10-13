@@ -18,7 +18,7 @@ spec:
         app: echo
     spec:
       containers:
-        - image: "mendhak/http-https-echo:31"
+        - image: "docker.io/mendhak/http-https-echo:31"
           imagePullPolicy: IfNotPresent
           name: echo
           resources:
