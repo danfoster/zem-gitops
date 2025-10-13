@@ -57,7 +57,9 @@ helm upgrade --install \
   --set-string apiServerProxyConfig.mode=true \
   --set-string operatorConfig.hostname=$CLUSTER \
   --set operatorConfig.defaultTags={"tag:$CLUSTER-operator"} \
-  --set proxyConfig.defaultTags="tag:$CLUSTER"
+  --set proxyConfig.defaultTags="tag:$CLUSTER" \
+  --set operatorConfig.image.repository="docker.io/tailscale/k8s-operator" \
+  --set proxyConfig.image.repository="docker.io/tailscale/tailscale"
 helm dependency build apps/infra/zem-tailscale
 helm upgrade --install zem-tailscale \
   --create-namespace \
