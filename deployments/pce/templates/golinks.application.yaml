@@ -11,7 +11,7 @@ spec:
       selfHeal: true
   source:
     repoURL: https://github.com/zemlab/golinks
-    targetRevision: main
+    targetRevision: release/1.0
     path: helm
     helm:
       releaseName: pce-golinks
