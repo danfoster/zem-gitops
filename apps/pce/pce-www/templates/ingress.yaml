@@ -4,14 +4,15 @@ metadata:
   name: www-pce
   annotations:
     cert-manager.io/cluster-issuer: "letsencrypt"
-    external-dns.alpha.kubernetes.io/target: "217.155.103.67"
     nginx.ingress.kubernetes.io/rewrite-target: "https://portycommunityenergy.wordpress.com/"
 spec:
   tls:
     - hosts:
-        - www.pce.org.uk
+        - www.portycommunityenergy.org
+        - portycommunityenergy.org
       secretName: ingress-www-pce-tls
   ingressClassName: nginx
   rules:
-    - host: "www.pce.org.uk"
+    - host: www.portycommunityenergy.org
+    - host: portycommunityenergy.org
 
