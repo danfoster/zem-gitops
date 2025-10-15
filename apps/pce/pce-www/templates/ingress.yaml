@@ -3,7 +3,7 @@ kind: Ingress
 metadata:
   name: www-pce
   annotations:
-    cert-manager.io/cluster-issuer: "letsencrypt"
+    cert-manager.io/cluster-issuer: "letsencrypt-http01"
     nginx.ingress.kubernetes.io/rewrite-target: "https://portycommunityenergy.wordpress.com/"
 spec:
   tls:
