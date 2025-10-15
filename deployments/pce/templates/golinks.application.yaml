@@ -12,7 +12,7 @@ spec:
   source:
     repoURL: ghcr.io/zemlab/golinks-helm
     chart: golinks
-    targetRevision: 1.0.0-48a3c8e
+    targetRevision: 1.0.0-864c710
     helm:
       releaseName: pce-golinks
       valuesObject:
