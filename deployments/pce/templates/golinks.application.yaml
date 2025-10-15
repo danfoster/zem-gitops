@@ -10,9 +10,9 @@ spec:
       prune: true
       selfHeal: true
   source:
-    repoURL: https://github.com/zemlab/golinks
-    targetRevision: release/1.0
-    path: helm
+    repoURL: ghcr.io/zemlab/golinks-helm
+    chart: golinks
+    targetRevision: 1.0.0-48a3c8e
     helm:
       releaseName: pce-golinks
       valuesObject:
