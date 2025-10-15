@@ -16,3 +16,4 @@ spec:
   sourceRepos:
     - "https://github.com/danfoster/zem-gitops"
     - "https://github.com/zemlab/golinks"
+    - "ghcr.io/zemlab/golinks-helm"
