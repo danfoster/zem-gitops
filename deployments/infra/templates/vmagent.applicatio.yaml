@@ -1,0 +1,28 @@
+{{ if .Values.features.vmagent.enabled }}
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: vmagent
+  namespace: argocd
+spec:
+  project: infra-monitoring
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+  source:
+    repoURL: https://github.com/danfoster/zem-gitops
+    targetRevision: main
+    path: apps/infra/zem-vmagent
+    helm:
+      releaseName: vmagent
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: monitoring
+  ignoreDifferences:
+    - kind: Service
+      jsonPointers:
+        - /spec/externalName
+{{ end }}

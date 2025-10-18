@@ -1,0 +1,12 @@
+apiVersion: operator.victoriametrics.com/v1beta1
+kind: VMAgent
+metadata:
+  name: default
+spec:
+  # ...
+  selectAllByDefault: true
+  replicaCount: 1
+  scrapeInterval: 30s
+  scrapeTimeout: 10s
+  remoteWrite:
+    - url: "http://homeassistant.shark-puffin.ts.net:8428/api/v1/write"
