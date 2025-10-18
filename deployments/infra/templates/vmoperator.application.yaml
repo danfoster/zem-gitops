@@ -1,8 +1,8 @@
-{{ if .Values.features.vmagent.enabled }}
+{{ if .Values.features.vmoperator.enabled }}
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: vmagent
+  name: vmoperator
   namespace: argocd
 spec:
   project: infra-monitoring
@@ -15,9 +15,9 @@ spec:
   source:
     repoURL: https://github.com/danfoster/zem-gitops
     targetRevision: main
-    path: apps/infra/zem-vmagent
+    path: apps/infra/zem-vmoperator
     helm:
-      releaseName: vmagent
+      releaseName: vmoperator
   destination:
     server: "https://kubernetes.default.svc"
     namespace: monitoring

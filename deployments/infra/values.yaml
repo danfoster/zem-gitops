@@ -25,7 +25,7 @@ features:
     enabled: true
   node_exporter:
     enabled: true
-  vmagent:
-    enabled: false
+  vmoperator:
+    enabled: true
   zfs_exporter:
     enabled: false
