@@ -11,4 +11,4 @@ spec:
   scrapeInterval: 30s
   scrapeTimeout: 10s
   remoteWrite:
-    - url: "http://homeassistant.shark-puffin.ts.net:8428/api/v1/write"
+    - url: "http://prometheus:8428/api/v1/write"
