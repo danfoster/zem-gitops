@@ -1,3 +1,3 @@
 victoria-metrics-operator:
   image:
-    repository: docker.io/victoriametrics/victoria-metrics-operator
+    repository: docker.io/victoriametrics/operator
