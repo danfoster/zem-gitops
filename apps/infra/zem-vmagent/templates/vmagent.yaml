@@ -4,6 +4,8 @@ metadata:
   name: default
 spec:
   # ...
+  image:
+    repository: docker.io/victoriametrics/vmagent
   selectAllByDefault: true
   replicaCount: 1
   scrapeInterval: 30s
