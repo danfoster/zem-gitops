@@ -22,3 +22,8 @@ spec:
   syncPolicy:
     automated:
       prune: true
+  ignoreDifferences:
+    - group: argoproj.io
+      kind: Application
+      jsonPointers:
+      - /spec/syncPolicy
