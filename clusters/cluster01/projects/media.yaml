@@ -18,3 +18,8 @@ spec:
   syncPolicy:
     automated:
       prune: true
+  ignoreDifferences:
+    - group: argoproj.io
+      kind: Application
+      jsonPointers:
+      - /spec/syncPolicy/automated # Allow ArgoCD to manage automated sync policy without causing diffs
