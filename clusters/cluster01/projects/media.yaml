@@ -22,4 +22,6 @@ spec:
     - group: argoproj.io
       kind: Application
       jsonPointers:
-      - /spec/syncPolicy/automated # Allow ArgoCD to manage automated sync policy without causing diffs
+      - /spec/syncPolicy/automated/selfHeal
+      - /spec/syncPolicy/automated/prune
+      - /spec/syncPolicy/automated # You can use this to cover all automated settings

@@ -51,4 +51,4 @@ spec:
             type: Directory
         - name: config
           persistentVolumeClaim:
-            claimName: radarr-config
+            claimName: radarr-config-new
