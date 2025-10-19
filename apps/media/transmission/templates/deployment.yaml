@@ -67,4 +67,4 @@ spec:
                 type: Directory
             - name: config
               persistentVolumeClaim:
-                claimName: transmission-config
+                claimName: transmission-config-new
