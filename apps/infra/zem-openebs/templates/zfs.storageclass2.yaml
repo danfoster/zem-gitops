@@ -2,15 +2,15 @@
 apiVersion: storage.k8s.io/v1
 kind: StorageClass
 metadata:
-  name: openebs-zfspv
+  name: openebs-zfspv-rpool
   annotations:
-    storageclass.kubernetes.io/is-default-class: false
+    storageclass.kubernetes.io/is-default-class: "{{ .Values.storageclasses.zfs.default | default "false" }}"
 parameters:
   recordsize: "128k"
   compression: "off"
   dedup: "off"
   fstype: "zfs"
-  poolname: "zroot/openebs"
+  poolname: "{{ .Values.storageclasses.zfs.poolname }}"
 provisioner: zfs.csi.openebs.io
 allowVolumeExpansion: true
 reclaimPolicy: Retain

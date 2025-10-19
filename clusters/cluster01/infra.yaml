@@ -17,7 +17,7 @@ spec:
             storageclasses:
               zfs:
                 enabled: true
-                poolname: "zroot/openebs"
+                poolname: "rpool/openebs"
                 default: true
           metallb:
             enabled: true
