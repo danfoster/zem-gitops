@@ -13,5 +13,5 @@ parameters:
   poolname: "zroot/openebs"
 provisioner: zfs.csi.openebs.io
 allowVolumeExpansion: true
-reclaimPolicy: Retain
+reclaimPolicy: Delete
 {{ end }}
