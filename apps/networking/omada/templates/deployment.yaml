@@ -64,4 +64,5 @@ spec:
       volumes:
         - name: omada-controller-data
           persistentVolumeClaim:
-            claimName: omada-controller-config
+            claimName: omada-controller-config-new
+
