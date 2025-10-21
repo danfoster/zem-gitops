@@ -5,7 +5,7 @@ metadata:
   labels:
     app: radarr
 spec:
-  replicas: 1
+  replicas: 0
   serviceName: radarr
   selector:
     matchLabels:
@@ -51,4 +51,4 @@ spec:
             type: Directory
         - name: config
           persistentVolumeClaim:
-            claimName: radarr-config-new
+            claimName: radarr-config
