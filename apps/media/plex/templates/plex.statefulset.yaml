@@ -5,7 +5,7 @@ metadata:
   labels:
     app: plex
 spec:
-  replicas: 1
+  replicas: 0
   serviceName: plex
   selector:
     matchLabels:
@@ -70,4 +70,4 @@ spec:
           type: Directory
       - name: config
         persistentVolumeClaim:
-          claimName: plex-config-new
+          claimName: plex-config
