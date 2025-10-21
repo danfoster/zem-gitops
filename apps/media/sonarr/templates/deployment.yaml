@@ -5,7 +5,7 @@ metadata:
   labels:
     app: sonarr
 spec:
-  replicas: 1
+  replicas: 0
   serviceName: sonarr
   selector:
     matchLabels:
@@ -51,4 +51,4 @@ spec:
             type: Directory
         - name: config
           persistentVolumeClaim:
-            claimName: sonarr-config-new
+            claimName: sonarr-config
