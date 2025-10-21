@@ -5,7 +5,7 @@ metadata:
   labels:
     app.kubernetes.io/name: omada-controller
 spec:
-  replicas: 1
+  replicas: 0
   strategy:
     type: Recreate
   selector:
@@ -64,5 +64,5 @@ spec:
       volumes:
         - name: omada-controller-data
           persistentVolumeClaim:
-            claimName: omada-controller-config-new
+            claimName: omada-controller-config
 
