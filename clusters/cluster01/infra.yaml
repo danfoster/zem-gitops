@@ -14,8 +14,6 @@ spec:
         features:
           openebs:
             enabled: true
-            hostpath:
-              default: true
           metallb:
             enabled: true
             addresses:

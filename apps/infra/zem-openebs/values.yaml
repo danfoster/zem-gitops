@@ -8,6 +8,8 @@ openebs:
     local:
       lvm:
         enabled: false
+      zfs:
+        enabled: false
     replicated:
       mayastor:
         enabled: false
@@ -18,3 +20,6 @@ openebs:
   zfs-localpv:
     zfsNode:
       kubeletDir: /var/lib/k0s/kubelet
+  localpv-provisioner:
+    hostpathClass:
+      isDefaultClass: true
