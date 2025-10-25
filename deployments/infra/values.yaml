@@ -5,6 +5,9 @@ features:
       zfs:
         enabled: false
         poolname: "zfspv-pool"
+      hostpath:
+        enabled: true
+        default: false
   ingressnginx:
     enabled: true
     controller:
