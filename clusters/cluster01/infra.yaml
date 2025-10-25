@@ -14,11 +14,8 @@ spec:
         features:
           openebs:
             enabled: true
-            storageclasses:
-              zfs:
-                enabled: true
-                poolname: "rpool/openebs"
-                default: true
+            hostpath:
+              default: true
           metallb:
             enabled: true
             addresses:

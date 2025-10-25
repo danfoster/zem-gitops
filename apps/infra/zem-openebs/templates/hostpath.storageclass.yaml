@@ -4,7 +4,7 @@ metadata:
   name: local-hostpath
   annotations:
     openebs.io/cas-type: local
-    storageclass.kubernetes.io/is-default-class: "{{ .Values.storageclasses.zfs.default | default "false" }}"
+    storageclass.kubernetes.io/is-default-class: "{{ .Values.storageclasses.hostpath.default | default "false" }}"
     cas.openebs.io/config: |
       - name: StorageType
         value: hostpath
