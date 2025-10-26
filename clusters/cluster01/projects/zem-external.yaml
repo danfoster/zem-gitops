@@ -15,8 +15,8 @@ spec:
         echo:
           ingress:
             annotations:
-              external-dns.alpha.kubernetes.io/target: "217.155.103.67"
-          hostname: "echo.zem.org.uk"
+              external-dns.alpha.kubernetes.io/target: "137.220.113.26"
+          hostname: "echo-c1.zem.org.uk"
   destination:
     server: "https://kubernetes.default.svc"
     namespace: argocd

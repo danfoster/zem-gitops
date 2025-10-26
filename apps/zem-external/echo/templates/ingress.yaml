@@ -4,9 +4,6 @@ metadata:
   name: echo
   annotations:
     cert-manager.io/cluster-issuer: "letsencrypt"
-    ingress.oraclecloud.com/backend-tls-enabled: "false"
-    oci-native-ingress.oraclecloud.com/healthcheck-protocol: "HTTP"
-    oci-native-ingress.oraclecloud.com/healthcheck-path: "/"
     {{- if .Values.ingress.annotations }}
     {{- toYaml .Values.ingress.annotations | nindent 4 }}
     {{- end }}
