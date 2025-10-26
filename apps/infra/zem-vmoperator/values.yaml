@@ -4,10 +4,3 @@ victoria-metrics-operator:
   admissionWebhooks:
     certManager:
       enabled: true
-      cert:
-      # Override the default list of dnsNames with ONLY the valid FQDNs
-      dnsNames:
-        # 1. Service Name + Namespace + .svc (The short FQDN)
-        - vmoperator-victoria-metrics-operator.monitoring.svc
-        # 2. Service Name + Namespace + .svc + .cluster.local (The full FQDN, NO trailing dot)
-        - vmoperator-victoria-metrics-operator.monitoring.svc.cluster.local
