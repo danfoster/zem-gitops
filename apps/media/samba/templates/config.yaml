@@ -7,14 +7,7 @@ data:
   WSDD2_DISABLE: "true"
   UID_dan: "1001"
   SAMBA_VOLUME_CONFIG_timemachine: |
-    [timemachine]
-    path = /shares/timemachine/%U
-    valid users = dan
-    read only = no
-    guest ok = no
-    browsable = yes
-    fruit:time machine = yes
-    fruit:time machine max size = 2000G
+
 
     [homes]
     comment = Home Directories
@@ -24,10 +17,20 @@ data:
     directory mask = 0700
     browseable = No
 
-    [to_sort]
+    [data]
     comment = To Sort
     valid users = dan
     read only = No
     create mask = 0700
     directory mask = 0700
-    browseable = Yes
+    browseable = yes
+    path = /data/
+
+    [timemachine]
+    path = /data/timemachine/%U
+    valid users = dan
+    read only = no
+    guest ok = no
+    browsable = yes
+    fruit:time machine = yes
+    fruit:time machine max size = 2000G

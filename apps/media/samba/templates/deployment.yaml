@@ -36,12 +36,10 @@ spec:
               protocol: UDP
 
           volumeMounts:
-            - mountPath: /shares/media
-              name: media
-            - mountPath: /shares/timemachine
-              name: timemachine
-            - mountPath: /shares/home/dan
-              name: home-dan
+            - mountPath: /data
+              name: data
+            - mountPath: /home/
+              name: home
 
           envFrom:
             - secretRef:
@@ -50,15 +48,11 @@ spec:
                 name: samba
 
       volumes:
-        - name: media
+        - name: data
           hostPath:
-            path: /data/media
+            path: /data/
             type: Directory
-        - name: timemachine
-          hostPath:
-            path: /data/timemachine
-            type: Directory
-        - name: home-dan
+        - name: home
           hostPath:
             path: /home/dan
             type: Directory
