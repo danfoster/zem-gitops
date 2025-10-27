@@ -2,6 +2,8 @@ kind: Service
 apiVersion: v1
 metadata:
   name: samba
+  annotations:
+    tailscale.com/hostname: samba
 spec:
   type: LoadBalancer
   loadBalancerClass: tailscale
