@@ -54,5 +54,5 @@ spec:
             type: Directory
         - name: home
           hostPath:
-            path: /home/dan
+            path: /home/
             type: Directory

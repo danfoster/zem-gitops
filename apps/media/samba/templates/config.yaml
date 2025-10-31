@@ -5,7 +5,7 @@ metadata:
 data:
   AVAHI_NAME: zem
   WSDD2_DISABLE: "true"
-  UID_dan: "1001"
+  UID_dan: "1000"
   SAMBA_VOLUME_CONFIG_timemachine: |
 
 
