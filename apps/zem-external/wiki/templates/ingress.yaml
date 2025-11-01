@@ -1,7 +1,7 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: echo
+  name: wiki
   annotations:
     {{- if .Values.ingress.annotations }}
     {{- toYaml .Values.ingress.annotations | nindent 4 }}
@@ -10,7 +10,7 @@ spec:
   tls:
     - hosts:
         - {{ .Values.hostname | quote }}
-      secretName: ingress-echo-tls
+      secretName: ingress-wiki-tls
   rules:
     - host: {{ .Values.hostname | quote }}
       http:
@@ -19,6 +19,6 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: echo
+                name: wiki
                 port:
                   number: 8000
