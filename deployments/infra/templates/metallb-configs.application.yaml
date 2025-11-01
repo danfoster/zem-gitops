@@ -4,6 +4,8 @@ kind: Application
 metadata:
   name: metallb-configs
   namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
 spec:
   project: infra-metallb
   syncPolicy:

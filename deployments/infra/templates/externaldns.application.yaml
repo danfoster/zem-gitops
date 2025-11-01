@@ -4,6 +4,8 @@ kind: Application
 metadata:
   name: externaldns
   namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
 spec:
   project: infra-externaldns
   syncPolicy:

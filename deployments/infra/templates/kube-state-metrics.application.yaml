@@ -4,6 +4,8 @@ kind: Application
 metadata:
   name: kube-state-metrics
   namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
 spec:
   project: infra-monitoring
   syncPolicy:

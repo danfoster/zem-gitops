@@ -3,6 +3,8 @@ kind: Application
 metadata:
   name: transmission-{{ .Values.env }}
   namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
 spec:
   project: media-{{ .Values.env }}
   syncPolicy:

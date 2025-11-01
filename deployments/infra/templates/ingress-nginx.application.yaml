@@ -4,6 +4,8 @@ kind: Application
 metadata:
   name: ingress-nginx
   namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
 spec:
   project: infra-ingress-nginx
   syncPolicy:
