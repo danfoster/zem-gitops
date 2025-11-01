@@ -7,4 +7,4 @@ external-dns:
         secretKeyRef:
           name: cloudflare-api-token
           key: api-token
-  txtOwnerId: zem-c1-externaldns
+  txtOwnerId: zem-unknown
