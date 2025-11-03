@@ -22,3 +22,8 @@ spec:
   destination:
     server: "https://kubernetes.default.svc"
     namespace: zem-external-{{ .Values.env }}
+  ignoreDifferences:
+    - group: argoproj.io
+      kind: Application
+      jsonPointers:
+      - /spec/syncPolicy
