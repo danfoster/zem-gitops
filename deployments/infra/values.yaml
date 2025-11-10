@@ -31,3 +31,5 @@ features:
     enabled: true
   zfs_exporter:
     enabled: false
+  smartctl_exporter:
+    enabled: false

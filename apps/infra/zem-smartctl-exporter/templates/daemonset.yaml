@@ -1,0 +1,59 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: prometheus-smartctl-exporter
+  labels:
+    app.kubernetes.io/component: metrics
+    app.kubernetes.io/part-of: prometheus-smartctl-exporter
+    app.kubernetes.io/name: prometheus-smartctl-exporter
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: prometheus-smartctl-exporter
+  revisionHistoryLimit: 10
+  updateStrategy:
+    rollingUpdate:
+      maxUnavailable: 1
+    type: RollingUpdate
+  template:
+    metadata:
+      annotations:
+        cluster-autoscaler.kubernetes.io/safe-to-evict: "true"
+      labels:
+        app.kubernetes.io/component: metrics
+        app.kubernetes.io/part-of: prometheus-smartctl-exporter
+        app.kubernetes.io/name: prometheus-smartctl-exporter
+    spec:
+      containers:
+        - name: smartctl-exporter
+          image: prometheuscommunity/smartctl-exporter:v0.14.0
+          imagePullPolicy: IfNotPresent
+          securityContext:
+            readOnlyRootFilesystem: true
+          livenessProbe:
+            failureThreshold: 3
+            httpGet:
+              httpHeaders:
+              path: /
+              port: metrics
+              scheme: HTTP
+            initialDelaySeconds: 0
+            periodSeconds: 10
+            successThreshold: 1
+            timeoutSeconds: 1
+          readinessProbe:
+            failureThreshold: 3
+            httpGet:
+              httpHeaders:
+              path: /
+              port: metrics
+              scheme: HTTP
+            initialDelaySeconds: 0
+            periodSeconds: 10
+            successThreshold: 1
+            timeoutSeconds: 1
+      nodeSelector:
+        kubernetes.io/os: linux
+      tolerations:
+        - effect: NoSchedule
+          operator: Exists
