@@ -1,7 +1,7 @@
 apiVersion: operator.victoriametrics.com/v1beta1
 kind: VMServiceScrape
 metadata:
-  name: node-exporter
+  name: smartctl-exporter
 spec:
   endpoints:
     - port: metrics
@@ -11,4 +11,4 @@ spec:
           action: replace
   selector:
     matchLabels:
-      app.kubernetes.io/instance: node-exporter
+      app.kubernetes.io/instance: smartctl-exporter
