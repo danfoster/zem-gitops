@@ -17,7 +17,7 @@ spec:
   source:
     repoURL: https://github.com/danfoster/zem-gitops
     targetRevision: main
-    path: apps/infra/zem-node-exporter
+    path: apps/infra/zem-smartctl-exporter
     helm:
       releaseName: smartctl-exporter
   destination:
