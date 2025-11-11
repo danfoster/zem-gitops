@@ -25,7 +25,6 @@ spec:
         app.kubernetes.io/name: prometheus-smartctl-exporter
     spec:
       securityContext:
-        privileged: true
         runAsUser: 0 # Run as root user
         runAsGroup: 6 # Set primary GID to 6 (disk group)
         fsGroup: 6 # Set file system group for mounted volumes
@@ -35,6 +34,7 @@ spec:
           imagePullPolicy: IfNotPresent
           securityContext:
             readOnlyRootFilesystem: true
+            privileged: true
             capabilities:
               add: ["SYS_RAWIO", "DAC_READ_SEARCH", "MKNOD"]
           livenessProbe:
