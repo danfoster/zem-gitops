@@ -11,4 +11,4 @@ spec:
           action: replace
   selector:
     matchLabels:
-      app.kubernetes.io/instance: smartctl-exporter
+      app.kubernetes.io/name: prometheus-smartctl-exporter
