@@ -35,7 +35,7 @@ spec:
           securityContext:
             readOnlyRootFilesystem: true
             capabilities:
-              add: ["SYS_RAWIO", "DAC_READ_SEARCH"]
+              add: ["SYS_RAWIO", "DAC_READ_SEARCH", "MKNOD"]
           livenessProbe:
             failureThreshold: 3
             httpGet:
