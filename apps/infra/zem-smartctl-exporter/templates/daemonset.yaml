@@ -30,12 +30,14 @@ spec:
           imagePullPolicy: IfNotPresent
           securityContext:
             readOnlyRootFilesystem: true
+            capabilities:
+              add: ["SYS_RAWIO"]
           livenessProbe:
             failureThreshold: 3
             httpGet:
               httpHeaders:
               path: /
-              port: metrics
+              port: 9633
               scheme: HTTP
             initialDelaySeconds: 0
             periodSeconds: 10
@@ -46,14 +48,23 @@ spec:
             httpGet:
               httpHeaders:
               path: /
-              port: metrics
+              port: 9633
               scheme: HTTP
             initialDelaySeconds: 0
             periodSeconds: 10
             successThreshold: 1
             timeoutSeconds: 1
+          volumeMounts:
+            - name: host-dev
+              mountPath: /dev
+              mountPropagation: HostToContainer
       nodeSelector:
         kubernetes.io/os: linux
       tolerations:
         - effect: NoSchedule
           operator: Exists
+
+      volumes:
+        - name: host-dev
+          hostPath:
+            path: /dev
