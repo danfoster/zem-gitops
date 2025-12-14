@@ -22,7 +22,7 @@ spec:
       releaseName: velero
   destination:
     server: "https://kubernetes.default.svc"
-    namespace: backups
+    namespace: velero
   ignoreDifferences:
     - kind: Service
       jsonPointers:
