@@ -33,3 +33,5 @@ features:
     enabled: false
   smartctl_exporter:
     enabled: false
+  velero:
+    enabled: true

@@ -1,0 +1,19 @@
+{{ if .Values.features.reloader.enabled }}
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: backups
+  namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: "-1"
+spec:
+  description: Reloader
+  destinations:
+    - namespace: "velero"
+      server: "https://kubernetes.default.svc"
+  clusterResourceWhitelist:
+    - group: "*"
+      kind: "*"
+  sourceRepos:
+    - https://github.com/danfoster/zem-gitops
+{{ end }}
