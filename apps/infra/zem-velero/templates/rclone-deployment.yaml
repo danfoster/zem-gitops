@@ -1,0 +1,40 @@
+{{- if .Values.rclone.enabled }}
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Release.Name }}-rclone-s3
+  labels:
+    app: {{ .Release.Name }}-rclone
+    app.kubernetes.io/managed-by: {{ .Release.Service }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: {{ .Release.Name }}-rclone
+  template:
+    metadata:
+      labels:
+        app: {{ .Release.Name }}-rclone
+    spec:
+      containers:
+        - name: rclone
+          image: {{ .Values.rclone.image }}
+          args:
+            - "--config"
+            - "/config/rclone.conf"
+            - "serve"
+            - "s3"
+            - "--addr"
+            - ":9000"
+          ports:
+            - containerPort: {{ .Values.rclone.servicePort }}
+              name: s3
+          volumeMounts:
+            - name: rclone-config
+              mountPath: /config
+              readOnly: true
+      volumes:
+        - name: rclone-config
+          secret:
+            secretName: {{ .Values.rclone.configSecretName }}
+{{- end }}
