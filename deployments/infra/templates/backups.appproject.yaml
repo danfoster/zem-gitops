@@ -9,7 +9,7 @@ metadata:
 spec:
   description: Reloader
   destinations:
-    - namespace: "velero"
+    - namespace: "backups"
       server: "https://kubernetes.default.svc"
   clusterResourceWhitelist:
     - group: "*"
