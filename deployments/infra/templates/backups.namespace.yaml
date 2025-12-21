@@ -1,4 +1,4 @@
-{{ if .Values.features.certmanager.enabled }}
+{{ if .Values.features.backups.enabled }}
 apiVersion: v1
 kind: Namespace
 metadata:
