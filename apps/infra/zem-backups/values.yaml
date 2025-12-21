@@ -1,5 +1,5 @@
 rclone:
-  enabled: true
+  enabled: false
   # rclone image to use for the S3 gateway
   image: rclone/rclone:latest
   # Name of the Kubernetes secret (contains rclone.conf) that will be mounted
@@ -16,7 +16,4 @@ rclone:
     allowedNamespaces:
       enabled: false
       matchLabels: {}
-  externalSecret:
-    enabled: true
-    targetSecretName: rclone-credentials
 
