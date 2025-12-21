@@ -2,7 +2,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: velero
+  name: k8up
   namespace: argocd
   finalizers:
     - resources-finalizer.argocd.argoproj.io
@@ -17,12 +17,12 @@ spec:
   source:
     repoURL: https://github.com/danfoster/zem-gitops
     targetRevision: main
-    path: apps/infra/zem-velero
+    path: apps/infra/zem-k8up
     helm:
-      releaseName: velero
+      releaseName: k8up
   destination:
     server: "https://kubernetes.default.svc"
-    namespace: velero
+    namespace: backups
   ignoreDifferences:
     - kind: Service
       jsonPointers:

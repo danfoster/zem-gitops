@@ -1,0 +1,22 @@
+rclone:
+  enabled: true
+  # rclone image to use for the S3 gateway
+  image: rclone/rclone:latest
+  # Name of the Kubernetes secret (contains rclone.conf) that will be mounted
+  configSecretName: rclone-config
+  serviceName: rclone-s3
+  servicePort: 9000
+  networkPolicy:
+    enabled: true
+    allowedPodSelector:
+      matchLabels:
+        app.kubernetes.io/name: k8up
+    # Optional: allow pods from namespaces matching these labels.
+    # Disabled by default — enable and set matchLabels per-cluster if you need cross-namespace access.
+    allowedNamespaces:
+      enabled: false
+      matchLabels: {}
+  externalSecret:
+    enabled: true
+    targetSecretName: rclone-credentials
+
