@@ -16,4 +16,8 @@ rclone:
     allowedNamespaces:
       enabled: false
       matchLabels: {}
-
+b2:
+  secretName: b2-credentials
+  bucketName: zem-backups-eu
+restic:
+  secretName: restic-credentials
