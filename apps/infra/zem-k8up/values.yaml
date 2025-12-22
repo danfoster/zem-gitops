@@ -1,25 +1,26 @@
 k8up:
-  skipWithoutAnnotation: true
-  envVars:
-    # S3 Endpoint and Bucket (Safe to keep in YAML or move to ConfigMap)
-    - name: BACKUP_GLOBAL_S3_ENDPOINT
-      value: "s3.eu-central-003.backblazeb2.com"
-    - name: BACKUP_GLOBAL_S3_BUCKET
-      value: "zem-backups-eu/cluster01"
+  k8up:
+    skipWithoutAnnotation: true
+    envVars:
+      # S3 Endpoint and Bucket (Safe to keep in YAML or move to ConfigMap)
+      - name: BACKUP_GLOBAL_S3_ENDPOINT
+        value: "s3.eu-central-003.backblazeb2.com"
+      - name: BACKUP_GLOBAL_S3_BUCKET
+        value: "zem-backups-eu/cluster01"
 
-    # Credentials pulled from the Secret created in Step 1
-    - name: BACKUP_GLOBAL_S3_ACCESSKEYID
-      valueFrom:
-        secretKeyRef:
-          name: b2-credentials
-          key: ACCESS_KEY_ID
-    - name: BACKUP_GLOBAL_S3_SECRETACCESSKEY
-      valueFrom:
-        secretKeyRef:
-          name: b2-credentials
-          key: SECRET_ACCESS_KEY
-    - name: BACKUP_GLOBAL_REPO_PASSWORD
-      valueFrom:
-        secretKeyRef:
-          name: restic-credentials
-          key: repo-password
+      # Credentials pulled from the Secret created in Step 1
+      - name: BACKUP_GLOBAL_S3_ACCESSKEYID
+        valueFrom:
+          secretKeyRef:
+            name: b2-credentials
+            key: ACCESS_KEY_ID
+      - name: BACKUP_GLOBAL_S3_SECRETACCESSKEY
+        valueFrom:
+          secretKeyRef:
+            name: b2-credentials
+            key: SECRET_ACCESS_KEY
+      - name: BACKUP_GLOBAL_REPO_PASSWORD
+        valueFrom:
+          secretKeyRef:
+            name: restic-credentials
+            key: repo-password
