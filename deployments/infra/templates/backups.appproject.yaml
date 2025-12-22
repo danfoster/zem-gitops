@@ -7,9 +7,9 @@ metadata:
   annotations:
     argocd.argoproj.io/sync-wave: "-1"
 spec:
-  description: Reloader
+  description: Backups Schedules
   destinations:
-    - namespace: "backups"
+    - namespace: "*"
       server: "https://kubernetes.default.svc"
   clusterResourceWhitelist:
     - group: "*"

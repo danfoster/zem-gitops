@@ -1,0 +1,19 @@
+apiVersion: k8up.io/v1
+kind: Schedule
+metadata:
+  name: zem-backups
+spec:
+  backup:
+    schedule: "{{.Values.backup.schedule}}"
+    failedJobsHistoryLimit: 5
+    successfulJobsHistoryLimit: 2
+    # optional
+    #promURL: https://prometheus-io-instance:8443
+  check:
+    schedule: "{{.Values.check.schedule}}"
+    # optional
+    #promURL: https://prometheus-io-instance:8443
+  prune:
+    schedule: "{{ .Values.prune.schedule }}"
+    retention:
+{{ toYaml .Values.prune.retention | indent 6 }}

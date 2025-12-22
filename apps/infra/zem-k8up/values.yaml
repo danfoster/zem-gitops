@@ -1,25 +1,48 @@
+rclone:
+  enabled: false
+  # rclone image to use for the S3 gateway
+  image: rclone/rclone:latest
+  # Name of the Kubernetes secret (contains rclone.conf) that will be mounted
+  configSecretName: rclone-config
+  serviceName: rclone-s3
+  servicePort: 9000
+  networkPolicy:
+    enabled: true
+    allowedPodSelector:
+      matchLabels:
+        app.kubernetes.io/name: k8up
+    # Optional: allow pods from namespaces matching these labels.
+    # Disabled by default — enable and set matchLabels per-cluster if you need cross-namespace access.
+    allowedNamespaces:
+      enabled: false
+      matchLabels: {}
+b2:
+  secretName: b2-credentials
+  bucketName: zem-backups-eu
+restic:
+  secretName: restic-credentials
 k8up:
   k8up:
     skipWithoutAnnotation: true
     envVars:
       # S3 Endpoint and Bucket (Safe to keep in YAML or move to ConfigMap)
-      - name: BACKUP_GLOBAL_S3_ENDPOINT
+      - name: BACKUP_GLOBALS3ENDPOINT
         value: "s3.eu-central-003.backblazeb2.com"
-      - name: BACKUP_GLOBAL_S3_BUCKET
+      - name: BACKUP_GLOBALS3BUCKET
         value: "zem-backups-eu/cluster01"
 
       # Credentials pulled from the Secret created in Step 1
-      - name: BACKUP_GLOBAL_S3_ACCESSKEYID
+      - name: BACKUP_GLOBALACCESSKEYID
         valueFrom:
           secretKeyRef:
             name: b2-credentials
             key: ACCESS_KEY_ID
-      - name: BACKUP_GLOBAL_S3_SECRETACCESSKEY
+      - name: BACKUP_GLOBALSECRETACCESSKEY
         valueFrom:
           secretKeyRef:
             name: b2-credentials
             key: SECRET_ACCESS_KEY
-      - name: BACKUP_GLOBAL_REPO_PASSWORD
+      - name: BACKUP_GLOBALREPOPASSWORD
         valueFrom:
           secretKeyRef:
             name: restic-credentials
