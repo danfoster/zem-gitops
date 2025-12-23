@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: backups-zem-external-{{.Values.env }}
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: zem-external-{{ .Values.env }}
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+  source:
+    repoURL: https://github.com/danfoster/zem-gitops
+    targetRevision: main
+    path: apps/infra/zem-backups
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: zem-external-{{ .Values.env }}
