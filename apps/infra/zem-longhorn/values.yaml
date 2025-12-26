@@ -1,7 +1,7 @@
 longhorn:
   preUpgradeChecker:
     jobEnabled: false
+  persistence:
+    defaultClassReplicaCount: 1
 ingress:
   hostname: ""
-storageClass:
-  numberOfReplicas: 1

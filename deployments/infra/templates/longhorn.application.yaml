@@ -25,7 +25,7 @@ spec:
       {{- toYaml .Values.features.longhorn | nindent 8 }}
   destination:
     server: "https://kubernetes.default.svc"
-    namespace: longhorn
+    namespace: longhorn-system
   ignoreDifferences:
     - kind: Service
       jsonPointers:
