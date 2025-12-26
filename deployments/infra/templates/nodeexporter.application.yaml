@@ -20,12 +20,6 @@ spec:
     path: apps/infra/zem-node-exporter
     helm:
       releaseName: node-exporter
-      valuesObject:
-        node_exporter:
-          ingress:
-            tls:
-              - hosts:
-                  - {{ .Values.features.alloy.hostname | quote }}
   destination:
     server: "https://kubernetes.default.svc"
     namespace: monitoring
