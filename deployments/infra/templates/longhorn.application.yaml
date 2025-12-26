@@ -21,6 +21,8 @@ spec:
     path: apps/infra/zem-longhorn
     helm:
       releaseName: longhorn
+      valuesObject:
+      {{- toYaml .Values.features.longhorn | nindent 8 }}
   destination:
     server: "https://kubernetes.default.svc"
     namespace: longhorn
