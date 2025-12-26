@@ -3,3 +3,5 @@ longhorn:
     jobEnabled: false
 ingress:
   hostname: ""
+storageClass:
+  numberOfReplicas: 1
