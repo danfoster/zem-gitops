@@ -1,5 +1,0 @@
-## NOTE: example replaced by in-chart rclone S3 gateway implementation
-## The previous example showing MinIO + CronJob->rclone->OneDrive is now
-## superseded by the in-chart rclone S3 gateway. Per-cluster configuration and
-## ExternalSecret mappings should be used instead of this file.
-

@@ -1,0 +1,31 @@
+{{ if .Values.features.longhorn.enabled }}
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: longhorn
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: backups
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+      # - ServerSideApply=true
+  source:
+    repoURL: https://github.com/danfoster/zem-gitops
+    targetRevision: main
+    path: apps/infra/zem-longhorn
+    helm:
+      releaseName: longhorn
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: longhorn
+  ignoreDifferences:
+    - kind: Service
+      jsonPointers:
+        - /spec/externalName
+{{ end }}

@@ -35,3 +35,5 @@ features:
     enabled: false
   backups:
     enabled: true
+  longhorn:
+    enabled: true
