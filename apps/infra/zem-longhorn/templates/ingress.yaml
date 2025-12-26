@@ -6,9 +6,9 @@ spec:
   ingressClassName: tailscale
   defaultBackend:
     service:
-      name: "{{.Values.ingress.hostname}}"
+      name: longhorn-frontend
       port:
         number: 80
   tls:
     - hosts:
-        - longhorn-frontend
+        - "{{.Values.ingress.hostname}}"
