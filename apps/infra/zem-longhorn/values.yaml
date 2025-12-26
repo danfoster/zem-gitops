@@ -1,3 +1,5 @@
 longhorn:
   preUpgradeChecker:
     jobEnabled: false
+ingress:
+  hostname: ""
