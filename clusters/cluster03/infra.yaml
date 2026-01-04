@@ -18,6 +18,12 @@ spec:
             enabled: true
             external-dns:
               txtOwnerId: "zem-c3"
+          ingressnginx:
+            enabled: true
+            controller:
+              service:
+                annotations:
+                  oci.oraclecloud.com/load-balancer-type: "nlb"
 
   destination:
     server: "https://kubernetes.default.svc"
