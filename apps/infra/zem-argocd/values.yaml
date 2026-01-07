@@ -9,5 +9,8 @@ argo-cd:
       policy.csv: |
         g, dan@zem.org.uk, role:admin
       scopes: "[email]"
+  dex:
+    livenessProbe:
+      enabled: true
 globals:
   domain: argocd-cluster01.shark-puffin.ts.net
