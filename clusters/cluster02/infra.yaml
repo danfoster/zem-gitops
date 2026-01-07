@@ -29,6 +29,10 @@ spec:
             enabled: true
             external-dns:
               txtOwnerId: "zem-c2"
+          longhorn:
+            enabled: true
+            ingress:
+              hostname: longhorn-cluster02
 
   destination:
     server: "https://kubernetes.default.svc"

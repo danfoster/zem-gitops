@@ -26,6 +26,10 @@ spec:
               txtOwnerId: "zem-c1"
           smartctl_exporter:
             enabled: true
+          longhorn:
+            enabled: true
+            ingress:
+              hostname: longhorn-cluster01
 
   destination:
     server: "https://kubernetes.default.svc"

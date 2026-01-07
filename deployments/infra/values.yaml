@@ -33,6 +33,4 @@ features:
   backups:
     enabled: true
   longhorn:
-    enabled: true
-    ingress:
-      hostname: longhorn-cluster01
+    enabled: false
