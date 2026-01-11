@@ -1,9 +1,9 @@
 apiVersion: operator.victoriametrics.com/v1beta1
 kind: VMAgent
 metadata:
-  name: default
+  name: "{{ .Values.cluster.name }}"
 spec:
-  # ...
+  vmAgentExternalLabelName: cluster
   image:
     repository: docker.io/victoriametrics/vmagent
   selectAllByDefault: true
