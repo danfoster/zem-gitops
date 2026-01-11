@@ -4,6 +4,8 @@ victoria-metrics-agent:
   config:
     global:
       scrape_interval: 60s
+      external_labels:
+        cluster: "REPLACE_WITH_CLUSTER_NAME"
     scrape_configs:
       - job_name: "kubernetes-apiservers"
         kubernetes_sd_configs:

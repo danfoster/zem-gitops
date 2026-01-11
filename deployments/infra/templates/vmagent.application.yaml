@@ -20,6 +20,8 @@ spec:
     path: apps/infra/zem-vmagent
     helm:
       releaseName: vmagent
+      valuesObject:
+      {{- toYaml .Values.features.vmagent | nindent 8 }}
   destination:
     server: "https://kubernetes.default.svc"
     namespace: monitoring
