@@ -4,7 +4,7 @@ metadata:
   name: "default"
 spec:
   externalLabels:
-    cluster: "{{ .Values.global.cluster.name }}"
+    cluster: "{{ .Values.cluster.name }}"
   image:
     repository: docker.io/victoriametrics/vmagent
   selectAllByDefault: true
