@@ -22,6 +22,11 @@ spec:
       releaseName: vmagent
       valuesObject:
       {{- toYaml .Values.features.vmagent | nindent 8 }}
+        victoria-metrics-agent:
+          config:
+            global:
+              external_labels:
+                cluster: "{{.Values.cluster.name}}"
   destination:
     server: "https://kubernetes.default.svc"
     namespace: monitoring

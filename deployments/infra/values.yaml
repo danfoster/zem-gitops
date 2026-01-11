@@ -24,11 +24,6 @@ features:
     enabled: true
   vmagent:
     enabled: true
-    victoria-metrics-agent:
-    config:
-      global:
-        external_labels:
-          cluster: "{{. Value.cluster.name}}"
   vmoperator:
     enabled: true
   zfs_exporter:
