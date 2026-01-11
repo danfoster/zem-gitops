@@ -13,8 +13,9 @@ spec:
     path: deployments/infra
     helm:
       valuesObject:
-        cluster:
-          name: cluster01
+        global:
+          cluster:
+            name: cluster01
         features:
           openebs:
             enabled: true
