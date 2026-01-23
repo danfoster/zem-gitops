@@ -41,7 +41,7 @@ spec:
             cloudflare-tunnel:
               cloudflare:
                 account: e858dfdda23dd1f6b72e57841b7a5f52
-                tunnelID: 6dafe365-fac3-4610-9f84-bc70b8eb4397
+                tunnelId: 6dafe365-fac3-4610-9f84-bc70b8eb4397
             externalSecret:
               remoteRefKey: clouldflared-token-cluster02
 
