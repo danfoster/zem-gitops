@@ -1,0 +1,12 @@
+cloudflare-tunnel:
+  replicas: 1
+  cloudflare:
+    secretName: cloudflared-secret
+    tunnelName: zem-tunnel
+    # The account is the account tag
+    account: CHANGEME
+    # The tunnelId is the tunnel ID
+    tunnelId: CHANGEME
+
+externalSecret:
+  remoteRefKey: "CHANGEME_CLOUDFLARE_TUNNEL_TOKEN_ID"

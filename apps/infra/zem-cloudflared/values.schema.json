@@ -1,0 +1,50 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "zem-cloudflared values",
+  "type": "object",
+  "properties": {
+    "cloudflare-tunnel": {
+      "type": "object",
+      "properties": {
+        "cloudflare": {
+          "type": "object",
+          "properties": {
+            "account": {
+              "type": "string",
+              "title": "Cloudflare Account Tag",
+              "description": "The Cloudflare account tag",
+              "not": {
+                "enum": ["CHANGEME"]
+              }
+            },
+            "tunnelId": {
+              "type": "string",
+              "title": "Cloudflare Tunnel ID",
+              "description": "The Cloudflare tunnel ID",
+              "not": {
+                "enum": ["CHANGEME"]
+              }
+            }
+          },
+          "required": ["account", "tunnelId"]
+        }
+      },
+      "required": ["cloudflare"]
+    },
+    "externalSecret": {
+      "type": "object",
+      "properties": {
+        "remoteRefKey": {
+          "type": "string",
+          "title": "External Secret Remote Ref Key",
+          "description": "The key for the remote secret in the external secret store",
+          "not": {
+            "enum": ["CHANGEME_CLOUDFLARE_TUNNEL_TOKEN_ID"]
+          }
+        }
+      },
+      "required": ["remoteRefKey"]
+    }
+  },
+  "required": ["cloudflare-tunnel", "externalSecret"]
+}

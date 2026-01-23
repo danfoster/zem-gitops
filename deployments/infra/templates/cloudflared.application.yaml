@@ -1,0 +1,28 @@
+{{ if .Values.features.cloudflared.enabled }}
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: cloudflared
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: infra-cloudflared
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+  source:
+    repoURL: https://github.com/danfoster/zem-gitops
+    targetRevision: main
+    path: apps/infra/zem-cloudflared
+    helm:
+      releaseName: cloudflared
+      valuesObject:
+      {{- toYaml .Values.features.cloudflared | nindent 8 }}
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: cloudflared
+{{ end }}

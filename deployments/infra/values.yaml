@@ -16,6 +16,8 @@ features:
     enabled: true
   externaldns:
     enabled: false
+  cloudflared:
+    enabled: false
   certmanager:
     enabled: true
   kube_state_metrics:

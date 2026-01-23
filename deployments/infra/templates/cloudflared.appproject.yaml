@@ -1,0 +1,22 @@
+{{ if .Values.features.cloudflared.enabled }}
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: infra-cloudflared
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  description: "Cloudflared project"
+  sourceRepos:
+    - "*"
+  destinations:
+    - namespace: cloudflared
+      server: https://kubernetes.default.svc
+  clusterResourceWhitelist:
+    - group: "*"
+      kind: "*"
+  namespaceResourceWhitelist:
+    - group: "*"
+      kind: "*"
+{{ end }}
