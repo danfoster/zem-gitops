@@ -1,0 +1,6 @@
+# This file contains valid test values for the Helm chart's JSON schema.
+# Use 'helm lint --values values_linter.yaml .' to test.
+
+
+externalSecret:
+  remoteRefKey: "my-cloudflare-tunnel-token-id"
