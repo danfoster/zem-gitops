@@ -27,6 +27,14 @@ spec:
               service:
                 annotations:
                   oci.oraclecloud.com/load-balancer-type: "nlb"
+          longhorn:
+            enabled: true
+            ingress:
+              hostname: longhorn-cluster03
+          cloudflared:
+            enabled: true
+            externalSecret:
+              remoteRefKey: clouldflared-token-cluster03
 
   destination:
     server: "https://kubernetes.default.svc"
