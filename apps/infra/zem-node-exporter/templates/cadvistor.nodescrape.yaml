@@ -1,0 +1,22 @@
+apiVersion: operator.victoriametrics.com/v1beta1
+kind: VMNodeScrape
+metadata:
+  name: cadvisor-metrics
+spec:
+  # The path for cAdvisor metrics
+  path: /metrics/cadvisor
+  # Kubelet metrics are usually served over HTTPS
+  scheme: https
+  interval: 30s
+  scrapeTimeout: 10s
+  tlsConfig:
+    # Most Kubelet certs are self-signed by the K8s CA
+    insecureSkipVerify: true
+  # Authentication is required for the Kubelet
+  bearerTokenFile: /var/run/secrets/kubernetes.io/serviceaccount/token
+  relabelConfigs:
+    # Standard relabeling to make labels like 'node' readable
+    - action: labelmap
+      regex: __meta_kubernetes_node_label_(.+)
+    - targetLabel: job
+      replacement: cadvisor
