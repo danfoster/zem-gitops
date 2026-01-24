@@ -20,3 +20,16 @@ spec:
       regex: __meta_kubernetes_node_label_(.+)
     - targetLabel: job
       replacement: cadvisor
+  metricRelabelConfigs:
+    # 1. Drop any metric that doesn't have a container name (usually junk/summary metrics)
+    - sourceLabels: [container]
+      regex: "^$"
+      action: drop
+    # 2. Drop "POD" containers (the pause container) to save space
+    - sourceLabels: [container]
+      regex: "POD"
+      action: drop
+    # This regex drops common OCI infrastructure noise labels
+    # while keeping standard ones like 'node' or 'instance'
+    - action: labeldrop
+      regex: "(beta_kubernetes_io_.*|failure_domain_.*|node_info_.*|oci_oraclecloud_com_.*|oke_oraclecloud_com_.*|topology_kubernetes_io_.*)"
