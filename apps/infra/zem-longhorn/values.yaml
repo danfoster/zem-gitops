@@ -1,3 +1,5 @@
+global:
+  imageRegistry: "docker.io"
 longhorn:
   preUpgradeChecker:
     jobEnabled: false
