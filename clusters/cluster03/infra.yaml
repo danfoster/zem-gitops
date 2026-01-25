@@ -35,6 +35,8 @@ spec:
             enabled: true
             externalSecret:
               remoteRefKey: clouldflared-token-cluster03
+          mariadb:
+            enabled: true
 
   destination:
     server: "https://kubernetes.default.svc"
