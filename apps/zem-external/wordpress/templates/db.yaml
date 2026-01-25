@@ -4,7 +4,7 @@ metadata:
   name: mariadb
 spec:
   storage:
-    size: 1Gi
+    size: "{{.Values.db.storage.size }}"
 
   username: wordpress-user
   passwordSecretKeyRef:

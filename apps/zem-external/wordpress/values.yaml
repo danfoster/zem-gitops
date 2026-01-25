@@ -1,1 +1,4 @@
 ingress: {}
+db:
+  storage:
+    size: 1Gi
