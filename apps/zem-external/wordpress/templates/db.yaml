@@ -10,4 +10,5 @@ spec:
   passwordSecretKeyRef:
     name: wordpress-user
     key: password
+    generate: true
   database: wordpress
