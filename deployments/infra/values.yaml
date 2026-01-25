@@ -1,6 +1,7 @@
-global:
+common:
   values:
-    cluster: changeme
+    cluster:
+      name: changeme
   argocd_namespace: argocd
 features:
   backups:
