@@ -14,32 +14,30 @@ spec:
     helm:
       valuesObject:
         global:
-          cluster:
-            name: cluster02
+          values:
+            cluster:
+              name: cluster02
         features:
-          openebs:
-            enabled: true
-            storageclasses:
-              zfs:
-                enabled: true
-                poolname: "zroot/openebs"
-                default: true
           metallb:
             enabled: true
-            addresses:
-              - "209.16.157.32/32"
+            values:
+              addresses:
+                - "209.16.157.32/32"
           externaldns:
             enabled: true
-            external-dns:
-              txtOwnerId: "zem-c2"
+            values:
+              external-dns:
+                txtOwnerId: "zem-c2"
           longhorn:
             enabled: true
-            ingress:
-              hostname: longhorn-cluster02
+            values:
+              ingress:
+                hostname: longhorn-cluster02
           cloudflared:
             enabled: true
-            externalSecret:
-              remoteRefKey: clouldflared-token-cluster02
+            values:
+              externalSecret:
+                remoteRefKey: clouldflared-token-cluster02
 
   destination:
     server: "https://kubernetes.default.svc"

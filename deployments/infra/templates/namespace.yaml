@@ -1,8 +1,10 @@
-{{ if .Values.features.certmanager.enabled }}
+{{- $namespaces := include "infra.namespaces" . | fromJsonArray -}}
+{{ range $n := $namespaces }}
+---
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: cert-manager
+  name: {{ $n }}
   labels:
     infra: "true"
   annotations:

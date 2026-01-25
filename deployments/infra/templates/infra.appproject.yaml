@@ -1,0 +1,23 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: infra
+  namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: "-1"
+spec:
+  description: Infra
+  destinations:
+    {{- $namespaces := include "infra.namespaces" . | fromJsonArray -}}
+    {{- range $namespaces }}
+    - namespace: {{ . | quote }}
+      server: "https://kubernetes.default.svc"
+    {{- end }}
+  clusterResourceWhitelist:
+    - group: "*"
+      kind: "*"
+  sourceRepos:
+    {{- $repos := include "infra.repoURLs" . | fromJsonArray -}}
+    {{- range $repos }}
+    - {{ . }}
+    {{- end }}

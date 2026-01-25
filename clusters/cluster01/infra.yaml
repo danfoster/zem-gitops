@@ -14,25 +14,29 @@ spec:
     helm:
       valuesObject:
         global:
-          cluster:
-            name: cluster01
+          values:
+            cluster:
+              name: cluster01
         features:
           openebs:
             enabled: true
           metallb:
             enabled: true
-            addresses:
-              - 10.42.2.210-10.42.2.220
+            values:
+              addresses:
+                - 10.42.2.210-10.42.2.220
           externaldns:
             enabled: true
-            external-dns:
-              txtOwnerId: "zem-c1"
+            values:
+              external-dns:
+                txtOwnerId: "zem-c1"
           smartctl_exporter:
             enabled: true
           longhorn:
             enabled: true
-            ingress:
-              hostname: longhorn-cluster01
+            values:
+              ingress:
+                hostname: longhorn-cluster01
 
   destination:
     server: "https://kubernetes.default.svc"
