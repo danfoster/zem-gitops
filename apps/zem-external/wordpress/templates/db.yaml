@@ -55,4 +55,4 @@ metadata:
 type: Opaque
 data:
   # This generates a random password only if the secret doesn't exist
-  password: "{{ derivePassword "wordpress-user-pwd" . | b64enc | quote }}""
+  password: '{{ derivePassword "wordpress-user-pwd" . | b64enc | quote }}'
