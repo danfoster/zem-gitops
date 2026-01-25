@@ -3,6 +3,9 @@ kind: MariaDB
 metadata:
   name: mariadb
 spec:
+  storage:
+    size: 1Gi
+
   username: wordpress-user
   passwordSecretKeyRef:
     name: wordpress-user
