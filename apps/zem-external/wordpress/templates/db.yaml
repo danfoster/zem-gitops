@@ -10,11 +10,38 @@ spec:
     name: mariadb
     key: root-password
     generate: true
-
-  username: wordpress-user
+---
+apiVersion: k8s.mariadb.com/v1alpha1
+kind: Database
+metadata:
+  name: wordpress
+spec:
+  mariaDbRef:
+    name: mariadb
+  characterSet: utf8mb4
+  collate: utf8mb4_unicode_ci
+---
+apiVersion: k8s.mariadb.com/v1alpha1
+kind: User
+metadata:
+  name: wordpress-user
+spec:
+  mariaDbRef:
+    name: mariadb
   passwordSecretKeyRef:
     name: wordpress-user
     key: password
     generate: true
-
-  database: wordpress
+---
+apiVersion: k8s.mariadb.com/v1alpha1
+kind: Grant
+metadata:
+  name: wordpress-user-all
+spec:
+  mariaDbRef:
+    name: mariadb
+  privileges:
+    - "ALL PRIVILEGES"
+  database: "wordpress"
+  table: "*"
+  username: "wordpress-user"
