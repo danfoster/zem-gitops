@@ -30,7 +30,7 @@ spec:
             values:
               external-dns:
                 txtOwnerId: "zem-c1"
-          smartctl_exporter:
+          smartctl-exporter:
             enabled: true
           longhorn:
             enabled: true

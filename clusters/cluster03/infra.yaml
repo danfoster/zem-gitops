@@ -23,7 +23,7 @@ spec:
             values:
               external-dns:
                 txtOwnerId: "zem-c3"
-          ingressnginx:
+          ingress-nginx:
             enabled: true
             values:
               controller:
