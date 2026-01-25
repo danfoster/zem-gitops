@@ -2,3 +2,8 @@ ingress: {}
 db:
   storage:
     size: 1Gi
+wordpress:
+  image:
+    tag: php8.5
+  storage:
+    size: 5Gi
