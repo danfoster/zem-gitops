@@ -45,3 +45,14 @@ spec:
   database: "wordpress"
   table: "*"
   username: "wordpress-user"
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: wordpress-user
+  labels:
+    "k8s.mariadb.com/watch": "true" # Important: allows the operator to sync changes
+type: Opaque
+data:
+  # This generates a random password only if the secret doesn't exist
+  password: "{{ derivePassword "wordpress-user-pwd" . | b64enc | quote }}""
