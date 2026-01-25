@@ -13,7 +13,7 @@ spec:
     path: deployments/infra
     helm:
       valuesObject:
-        global:
+        common:
           values:
             cluster:
               name: cluster02
