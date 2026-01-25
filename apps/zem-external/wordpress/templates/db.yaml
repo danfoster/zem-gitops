@@ -6,6 +6,9 @@ spec:
   storage:
     size: "{{.Values.db.storage.size }}"
 
+  rootPasswordSecretKeyRef:
+    name: mariadb
+    key: root-password
   username: wordpress-user
   passwordSecretKeyRef:
     name: wordpress-user
