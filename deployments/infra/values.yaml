@@ -86,7 +86,7 @@ features:
       targetRevision: main
       path: apps/infra/zem-node-exporter
   openebs:
-    enabled: true
+    enabled: false
     namespace: openenbs
     source:
       repoURL: https://github.com/danfoster/zem-gitops
