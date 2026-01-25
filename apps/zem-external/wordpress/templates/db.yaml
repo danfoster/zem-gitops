@@ -9,6 +9,7 @@ spec:
   rootPasswordSecretKeyRef:
     name: mariadb
     key: root-password
+    generate: true
   username: wordpress-user
   passwordSecretKeyRef:
     name: wordpress-user
