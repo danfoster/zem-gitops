@@ -40,7 +40,7 @@ spec:
             values:
               externalSecret:
                 remoteRefKey: clouldflared-token-cluster03
-          mariad-operator:
+          mariadb-operator:
             enabled: true
 
   destination:
