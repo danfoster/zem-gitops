@@ -4,6 +4,7 @@ db:
     size: 1Gi
 wordpress:
   image:
+    image: mirror.gcr.io/library/wordpress
     tag: php8.5
   storage:
     size: 5Gi
