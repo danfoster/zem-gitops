@@ -22,6 +22,8 @@ spec:
             enabled: true
           metallb:
             enabled: true
+          metallb-configs:
+            enabled: true
             values:
               addresses:
                 - 10.42.2.210-10.42.2.220

@@ -20,6 +20,8 @@ spec:
         features:
           metallb:
             enabled: true
+          metallb-configs:
+            enabled: true
             values:
               addresses:
                 - "209.16.157.32/32"
