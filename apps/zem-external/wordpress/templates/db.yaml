@@ -10,9 +10,11 @@ spec:
     name: mariadb
     key: root-password
     generate: true
+
   username: wordpress-user
   passwordSecretKeyRef:
     name: wordpress-user
     key: password
     generate: true
+
   database: wordpress
