@@ -17,7 +17,7 @@ spec:
         app: wordpress
     spec:
       containers:
-        - image: docker.io/wordpress:{{ .Values.wordpress.image.tag }}
+        - image: {{ .Values.wordpress.image.image }}:{{ .Values.wordpress.image.tag }}
           name: wordpress
           env:
             - name: WORDPRESS_DB_HOST
