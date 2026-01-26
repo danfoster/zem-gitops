@@ -14,5 +14,5 @@ spec:
   remoteWrite:
     - url: "http://prometheus:8428/api/v1/write"
       urlRelabelConfig:
-        - name: global-namespace-fix
-          key: relabel-config.yaml
+        name: global-namespace-fix
+        key: relabel-config.yaml
