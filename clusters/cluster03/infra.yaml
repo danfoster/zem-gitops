@@ -39,7 +39,7 @@ spec:
             enabled: true
             values:
               externalSecret:
-                remoteRefKey: clouldflared-token-cluster03
+                remoteRefKey: cloudflared-token-cluster03
           mariadb-operator:
             enabled: true
 

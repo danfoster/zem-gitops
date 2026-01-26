@@ -39,7 +39,7 @@ spec:
             enabled: true
             values:
               externalSecret:
-                remoteRefKey: clouldflared-token-cluster02
+                remoteRefKey: cloudflared-token-cluster02
 
   destination:
     server: "https://kubernetes.default.svc"
