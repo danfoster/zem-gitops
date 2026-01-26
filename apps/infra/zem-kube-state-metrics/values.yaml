@@ -1,0 +1,3 @@
+kube-state-metrics:
+  extraArgs:
+    metric-labels-allowlist: "namespaces[*]"
