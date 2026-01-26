@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: global-namespace-fix
+data:
+  relabel-config.yaml: |
+    - source_labels: [exported_namespace]
+      target_label: namespace
+      regex: '(.+)'
+      replacement: '$1'
+      action: replace
+    - action: labeldrop
+      regex: 'exported_namespace'
