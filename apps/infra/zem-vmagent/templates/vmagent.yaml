@@ -13,6 +13,6 @@ spec:
   scrapeTimeout: 10s
   remoteWrite:
     - url: "http://prometheus:8428/api/v1/write"
-      urlRelabelConfigRefs:
+      urlRelabelConfig:
         - name: global-namespace-fix
           key: relabel-config.yaml
