@@ -1,0 +1,8 @@
+oci:
+  vaultOcid: ocid1.vault.oc1.uk-london-1.eruxsrmlaafja.abwgiljridwbzbxrs2vvay6b6n6x7xhi3ymapbgov36lrqmm7bkxgh3hmnka
+  rootSecretOcid: ocid1.key.oc1.uk-london-1.eruxsrmlaafja.abwgiljtncunmpibvwvjygia2d3umhb6vf24axjuxuivbg52moq76tgdhdua
+mysql:
+  host: "10.44.0.209"
+applications:
+  - name: "pce-prod"
+    namespace: "pce-prod"

@@ -5,8 +5,8 @@ metadata:
 spec:
   provider:
     oracle:
-      vault: { { .Values.oci.vaultOcid } }
-      region: { { .Values.oci.region } }
+      vault: "{{ .Values.oci.vaultOcid }}"
+      region: "{{ .Values.oci.region }}"
       principalType: InstancePrincipal # The "Free Tier" identity method
 
 ---
@@ -24,4 +24,4 @@ spec:
   data:
     - secretKey: password
       remoteRef:
-        key: { { .Values.oci.rootSecretOcid } }
+        key: "{{ .Values.oci.rootSecretOcid }}"
