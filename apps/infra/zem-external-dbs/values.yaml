@@ -1,7 +1,7 @@
 oci:
   vaultOcid: ""
   rootSecretOcid: ""
-  region: ""
+  region: "uk-london-1"
 
 mysql:
   host: ""
