@@ -42,7 +42,19 @@ spec:
                 remoteRefKey: cloudflared-token-cluster03
           mariadb-operator:
             enabled: true
-
+          oci-mysql:
+            enabled: true
+            namespace: oci-mysql
+            source:
+              repoURL: https://github.com/danfoster/zem-gitops
+              targetRevision: main
+              path: apps/infra/zem-external-dbs
+            values:
+              oci:
+                vaultOcid: ocid1.vault.oc1.uk-london-1.eruxsrmlaafja.abwgiljridwbzbxrs2vvay6b6n6x7xhi3ymapbgov36lrqmm7bkxgh3hmnka
+                rootSecretOcid: ocid1.key.oc1.uk-london-1.eruxsrmlaafja.abwgiljtncunmpibvwvjygia2d3umhb6vf24axjuxuivbg52moq76tgdhdua
+              mysql:
+                host: "10.44.0.209"
   destination:
     server: "https://kubernetes.default.svc"
     namespace: argocd

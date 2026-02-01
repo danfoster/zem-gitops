@@ -1,0 +1,71 @@
+{{- range .Values.applications }}
+---
+# 1. Local Password Generation
+apiVersion: external-secrets.io/v1alpha1
+kind: Password
+metadata:
+  name: {{ .name }}-password
+spec:
+  length: 24
+  digits: 5
+
+---
+# 2. Sync to Secret + Reflector Annotation
+apiVersion: external-secrets.io/v1beta1
+kind: ExternalSecret
+metadata:
+  name: {{ .name }}-creds-sync
+spec:
+  refreshInterval: "1h"
+  target:
+    name: {{ .name }}-creds
+    template:
+      metadata:
+        annotations:
+          # This tells Reflector to mirror the secret to the app's home
+          reflector.v1.k8s.io/reflection-allowed: "true"
+          reflector.v1.k8s.io/reflection-allowed-namespaces: {{ .namespace | quote }}
+  data:
+  - secretKey: password
+    remoteRef:
+      generatorRef:
+        apiVersion: external-secrets.io/v1alpha1
+        kind: Password
+        name: {{ .name }}-password
+
+---
+# 3. Create Logical DB, User, and Grant
+apiVersion: k8s.mariadb.com/v1alpha1
+kind: Database
+metadata:
+  name: {{ .name }}-db
+spec:
+  mariaDbRef:
+    name: oci-mysql
+  characterSet: utf8mb4
+
+---
+apiVersion: k8s.mariadb.com/v1alpha1
+kind: User
+metadata:
+  name: {{ .name }}-user
+spec:
+  mariaDbRef:
+    name: oci-mysql
+  passwordSecretKeyRef:
+    name: {{ .name }}-creds
+    key: password
+  host: "%"
+
+---
+apiVersion: k8s.mariadb.com/v1alpha1
+kind: Grant
+metadata:
+  name: {{ .name }}-grant
+spec:
+  mariaDbRef:
+    name: oci-mysql
+  privileges: ["ALL PRIVILEGES"]
+  database: {{ .name }}-db
+  user: {{ .name }}-user
+{{- end }}

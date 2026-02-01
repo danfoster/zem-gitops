@@ -1,0 +1,9 @@
+oci:
+  vaultOcid: ""
+  rootSecretOcid: ""
+  region: ""
+
+mysql:
+  host: ""
+
+applications: []
