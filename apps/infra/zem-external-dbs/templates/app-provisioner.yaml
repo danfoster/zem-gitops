@@ -1,22 +1,25 @@
 {{- range .Values.applications }}
 ---
 # 1. Local Password Generation
-apiVersion: external-secrets.io/v1alpha1
+apiVersion: generators.external-secrets.io/v1alpha1
 kind: Password
 metadata:
   name: {{ .name }}-password
 spec:
   length: 24
   digits: 5
+  symbols: 0
+  noUpper: false
+  allowRepeat: true
 
 ---
 # 2. Sync to Secret + Reflector Annotation
-apiVersion: external-secrets.io/v1beta1
+apiVersion: external-secrets.io/v1
 kind: ExternalSecret
 metadata:
   name: {{ .name }}-creds-sync
 spec:
-  refreshInterval: "1h"
+  refreshInterval: "0"  # Don't regenerate - keep password stable
   target:
     name: {{ .name }}-creds
     template:
@@ -26,12 +29,12 @@ spec:
           reflector.v1.k8s.io/reflection-allowed: "true"
           reflector.v1.k8s.io/reflection-allowed-namespaces: {{ .namespace | quote }}
   data:
-  - secretKey: password
-    remoteRef:
-      generatorRef:
-        apiVersion: external-secrets.io/v1alpha1
-        kind: Password
-        name: {{ .name }}-password
+    - secretKey: password
+      sourceRef:
+        generatorRef:
+          apiVersion: generators.external-secrets.io/v1alpha1
+          kind: Password
+          name: {{ .name }}-password
 
 ---
 # 3. Create Logical DB, User, and Grant
