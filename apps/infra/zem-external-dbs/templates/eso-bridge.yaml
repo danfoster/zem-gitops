@@ -6,6 +6,7 @@ spec:
   provider:
     oracle:
       vault: "{{ .Values.oci.vaultOcid }}"
+      compartment: "{{ .Values.oci.compartmentOcid }}"
       region: "{{ .Values.oci.region }}"
       principalType: InstancePrincipal # The "Free Tier" identity method
 
