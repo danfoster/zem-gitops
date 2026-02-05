@@ -28,13 +28,18 @@ spec:
           # This tells Reflector to mirror the secret to the app's home
           reflector.v1.k8s.io/reflection-allowed: "true"
           reflector.v1.k8s.io/reflection-allowed-namespaces: {{ .namespace | quote }}
-  data:
-    - secretKey: password
-      sourceRef:
+      data:
+        password: "{{`{{ .password }}`}}"
+  dataFrom:
+    - sourceRef:
         generatorRef:
           apiVersion: generators.external-secrets.io/v1alpha1
           kind: Password
           name: {{ .name }}-password
+      rewrite:
+        - regexp:
+            source: ".*"
+            target: "password"
 
 ---
 # 3. Create Logical DB, User, and Grant
@@ -70,5 +75,5 @@ spec:
     name: oci-mysql
   privileges: ["ALL PRIVILEGES"]
   database: {{ .name }}-db
-  user: {{ .name }}-user
+  username: {{ .name }}-user
 {{- end }}
