@@ -1,1 +1,5 @@
 env: prod
+wordpress:
+  db:
+    userSecretRef:
+      name: mysql-pce-prod-creds
