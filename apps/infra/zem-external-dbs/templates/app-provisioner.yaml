@@ -29,6 +29,7 @@ spec:
           # This tells Reflector to mirror the secret to the app's home
           replicator.v1.mittwald.de/replicate-to: {{ .namespace | quote }}
       data:
+        username: {{ .name }}-user
         password: "{{`{{ .password }}`}}"
   dataFrom:
     - sourceRef:
