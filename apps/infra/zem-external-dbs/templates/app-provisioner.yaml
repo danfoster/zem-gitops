@@ -52,6 +52,7 @@ spec:
     name: oci-mysql
     kind: ExternalMariaDB
   characterSet: utf8mb4
+  collation: utf8mb4_unicode_ci
 
 ---
 apiVersion: k8s.mariadb.com/v1alpha1
