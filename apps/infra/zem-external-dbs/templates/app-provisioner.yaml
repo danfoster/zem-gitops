@@ -50,6 +50,7 @@ metadata:
 spec:
   mariaDbRef:
     name: oci-mysql
+    kind: ExternalMariaDB
   characterSet: utf8mb4
 
 ---
@@ -60,6 +61,7 @@ metadata:
 spec:
   mariaDbRef:
     name: oci-mysql
+    kind: ExternalMariaDB
   passwordSecretKeyRef:
     name: {{ .name }}-creds
     key: password
@@ -73,6 +75,7 @@ metadata:
 spec:
   mariaDbRef:
     name: oci-mysql
+    kind: ExternalMariaDB
   privileges: ["ALL PRIVILEGES"]
   database: {{ .name }}-db
   username: {{ .name }}-user
