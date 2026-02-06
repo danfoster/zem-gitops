@@ -4,7 +4,7 @@ wordpress:
     image: mirror.gcr.io/library/wordpress
     tag: php8.5
   storage:
-    size: 5Gi
+    size: 50Gi
   db:
     userSecretRef:
       name: ""
