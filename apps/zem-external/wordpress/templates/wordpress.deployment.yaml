@@ -25,12 +25,12 @@ spec:
             - name: WORDPRESS_DB_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: {{ .Values.wordpress.db.userSecretRef.name }}
+                  name: "{{ .Values.wordpress.db.userSecretRef.name }}"
                   key: password
             - name: WORDPRESS_DB_USER
               valueFrom:
                 secretKeyRef:
-                  name: {{ .Values.wordpress.db.userSecretRef.name }}
+                  name: "{{ .Values.wordpress.db.userSecretRef.name }}"
                   key: username
           ports:
             - containerPort: 80
