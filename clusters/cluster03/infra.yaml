@@ -42,6 +42,8 @@ spec:
                 remoteRefKey: cloudflared-token-cluster03
           mariadb-operator:
             enabled: true
+          kubernetes-replicator:
+            enabled: true
           oci-mysql:
             enabled: true
             namespace: oci-mysql
