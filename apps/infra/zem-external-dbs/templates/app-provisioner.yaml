@@ -22,13 +22,12 @@ metadata:
 spec:
   refreshInterval: "0"  # Don't regenerate - keep password stable
   target:
-    name: {{ .name }}-creds
+    name: mysql-{{ .name }}-creds
     template:
       metadata:
         annotations:
           # This tells Reflector to mirror the secret to the app's home
-          reflector.v1.k8s.io/reflection-allowed: "true"
-          reflector.v1.k8s.io/reflection-allowed-namespaces: {{ .namespace | quote }}
+          replicator.v1.mittwald.de/replicate-to: {{ .namespace | quote }}
       data:
         password: "{{`{{ .password }}`}}"
   dataFrom:
@@ -65,7 +64,7 @@ spec:
     name: oci-mysql
     kind: ExternalMariaDB
   passwordSecretKeyRef:
-    name: {{ .name }}-creds
+    name: mysql-{{ .name }}-creds
     key: password
   host: "%"
 
