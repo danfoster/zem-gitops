@@ -6,5 +6,6 @@ wordpress:
   storage:
     size: 50Gi
   db:
+    host: mariadb
     userSecretRef:
       name: ""
