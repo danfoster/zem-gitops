@@ -31,7 +31,7 @@ spec:
                   annotations:
                     oci.oraclecloud.com/load-balancer-type: "nlb"
           longhorn:
-            enabled: true
+            enabled: false
             values:
               ingress:
                 hostname: longhorn-cluster03
