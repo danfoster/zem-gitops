@@ -85,3 +85,13 @@ velero:
     enabled: true
     serviceMonitor:
       enabled: false
+
+  # ConfigMaps for Velero plugins
+  # Use fully qualified image for restore helper (required for CRI-O short name enforcement)
+  configMaps:
+    fs-restore-action-config:
+      labels:
+        velero.io/plugin-config: ""
+        velero.io/pod-volume-restore: RestoreItemAction
+      data:
+        image: docker.io/velero/velero-restore-helper:v1.15.1
