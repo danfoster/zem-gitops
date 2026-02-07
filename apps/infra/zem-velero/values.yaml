@@ -26,15 +26,19 @@ velero:
   # See: https://github.com/vmware-tanzu/helm-charts/issues/698
   upgradeCRDs: false
 
+  # Use fully qualified image names (required for CRI-O/Podman short name enforcement)
+  image:
+    repository: docker.io/velero/velero
+
   initContainers:
     - name: velero-plugin-for-aws
-      image: velero/velero-plugin-for-aws:v1.11.0
+      image: docker.io/velero/velero-plugin-for-aws:v1.11.0
       imagePullPolicy: IfNotPresent
       volumeMounts:
         - mountPath: /target
           name: plugins
     - name: velero-plugin-for-csi
-      image: velero/velero-plugin-for-csi:v0.8.0
+      image: docker.io/velero/velero-plugin-for-csi:v0.8.0
       imagePullPolicy: IfNotPresent
       volumeMounts:
         - mountPath: /target
