@@ -30,15 +30,11 @@ velero:
   image:
     repository: docker.io/velero/velero
 
+  # Note: CSI plugin is integrated into Velero core since v1.14, no init container needed
+  # See: https://github.com/vmware-tanzu/velero-plugin-for-csi (archived)
   initContainers:
     - name: velero-plugin-for-aws
       image: docker.io/velero/velero-plugin-for-aws:v1.11.0
-      imagePullPolicy: IfNotPresent
-      volumeMounts:
-        - mountPath: /target
-          name: plugins
-    - name: velero-plugin-for-csi
-      image: docker.io/velero/velero-plugin-for-csi:v0.8.0
       imagePullPolicy: IfNotPresent
       volumeMounts:
         - mountPath: /target
