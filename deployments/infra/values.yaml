@@ -132,6 +132,13 @@ features:
       repoURL: https://github.com/danfoster/zem-gitops
       targetRevision: main
       path: apps/infra/zem-kubernetes-replicator
+  csi-snapshotter:
+    enabled: false
+    namespace: kube-system
+    source:
+      repoURL: https://github.com/danfoster/zem-gitops
+      targetRevision: main
+      path: apps/infra/zem-csi-snapshotter
   velero:
     enabled: false
     namespace: velero
