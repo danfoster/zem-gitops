@@ -21,6 +21,11 @@ schedules:
     defaultVolumesToFsBackup: true
 
 velero:
+  # Use official Kubernetes kubectl image instead of Bitnami
+  kubectl:
+    image:
+      repository: registry.k8s.io/kubectl/kubectl
+
   initContainers:
     - name: velero-plugin-for-aws
       image: velero/velero-plugin-for-aws:v1.11.0
