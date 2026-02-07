@@ -1,0 +1,81 @@
+# B2 storage configuration
+b2:
+  secretName: velero-b2-credentials
+  bucketName: zem-backups-eu
+  region: eu-central-003
+  s3Url: https://s3.eu-central-003.backblazeb2.com
+
+# Backup schedules
+schedules:
+  daily:
+    enabled: true
+    schedule: "0 2 * * *"
+    ttl: 720h  # 30 days
+    includedNamespaces: []  # Empty means all namespaces
+    excludedNamespaces:
+      - kube-system
+      - kube-public
+      - kube-node-lease
+      - velero
+    snapshotMoveData: true
+    defaultVolumesToFsBackup: true
+
+velero:
+  initContainers:
+    - name: velero-plugin-for-aws
+      image: velero/velero-plugin-for-aws:v1.11.0
+      imagePullPolicy: IfNotPresent
+      volumeMounts:
+        - mountPath: /target
+          name: plugins
+    - name: velero-plugin-for-csi
+      image: velero/velero-plugin-for-csi:v0.8.0
+      imagePullPolicy: IfNotPresent
+      volumeMounts:
+        - mountPath: /target
+          name: plugins
+
+  resources:
+    requests:
+      cpu: 500m
+      memory: 128Mi
+    limits:
+      cpu: 1000m
+      memory: 512Mi
+
+  # Enable file-system backup via node-agent DaemonSet
+  deployNodeAgent: true
+
+  nodeAgent:
+    resources:
+      requests:
+        cpu: 100m
+        memory: 128Mi
+      limits:
+        cpu: 500m
+        memory: 512Mi
+
+  # Enable CSI snapshots
+  features: EnableCSI
+
+  configuration:
+    # Default backup storage location - will be created via template
+    backupStorageLocation: []
+    # Volume snapshot location for CSI - will be created via template
+    volumeSnapshotLocation: []
+
+    # Use kopia for file-system backups (better than restic)
+    uploaderType: kopia
+
+    # Default to file-system backups for all volumes
+    defaultVolumesToFsBackup: true
+
+  credentials:
+    useSecret: true
+    existingSecret: velero-b2-credentials
+
+  # Metrics for Victoria Metrics
+  metrics:
+    enabled: true
+    serviceMonitor:
+      enabled: false

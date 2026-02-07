@@ -132,3 +132,10 @@ features:
       repoURL: https://github.com/danfoster/zem-gitops
       targetRevision: main
       path: apps/infra/zem-kubernetes-replicator
+  velero:
+    enabled: false
+    namespace: velero
+    source:
+      repoURL: https://github.com/danfoster/zem-gitops
+      targetRevision: main
+      path: apps/infra/zem-velero
