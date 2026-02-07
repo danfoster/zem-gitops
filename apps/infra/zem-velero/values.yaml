@@ -1,7 +1,8 @@
 # B2 storage configuration
 b2:
   secretName: velero-b2-credentials
-  bucketName: zem-backups-eu
+  bucket: zem-backups-eu
+  prefix: ""  # Override per-cluster, e.g., "cluster03"
   region: eu-central-003
   s3Url: https://s3.eu-central-003.backblazeb2.com
 

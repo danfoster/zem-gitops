@@ -7,7 +7,10 @@ metadata:
 spec:
   provider: aws
   objectStorage:
-    bucket: "{{ .Values.b2.bucketName }}"
+    bucket: "{{ .Values.b2.bucket }}"
+    {{- if .Values.b2.prefix }}
+    prefix: "{{ .Values.b2.prefix }}"
+    {{- end }}
   config:
     region: "{{ .Values.b2.region }}"
     s3Url: "{{ .Values.b2.s3Url }}"
