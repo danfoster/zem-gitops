@@ -26,7 +26,7 @@ velero:
   # See: https://github.com/vmware-tanzu/helm-charts/issues/698
   kubectl:
     image:
-      repository: alpine/k8s
+      repository: docker.io/alpine/k8s
 
   initContainers:
     - name: velero-plugin-for-aws
