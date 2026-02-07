@@ -2,5 +2,6 @@ env: prod
 wordpress:
   db:
     host: "10.44.0.209"
+    name: "pce-prod-db"
     userSecretRef:
       name: mysql-pce-prod-creds

@@ -32,6 +32,8 @@ spec:
                 secretKeyRef:
                   name: "{{ .Values.db.userSecretRef.name }}"
                   key: username
+            - name: WORDPRESS_DB_NAME
+              value: "{{ .Values.db.name }}"
           ports:
             - containerPort: 80
               name: wordpress
