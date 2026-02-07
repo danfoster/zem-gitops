@@ -21,12 +21,12 @@ schedules:
     defaultVolumesToFsBackup: true
 
 velero:
-  # Use official Kubernetes kubectl image instead of Bitnami
-  # Pin to specific version as chart auto-detects cluster version which may not exist
+  # Use alpine/k8s instead of deprecated Bitnami kubectl
+  # Includes bash shell required by the upgrade-crds job
+  # See: https://github.com/vmware-tanzu/helm-charts/issues/698
   kubectl:
     image:
-      repository: registry.k8s.io/kubectl/kubectl
-      tag: v1.32.0
+      repository: alpine/k8s
 
   initContainers:
     - name: velero-plugin-for-aws
