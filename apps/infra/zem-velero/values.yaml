@@ -22,9 +22,11 @@ schedules:
 
 velero:
   # Use official Kubernetes kubectl image instead of Bitnami
+  # Pin to specific version as chart auto-detects cluster version which may not exist
   kubectl:
     image:
       repository: registry.k8s.io/kubectl/kubectl
+      tag: v1.32.0
 
   initContainers:
     - name: velero-plugin-for-aws
