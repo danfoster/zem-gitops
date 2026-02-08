@@ -18,7 +18,6 @@ schedules:
       - kube-public
       - kube-node-lease
       - velero
-    snapshotMoveData: true
     defaultVolumesToFsBackup: true
 
 velero:
@@ -61,13 +60,9 @@ velero:
         cpu: 500m
         memory: 512Mi
 
-  # Enable CSI snapshots
-  features: EnableCSI
-
   configuration:
     # Default backup storage location - will be created via template
     backupStorageLocation: []
-    # Volume snapshot location for CSI - will be created via template
     volumeSnapshotLocation: []
 
     # Use kopia for file-system backups (better than restic)

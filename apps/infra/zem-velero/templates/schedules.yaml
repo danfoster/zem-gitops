@@ -18,8 +18,5 @@ spec:
       {{- toYaml .Values.schedules.daily.excludedNamespaces | nindent 6 }}
     {{- end }}
     storageLocation: b2-default
-    volumeSnapshotLocations:
-      - oci-csi
-    snapshotMoveData: {{ .Values.schedules.daily.snapshotMoveData }}
     defaultVolumesToFsBackup: {{ .Values.schedules.daily.defaultVolumesToFsBackup }}
 {{- end }}

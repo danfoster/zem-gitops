@@ -62,8 +62,6 @@ spec:
               applications:
                 - name: "pce-prod"
                   namespace: "pce-prod"
-          csi-snapshotter:
-            enabled: true
           velero:
             enabled: true
             values:
