@@ -46,6 +46,8 @@ helm upgrade --install zem-external-secrets \
   apps/infra/zem-external-secrets \
   --set-string bitwarden.auth_token="$BW_AUTH_TOKEN"
 
+## Setup OCI Vault ClusterSecretStore
+scripts/setup-oci-vault-clustersecretstore.sh "$CLUSTER"
 
 ## Install Tailscale Operator
 helm repo add tailscale https://pkgs.tailscale.com/helmcharts

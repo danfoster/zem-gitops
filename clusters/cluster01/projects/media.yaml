@@ -14,6 +14,15 @@ spec:
     helm:
       valuesObject:
         env: prod
+        cluster: cluster01
+        ociVault:
+          vaultOcid: "ocid1.vault.oc1.uk-london-1.eruxsrmlaafja.abwgiljridwbzbxrs2vvay6b6n6x7xhi3ymapbgov36lrqmm7bkxgh3hmnka"
+          compartmentOcid: "ocid1.compartment.oc1..aaaaaaaagyawjldswlrq2f2dnsqz2kqlzsvj6mirpcue7oqwzlyuwx7pqjha"
+          region: "uk-london-1"
+          tenancyOcid: ""
+        backups:
+          ociUserOcid: ""
+          ociCredentialSecret: "media-prod-oci-creds"
   destination:
     server: "https://kubernetes.default.svc"
     namespace: argocd

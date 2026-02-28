@@ -44,6 +44,8 @@ spec:
             enabled: true
           kubernetes-replicator:
             enabled: true
+          k8up:
+            enabled: true
           oci-mysql:
             enabled: true
             namespace: oci-mysql
@@ -67,6 +69,13 @@ spec:
             values:
               b2:
                 prefix: cluster03-velero
+          backup-credentials:
+            enabled: true
+            values:
+              namespaces:
+                - name: pce-prod
+                  vaultSecretName: infra-pce-prod-oci-credentials
+                  targetNamespace: pce-prod
   destination:
     server: "https://kubernetes.default.svc"
     namespace: argocd

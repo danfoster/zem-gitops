@@ -1,3 +1,12 @@
 env: prod
+cluster: ""
 wiki:
   hostname: wiki.zem.org.uk
+ociVault:
+  vaultOcid: ""
+  compartmentOcid: ""
+  region: "uk-london-1"
+  tenancyOcid: ""
+backups:
+  ociUserOcid: ""
+  ociCredentialSecret: ""

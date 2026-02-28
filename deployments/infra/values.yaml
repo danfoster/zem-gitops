@@ -4,13 +4,6 @@ common:
       name: changeme
   argocd_namespace: argocd
 features:
-  backups:
-    enabled: true
-    namespace: backups
-    source:
-      repoURL: https://github.com/danfoster/zem-gitops
-      targetRevision: main
-      path: apps/infra/zem-backups
   cert-manager-configs:
     enabled: true
     namespace: cert-manager
@@ -146,3 +139,17 @@ features:
       repoURL: https://github.com/danfoster/zem-gitops
       targetRevision: main
       path: apps/infra/zem-velero
+  k8up:
+    enabled: false
+    namespace: k8up
+    source:
+      repoURL: https://github.com/danfoster/zem-gitops
+      targetRevision: main
+      path: apps/infra/zem-k8up
+  backup-credentials:
+    enabled: false
+    namespace: backup-credentials
+    source:
+      repoURL: https://github.com/danfoster/zem-gitops
+      targetRevision: main
+      path: apps/infra/zem-backup-credentials

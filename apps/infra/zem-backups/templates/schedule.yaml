@@ -3,16 +3,25 @@ kind: Schedule
 metadata:
   name: zem-backups
 spec:
+  backend:
+    s3:
+      endpoint: {{ .Values.b2.endpoint }}
+      bucket: {{ .Values.b2.bucket }}
+      accessKeyIDSecretRef:
+        name: backup-credentials
+        key: ACCESS_KEY_ID
+      secretAccessKeySecretRef:
+        name: backup-credentials
+        key: SECRET_ACCESS_KEY
+    repoPasswordSecretRef:
+      name: backup-credentials
+      key: RESTIC_PASSWORD
   backup:
     schedule: "{{.Values.backup.schedule}}"
     failedJobsHistoryLimit: 5
     successfulJobsHistoryLimit: 2
-    # optional
-    #promURL: https://prometheus-io-instance:8443
   check:
     schedule: "{{.Values.check.schedule}}"
-    # optional
-    #promURL: https://prometheus-io-instance:8443
   prune:
     schedule: "{{ .Values.prune.schedule }}"
     retention:

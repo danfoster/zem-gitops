@@ -40,6 +40,17 @@ spec:
             values:
               externalSecret:
                 remoteRefKey: cloudflared-token-cluster02
+          kubernetes-replicator:
+            enabled: true
+          k8up:
+            enabled: true
+          backup-credentials:
+            enabled: true
+            values:
+              namespaces:
+                - name: zem-external-prod
+                  vaultSecretName: infra-zem-external-prod-oci-credentials
+                  targetNamespace: zem-external-prod
 
   destination:
     server: "https://kubernetes.default.svc"

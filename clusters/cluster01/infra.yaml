@@ -39,6 +39,17 @@ spec:
             values:
               ingress:
                 hostname: longhorn-cluster01
+          kubernetes-replicator:
+            enabled: true
+          k8up:
+            enabled: true
+          backup-credentials:
+            enabled: true
+            values:
+              namespaces:
+                - name: media-prod
+                  vaultSecretName: infra-media-prod-oci-credentials
+                  targetNamespace: media-prod
 
   destination:
     server: "https://kubernetes.default.svc"

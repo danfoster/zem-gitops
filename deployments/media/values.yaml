@@ -1,4 +1,5 @@
 env: prod
+cluster: ""
 jellyfin:
   ingress:
     enabled: true
@@ -12,7 +13,7 @@ jellyfin:
       - host: jellyfin.zem.org.uk
         paths:
           - path: /
-            pathType: Prefix  # pathType no longer has a default value in v1; "Exact", "Prefix", or "ImplementationSpecific" must be specified
+            pathType: Prefix
     tls:
       - secretName: jellyfin-tls
         hosts:
@@ -25,3 +26,11 @@ jellyfin:
       enabled: true
       type: hostPath
       hostPath: /data/media
+ociVault:
+  vaultOcid: ""
+  compartmentOcid: ""
+  region: "uk-london-1"
+  tenancyOcid: ""
+backups:
+  ociUserOcid: ""
+  ociCredentialSecret: ""

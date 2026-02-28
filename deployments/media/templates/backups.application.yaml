@@ -15,6 +15,17 @@ spec:
     repoURL: https://github.com/danfoster/zem-gitops
     targetRevision: main
     path: apps/infra/zem-backups
+    helm:
+      valuesObject:
+        ociVault:
+          vaultOcid: {{ .Values.ociVault.vaultOcid | quote }}
+          compartmentOcid: {{ .Values.ociVault.compartmentOcid | quote }}
+          region: {{ .Values.ociVault.region | quote }}
+          tenancyOcid: {{ .Values.ociVault.tenancyOcid | quote }}
+          userOcid: {{ .Values.backups.ociUserOcid | quote }}
+          credentialSecretName: {{ .Values.backups.ociCredentialSecret | quote }}
+        b2:
+          vaultSecretName: {{ .Values.cluster }}-media-{{ .Values.env }}-backup-credentials
   destination:
     server: "https://kubernetes.default.svc"
     namespace: media-{{ .Values.env }}
