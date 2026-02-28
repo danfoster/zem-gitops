@@ -148,6 +148,7 @@ if [ -n "${EXISTING_POLICY_OCID}" ]; then
     oci iam policy update \
         --policy-id "${EXISTING_POLICY_OCID}" \
         --statements "${POLICY_STATEMENTS}" \
+        --version-date "" \
         --force \
         --output json >/dev/null
     echo "Policy updated: ${POLICY_NAME}"
