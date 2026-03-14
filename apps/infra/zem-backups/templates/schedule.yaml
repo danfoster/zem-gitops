@@ -6,7 +6,7 @@ spec:
   backend:
     s3:
       endpoint: {{ .Values.b2.endpoint }}
-      bucket: {{ .Values.b2.bucket }}
+      bucket: {{ .Values.b2.bucket }}{{ with .Values.b2.prefix }}/{{ . }}{{ end }}
       accessKeyIDSecretRef:
         name: backup-credentials
         key: ACCESS_KEY_ID

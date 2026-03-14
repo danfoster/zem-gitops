@@ -138,7 +138,7 @@ echo "API Key Fingerprint: ${OCI_FINGERPRINT}"
 # --- Step 3: Create OCI IAM policy ---
 echo "--- Step 3: Creating OCI IAM policy ---"
 POLICY_NAME="backup-${PREFIX}-secrets"
-POLICY_STATEMENTS="[\"Allow any-user to read secret-family in compartment id ${OCI_COMPARTMENT_OCID} where ALL {request.user.id = '${OCI_USER_OCID}', target.secret.name = '${PREFIX}-backup-credentials'}\", \"Allow any-user to read vaults in compartment id ${OCI_COMPARTMENT_OCID} where request.user.id = '${OCI_USER_OCID}'\"]"
+POLICY_STATEMENTS="[\"Allow any-user to read secret-family in compartment id ${OCI_COMPARTMENT_OCID} where ALL {request.user.id = '${OCI_USER_OCID}', target.secret.name = '${PREFIX}'}\", \"Allow any-user to read vaults in compartment id ${OCI_COMPARTMENT_OCID} where request.user.id = '${OCI_USER_OCID}'\"]"
 
 EXISTING_POLICY_OCID=$(oci iam policy list \
     --compartment-id "${OCI_COMPARTMENT_OCID}" \
@@ -180,7 +180,7 @@ echo "Restic password generated"
 
 # --- Step 6: Store backup credentials in OCI Vault ---
 echo "--- Step 6: Storing backup credentials in OCI Vault ---"
-BACKUP_SECRET_NAME="${PREFIX}-backup-credentials"
+BACKUP_SECRET_NAME="${PREFIX}"
 BACKUP_SECRET_JSON=$(jq -n \
     --arg ak "$B2_KEY_ID" \
     --arg sk "$B2_KEY_SECRET" \

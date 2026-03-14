@@ -9,6 +9,7 @@ ociVault:
 b2:
   endpoint: "https://s3.eu-central-003.backblazeb2.com"
   bucket: "zem-backups-eu"
+  prefix: ""
   vaultSecretName: ""  # OCI Vault secret containing JSON: {"ACCESS_KEY_ID":"...","SECRET_ACCESS_KEY":"...","RESTIC_PASSWORD":"..."}
 
 backup:

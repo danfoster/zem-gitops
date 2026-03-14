@@ -25,7 +25,8 @@ spec:
           userOcid: {{ .Values.backups.ociUserOcid | quote }}
           credentialSecretName: {{ .Values.backups.ociCredentialSecret | quote }}
         b2:
-          vaultSecretName: {{ .Values.cluster }}-zem-external-{{ .Values.env }}-backup-credentials
+          prefix: {{ .Values.cluster }}/zem-external-{{ .Values.env }}
+          vaultSecretName: {{ .Values.cluster }}-zem-external-{{ .Values.env }}
   destination:
     server: "https://kubernetes.default.svc"
     namespace: zem-external-{{ .Values.env }}
