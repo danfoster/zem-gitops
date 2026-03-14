@@ -26,3 +26,7 @@ spec:
     - secretKey: password
       remoteRef:
         key: "{{ .Values.oci.rootSecretOcid }}"
+        conversionStrategy: Default
+        decodingStrategy: None
+        metadataPolicy: None
+
