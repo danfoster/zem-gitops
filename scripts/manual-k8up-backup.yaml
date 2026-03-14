@@ -1,0 +1,18 @@
+apiVersion: k8up.io/v1
+kind: Backup
+metadata:
+  name: zem-backup-manual
+spec:
+  backend:
+    repoPasswordSecretRef:
+      key: RESTIC_PASSWORD
+      name: backup-credentials
+    s3:
+      accessKeyIDSecretRef:
+        key: ACCESS_KEY_ID
+        name: backup-credentials
+      bucket: zem-backups-eu
+      endpoint: https://s3.eu-central-003.backblazeb2.com
+      secretAccessKeySecretRef:
+        key: SECRET_ACCESS_KEY
+        name: backup-credentials
