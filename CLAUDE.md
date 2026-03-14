@@ -55,6 +55,22 @@ See also: `scripts/setup-oci-vault-clustersecretstore.sh <cluster>` — one-time
 - **Velero** (being added): For OCI clusters, CSI snapshots + file backups to B2
 - B2 credentials via ExternalSecrets from OCI Vault (two-tier model: `oci-vault` ClusterSecretStore distributes OCI API keys, per-namespace SecretStores pull backup secrets)
 
+### Bootstrap (Pre-ArgoCD)
+
+The `bootstrap/` directory contains a Helmfile that installs the 6 Helm releases needed before ArgoCD can manage the cluster. These are intentionally **not** managed by ArgoCD.
+
+- `bootstrap/helmfile.yaml.gotmpl` - Declarative definition of all bootstrap releases (`.gotmpl` extension required by Helmfile v1 for Go templating)
+- `bootstrap/values/` - Per-cluster values (cluster01.yaml, cluster02.yaml, cluster03.yaml)
+- `bootstrap/bootstrap.sh` - Wrapper script: `./bootstrap/bootstrap.sh <cluster> <bw-token>`
+
+**Helmfile commands** (run from `bootstrap/`):
+- `helmfile -e <cluster> diff` - Show drift between declared and live state
+- `helmfile -e <cluster> apply` - Reconcile (install/upgrade) all releases
+- `helmfile -e <cluster> lint` - Validate chart templates
+- `helmfile -e <cluster> template` - Render templates locally
+
+**Requirements**: `helmfile`, `helm`, `kubectl`, `helm-diff` plugin
+
 ### Git Remote
 
 - Repo URL used in sources: `https://github.com/danfoster/zem-gitops`

@@ -6,3 +6,18 @@ bitwarden:
         matchLabels:
           infra: "true"
   auth_token: ""
+
+ociVault:
+  enabled: false
+  vault: ""
+  compartment: ""
+  region: uk-london-1
+  user: ""
+  tenancy: ""
+  authSecret:
+    name: oci-vault-auth
+    namespace: external-secrets
+  conditions:
+    - namespaceSelector:
+        matchLabels:
+          infra: "true"

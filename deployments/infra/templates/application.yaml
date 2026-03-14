@@ -18,6 +18,8 @@ spec:
     automated:
       prune: true
       selfHeal: true
+    syncOptions:
+      - ServerSideApply=true
   source:
     {{- toYaml $config.source | nindent 4 }}
     helm:

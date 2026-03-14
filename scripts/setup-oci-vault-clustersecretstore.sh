@@ -131,39 +131,6 @@ kubectl ${KUBE_CONTEXT:+--context "$KUBE_CONTEXT"} create secret generic "${K8S_
     --dry-run=client -o yaml | kubectl ${KUBE_CONTEXT:+--context "$KUBE_CONTEXT"} apply -f -
 echo "K8s secret created: ${K8S_SECRET_NAME} in ${K8S_NAMESPACE}"
 
-# --- Step 5: Create ClusterSecretStore ---
-echo "--- Step 5: Creating oci-vault ClusterSecretStore ---"
-kubectl ${KUBE_CONTEXT:+--context "$KUBE_CONTEXT"} apply -f - <<EOF
-apiVersion: external-secrets.io/v1
-kind: ClusterSecretStore
-metadata:
-  name: oci-vault
-spec:
-  conditions:
-    - namespaceSelector:
-        matchLabels:
-          infra: "true"
-  provider:
-    oracle:
-      vault: "${OCI_VAULT_OCID}"
-      compartment: "${OCI_COMPARTMENT_OCID}"
-      region: "uk-london-1"
-      principalType: UserPrincipal
-      auth:
-        user: "${OCI_USER_OCID}"
-        tenancy: "${OCI_TENANCY_OCID}"
-        secretRef:
-          privatekey:
-            name: ${K8S_SECRET_NAME}
-            key: privateKey
-            namespace: ${K8S_NAMESPACE}
-          fingerprint:
-            name: ${K8S_SECRET_NAME}
-            key: fingerprint
-            namespace: ${K8S_NAMESPACE}
-EOF
-echo "ClusterSecretStore oci-vault created"
-
 # --- Summary ---
 echo ""
 echo "=== Setup complete for ${CLUSTER} ==="
@@ -172,7 +139,14 @@ echo "Resources created:"
 echo "  OCI User:              ${OCI_USER_NAME} (${OCI_USER_OCID})"
 echo "  OCI Policy:            ${POLICY_NAME} (reads infra-* secrets)"
 echo "  K8s Secret:            ${K8S_SECRET_NAME} in ${K8S_NAMESPACE}"
-echo "  ClusterSecretStore:    oci-vault"
 echo ""
-echo "Verify with:"
-echo "  kubectl ${KUBE_CONTEXT:+--context $KUBE_CONTEXT} get clustersecretstore oci-vault"
+echo "The oci-vault ClusterSecretStore is managed by the zem-external-secrets Helm chart."
+echo "Add the following to bootstrap/values/${CLUSTER}.yaml and run 'helmfile -e ${CLUSTER} apply':"
+echo ""
+echo "ociVault:"
+echo "  enabled: true"
+echo "  vault: ${OCI_VAULT_OCID}"
+echo "  compartment: ${OCI_COMPARTMENT_OCID}"
+echo "  region: uk-london-1"
+echo "  user: ${OCI_USER_OCID}"
+echo "  tenancy: ${OCI_TENANCY_OCID}"

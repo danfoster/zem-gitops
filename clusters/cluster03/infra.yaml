@@ -64,11 +64,6 @@ spec:
               applications:
                 - name: "pce-prod"
                   namespace: "pce-prod"
-          velero:
-            enabled: true
-            values:
-              b2:
-                prefix: cluster03-velero
           backup-credentials:
             enabled: true
             values:
