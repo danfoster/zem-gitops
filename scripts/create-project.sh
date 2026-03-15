@@ -162,25 +162,80 @@ else
     echo "Policy created: ${POLICY_NAME}"
 fi
 
-# --- Step 4: Create B2 application key ---
-echo "--- Step 4: Creating B2 application key ---"
-B2_KEY_RESULT=$(b2 key create \
-    --bucket "${B2_BUCKET}" \
-    --name-prefix "${CLUSTER}/${NAMESPACE}/" \
-    "${B2_KEY_NAME}" \
-    "listBuckets,listFiles,readFiles,writeFiles,deleteFiles" 2>&1)
-B2_KEY_ID=$(echo "$B2_KEY_RESULT" | awk '{print $1}')
-B2_KEY_SECRET=$(echo "$B2_KEY_RESULT" | awk '{print $2}')
-echo "B2 Key created: ${B2_KEY_NAME}"
-
-# --- Step 5: Generate restic password ---
-echo "--- Step 5: Generating restic password ---"
-RESTIC_PASSWORD=$(openssl rand -base64 32)
-echo "Restic password generated"
-
-# --- Step 6: Store backup credentials in OCI Vault ---
-echo "--- Step 6: Storing backup credentials in OCI Vault ---"
+# --- Step 4: B2 credentials + restic password (idempotent) ---
+echo "--- Step 4: Provisioning B2 credentials and restic password ---"
 BACKUP_SECRET_NAME="${PREFIX}"
+B2_KEY_ID=""
+B2_KEY_SECRET=""
+RESTIC_PASSWORD=""
+B2_CREDS_VALID=false
+
+# Check if backup credentials already exist in OCI Vault
+EXISTING_BACKUP_OCID=$(oci vault secret list \
+    --compartment-id "${OCI_COMPARTMENT_OCID}" \
+    --vault-id "${OCI_VAULT_OCID}" \
+    --name "${BACKUP_SECRET_NAME}" \
+    --output json 2>/dev/null | jq -r '.data[0].id // empty')
+
+if [ -n "${EXISTING_BACKUP_OCID}" ]; then
+    echo "  Found existing vault secret: ${BACKUP_SECRET_NAME}"
+    EXISTING_BACKUP_JSON=$(oci secrets secret-bundle get \
+        --secret-id "${EXISTING_BACKUP_OCID}" \
+        --output json 2>/dev/null | jq -r '.data."secret-bundle-content".content' | base64 -d)
+    EXISTING_B2_KEY_ID=$(echo "$EXISTING_BACKUP_JSON" | jq -r '.ACCESS_KEY_ID // empty')
+    EXISTING_B2_KEY_SECRET=$(echo "$EXISTING_BACKUP_JSON" | jq -r '.SECRET_ACCESS_KEY // empty')
+    RESTIC_PASSWORD=$(echo "$EXISTING_BACKUP_JSON" | jq -r '.RESTIC_PASSWORD // empty')
+    echo "  Preserved existing restic password from vault"
+
+    # Validate B2 credentials by trying to list files
+    if [ -n "${EXISTING_B2_KEY_ID}" ] && [ -n "${EXISTING_B2_KEY_SECRET}" ]; then
+        echo "  Testing existing B2 credentials (key: ${EXISTING_B2_KEY_ID})..."
+        if B2_APPLICATION_KEY_ID="${EXISTING_B2_KEY_ID}" B2_APPLICATION_KEY="${EXISTING_B2_KEY_SECRET}" \
+            b2 ls --recursive --limit 1 "${B2_BUCKET}" "${CLUSTER}/${NAMESPACE}/" >/dev/null 2>&1; then
+            echo "  B2 credentials are valid, reusing"
+            B2_KEY_ID="${EXISTING_B2_KEY_ID}"
+            B2_KEY_SECRET="${EXISTING_B2_KEY_SECRET}"
+            B2_CREDS_VALID=true
+        else
+            echo "  B2 credentials are invalid, will create new key"
+            # Clean up the dead key from B2 if it still exists
+            if b2 key list 2>/dev/null | awk '{print $1}' | grep -qx "${EXISTING_B2_KEY_ID}"; then
+                echo "  Deleting stale B2 key: ${EXISTING_B2_KEY_ID}"
+                b2 key delete "${EXISTING_B2_KEY_ID}"
+            fi
+        fi
+    fi
+else
+    echo "  No existing vault secret found, will create everything fresh"
+fi
+
+# Generate restic password if we don't have one from the vault
+if [ -z "${RESTIC_PASSWORD}" ]; then
+    RESTIC_PASSWORD=$(openssl rand -base64 32)
+    echo "  Generated new restic password"
+fi
+
+# Create new B2 key if existing creds were invalid or missing
+if [ "${B2_CREDS_VALID}" = false ]; then
+    # Clean up any orphaned B2 keys with the same name
+    ORPHANED_KEYS=$(b2 key list 2>/dev/null | grep "${B2_KEY_NAME}" | awk '{print $1}')
+    for key_id in $ORPHANED_KEYS; do
+        echo "  Deleting orphaned B2 key: ${key_id}"
+        b2 key delete "${key_id}"
+    done
+
+    B2_KEY_RESULT=$(b2 key create \
+        --bucket "${B2_BUCKET}" \
+        --name-prefix "${CLUSTER}/${NAMESPACE}/" \
+        "${B2_KEY_NAME}" \
+        "listBuckets,listFiles,readFiles,writeFiles,deleteFiles" 2>&1)
+    B2_KEY_ID=$(echo "$B2_KEY_RESULT" | awk '{print $1}')
+    B2_KEY_SECRET=$(echo "$B2_KEY_RESULT" | awk '{print $2}')
+    echo "  Created new B2 key: ${B2_KEY_NAME}"
+fi
+
+# Store/update backup credentials in OCI Vault
+echo "  Storing backup credentials in OCI Vault..."
 BACKUP_SECRET_JSON=$(jq -n \
     --arg ak "$B2_KEY_ID" \
     --arg sk "$B2_KEY_SECRET" \
@@ -206,7 +261,7 @@ echo ""
 echo "Resources created:"
 echo "  OCI User:       ${OCI_USER_NAME} (${OCI_USER_OCID})"
 echo "  OCI Policy:     ${POLICY_NAME}"
-echo "  B2 Key:         ${B2_KEY_NAME} (prefix: ${CLUSTER}/${NAMESPACE}/)"
+echo "  B2 Key:         ${B2_KEY_NAME} (prefix: ${CLUSTER}/${NAMESPACE}/, reused: ${B2_CREDS_VALID})"
 echo "  Vault Secrets:"
 echo "    ${BACKUP_SECRET_NAME} (B2 creds + restic password)"
 echo "    ${INFRA_SECRET_NAME} (OCI API key for K8s distribution)"

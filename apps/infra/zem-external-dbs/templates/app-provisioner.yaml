@@ -50,7 +50,7 @@ metadata:
   name: {{ .name }}-db
 spec:
   mariaDbRef:
-    name: oci-mysql
+    name: {{ $.Values.mysql.instanceName }}
     kind: ExternalMariaDB
   characterSet: utf8mb4
   collate: utf8mb4_unicode_ci
@@ -62,7 +62,7 @@ metadata:
   name: {{ .name }}-user
 spec:
   mariaDbRef:
-    name: oci-mysql
+    name: {{ $.Values.mysql.instanceName }}
     kind: ExternalMariaDB
   passwordSecretKeyRef:
     name: mysql-{{ .name }}-creds
@@ -76,7 +76,7 @@ metadata:
   name: {{ .name }}-grant
 spec:
   mariaDbRef:
-    name: oci-mysql
+    name: {{ $.Values.mysql.instanceName }}
     kind: ExternalMariaDB
   privileges: ["ALL PRIVILEGES"]
   database: {{ .name }}-db

@@ -6,5 +6,16 @@ oci:
 
 mysql:
   host: ""
+  instanceName: ""
 
 applications: []
+
+backup:
+  enabled: false
+  vaultSecretName: ""
+  b2:
+    endpoint: "https://s3.eu-central-003.backblazeb2.com"
+    bucket: "zem-backups-eu"
+    prefix: ""
+  schedule: "0 2 * * *"
+  maxRetention: "30d"

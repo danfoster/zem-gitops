@@ -61,6 +61,12 @@ spec:
                 rootSecretOcid: mysql-admin-password
               mysql:
                 host: "10.44.0.209"
+                instanceName: "oci-mysql"
+              backup:
+                enabled: true
+                vaultSecretName: infra-mysql-backup
+                b2:
+                  prefix: cluster03/mysql
               applications:
                 - name: "pce-prod"
                   namespace: "pce-prod"
