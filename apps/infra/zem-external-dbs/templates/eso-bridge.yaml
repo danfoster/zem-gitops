@@ -42,7 +42,10 @@ spec:
     name: oci-vault
     kind: ClusterSecretStore
   target:
+    conversionStrategy: Default
+    decodingStrategy: None
     name: mysql-backup-b2-credentials
+    metadataPolicy: None
   dataFrom:
     - extract:
         key: {{ .Values.backup.vaultSecretName }}

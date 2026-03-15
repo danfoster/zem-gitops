@@ -18,4 +18,4 @@ backup:
     bucket: "zem-backups-eu"
     prefix: ""
   schedule: "0 2 * * *"
-  maxRetention: "30d"
+  maxRetention: "720h"

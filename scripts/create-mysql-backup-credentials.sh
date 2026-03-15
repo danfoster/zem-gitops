@@ -129,7 +129,7 @@ fi
 # Create new B2 key if existing creds were invalid or missing
 if [ "${B2_CREDS_VALID}" = false ]; then
     # Clean up any orphaned B2 keys with the same name
-    ORPHANED_KEYS=$(b2 key list 2>/dev/null | grep "${B2_KEY_NAME}" | awk '{print $1}')
+    ORPHANED_KEYS=$(b2 key list 2>/dev/null | grep "${B2_KEY_NAME}" | awk '{print $1}' || true)
     for key_id in $ORPHANED_KEYS; do
         echo "  Deleting orphaned B2 key: ${key_id}"
         b2 key delete "${key_id}"
